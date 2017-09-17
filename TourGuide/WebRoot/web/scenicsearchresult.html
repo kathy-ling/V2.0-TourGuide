@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	<meta charset="UTF-8">
+	<title>景点介绍</title>
+	<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+	<link rel="stylesheet" type="text/css" href="css/jquery.mobile-1.4.5.css">
+    <link rel="stylesheet" type="text/css" href="css/mystyle.css">
+    <link rel="stylesheet" type="text/css" href="css/cityPicker.css"/>
+    <link rel="stylesheet" type="text/css" href="css/nativedroid2.css">
+    <link rel="stylesheet" type="text/css" href="css/index.css"/>
+	<script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
+    <script  type="text/javascript" src="js/yxMobileSlider.js"></script>
+	<script type="text/javascript" src="js/jquery.mobile-1.4.5.min.js"></script>
+	<script type="text/javascript" src="js/jquery-ui.js"></script>
+	<script type="text/javascript" src="js/jquery.cookie.js"></script>
+	<script type="text/javascript" src="https://3gimg.qq.com/lightmap/components/geolocation/geolocation.min.js"></script>
+    <script type="text/javascript" src="js/nativedroid2.js"></script>
+    <script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
+    <script type="text/javascript" src="js/scenicsearchresult.js"></script>
+    
+	</head>
+	
+<body>
+		
+	<footer data-role="footer" data-position="fixed">
+        <div data-role="navbar">
+            <ul>
+            <li><a href="index.html" target="_top" id="" class="navbar0" >首页</a></li>
+            <li><a href="pindan.html" target="_top" id="" class="navbar0" >拼讲解员</a></li>
+            <li><a href="orderGuide.html" target="_top" id="" class="navbar0">预约讲解员</a></li>           
+            <li><a href="" target="_top" id="" class="navbar0" onclick="isRegist()">个人中心</a></li>           
+            </ul>
+        </div>
+	</footer>
+    	
+	<header data-role="header" >		
+		<div class="headersearch">
+			<div class="searchinput" >
+				<input type="search" id="mySearchInput" placeholder="输入景区名称进行搜索" />
+			</div>				
+			<button onclick="ssearch()" id="searchSubmit"><b>搜  索</b></button>
+		</div>	
+	</header>
+	
+	<!--//正文-->
+	<div data-role="main" id="searchResultList" data-add-back-btn="true">
+		<ul id="result_ul">
+			<li>
+				<div id="sceniclist" data-role="main">
+					<div class="searchResult ui-grid-a">
+			            
+			            <div class="searchResultImg ui-block-a">
+			            	<a id="imgA" href="" target="_top" >
+			            	<img src="img/1.jpg" id="search_img"></a>
+			            </div>
+			            
+			            <div class="searchResultDis ui-block-b">
+			                <p class="spotDis" id="search_scenic_intro"></p>
+			                <p>景点等级：<span class="spotlevel" id="search_starlevel"></span></p>
+			                <p>景点地址：<span class="spotAddr" id="search_address"></span></p>
+			            </div>
+		        	</div>
+				</div>
+			</li>				
+		</ul>
+	</div>
+	
+	<div id="recommondDiv" style="float: left;">
+		<p style="color: #2196F3;">为您推荐</p>
+        <ul class="my-imglist" id="search_ul">
+            
+        </ul>
+    </div>
+</body>
+</html>

@@ -1,0 +1,35 @@
+#head_id
+{
+	text-align: center;
+	font-size:xx-large;
+}
+
+#login_div_id
+{
+	text-align: center;
+	font-size: 16pt;
+}
+#login_id
+{
+	font-size: 18pt;
+	background-color:tomato;
+	color:burlywood;
+	display: block;
+	width: 100%;
+	padding-left: 15px;
+	padding-right: 15px;
+	padding-top: 10px;
+	
+}
+#f_password
+{
+	font-size: 10pt;
+	margin-left: 15px;
+	color: blue;
+}
+#regis_id
+{
+	font-size: 10pt;
+	color:blue;
+		
+}

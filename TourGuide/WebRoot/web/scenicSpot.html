@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>景区信息</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <link rel="stylesheet" type="text/css" href="css/jquery.mobile-1.4.5.css"/>
+    <link rel="stylesheet" type="text/css" href="css/nativedroid2.css">
+    <link rel="stylesheet" type="text/css" href="css/mystyle.css">
+    <link rel="stylesheet" type="text/css" href="css/scenicSpot.css"/>   
+    <script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
+    <script type="text/javascript" src="js/jquery.mobile-1.4.5.min.js"></script>
+    <script type="text/javascript" src="js/jquery.cookie.js"></script>
+    <script  type="text/javascript" src="js/yxMobileSlider.js"></script>
+    <script type="text/javascript" src="js/scenicSpot.js"></script>
+</head>
+
+<body>
+<div data-role="page" id="scenicSpotPage">
+	
+	<footer data-role="footer" data-position="fixed">
+        <div data-role="navbar">
+            <ul>
+            <li><a href="index.html" target="_top" id="" class="navbar0" >首页</a></li>
+            <li><a href="pindan.html" target="_top" id="" class="navbar0" >拼讲解员</a></li>
+            <li><a href="orderGuide.html" target="_top" id="" class="navbar0">预约讲解员</a></li>           
+            <li><a href="" target="_top" id="" class="navbar0" onclick="isRegist()">个人中心</a></li>           
+            </ul>
+        </div>
+    </footer>
+    
+    <div data-role="header" id="header" class="header">
+    	<!--<a href="#" class="ui-btn ui-corner-all ui-icon-carat-l ui-btn-icon-notext" data-rel="back">返回</a>
+        <a href="#" class="ui-btn ui-corner-all ui-icon-action ui-btn-icon-notext">分享</a>-->
+         <img class="image" src="" alt="" id="scenic_img">
+    </div>
+    
+    <div data-role="main" class="ui-content">
+        <div class="order-panle">
+            <h2 class="title" id="scenic_title">景区名称</h2>
+            <table border="0">
+            	<tr>
+            		<th rowspan="2">
+            			<p calss="weather">今日天气：</p>
+            		</th>
+            		<th>
+            			<span id="weather">天气</span>
+            			<img id="img1" src="">
+                		<img id="img2" src="">
+            		</th>
+            	</tr>
+            	<tr>
+            		<th>
+            			<span id="temperature">温度</span>
+                		<span id="wind">风向</span>    
+            		</th>
+            	</tr>
+            </table>  
+            <br/>
+            <table>
+            	<tr>
+            		<th>历史参观人数：</th>
+            		<th id="scenic_total_visit"></th>
+            	</tr>
+            </table> 
+            <br/>
+            <table>
+            	<tr>
+            		<th>全价票:</th>
+            		<th id="full_price"></th>
+            	</tr>
+            </table>
+            <!--<table border="0" align="center" id="price_table">
+            	<tr>
+            		<th colspan="2">门票</th>
+            	</tr>
+            	<tr>
+            		<th>全价票：</th>
+            		<th id="full_price">140</th>
+            	</tr>
+            	<tr>
+            		<th>半价票：</th>
+            		<th id="half_price">70</th>
+            	</tr>
+            	<tr>
+            		<th>折扣票：</th>
+            		<th id="dicount_price">120</th>
+            	</tr>
+            </table>-->
+            <ul id="sideBar" class="sideBar">
+                 <li><a calss="left-button sidebtn" target="_top" id="orderGuideBtn"  href="orderGuide.html">预约讲解员</a></li>
+                 <li><a calss="right-button sidebtn" target="_top" id="pinGuideBtn"  href="pindan.html">拼讲解员</a></li>
+                 <li><a calss="left-button sidebtn" target="_top" id="fastOrderBtn" onclick="clickFastPin()" >快捷拼单</a></li>
+           	</ul>
+        </div >
+        
+        <div calss="discription" id="scenic_info">
+            <p>
+                
+            </p>
+        </div>
+        
+        <hr data-am-widget="divider" style="" class="am-divider am-divider-default" />
+        
+        <div id="promotions" class="slider" style="padding-bottom: 20px;"><!--id="imageSlider" -->
+        </br>
+          <ul class="items" id="index_ul_id"> 
+          	<label id="activity">景区活动</label>
+          </ul>
+        </div> 
+        
+        
+		<ul class="my-imglist" id="more_ul">
+			<p id="act">景区活动</p>
+		</ul>
+		
+        
+    </div>       
+</div>
+</body>
+</html>

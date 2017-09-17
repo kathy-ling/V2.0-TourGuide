@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>订单列表</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <link rel="stylesheet" type="text/css" href="css/orderFormList.css">   
+    <link rel="stylesheet" type="text/css" href="css/jquery.mobile-1.4.5.css">
+    <link rel="stylesheet" type="text/css" href="css/nativedroid2.css">
+    <script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
+    <script type="text/javascript" src="js/jquery.mobile-1.4.5.min.js"></script>
+ 	<script type="text/javascript" src="js/OrderFormList.js"></script>
+</head>
+
+<body>
+<div data-role="page" id="orderFormListPage" data-add-back-btn="true">
+	
+	<!-- <footer data-role="footer" data-position="fixed">
+	        <div data-role="navbar" id="bottom_navigation">
+	            
+	        </div>
+   	</footer> -->
+   	<footer data-role="footer" data-position="fixed">
+        <div data-role="navbar">
+            <ul>
+            <li><a href="index.html" target="_top" id="" class="navbar0" >首页</a></li>
+            <li><a href="pindan.html" target="_top" id="" class="navbar0" >拼讲解员</a></li>
+            <li><a href="orderGuide.html" target="_top" id="" class="navbar0">预约讲解员</a></li>           
+            <li><a href="" target="_top" id="" class="navbar0" onclick="isRegist()">个人中心</a></li>           
+            </ul>
+        </div>
+   </footer>	
+   	
+    <div data-role="header"  id="header" class="header">
+        <div data-role="navbar">
+           <ul>
+               <li><a class="navList" id="allOrderForm"  href="#">全部</a></li>
+               <li><a class="navList" id="notVistOrderForm"  href="#">待接单</a></li>
+               <li><a class="navList" id="vistedOrderForm"  href="#">待游览</a></li>
+               <li><a class="navList" id="vistedOrderForm"  href="#">待付款</a></li>
+			   <li><a class="navList" id="vistedOrderForm"  href="#">待评价</a></li>
+           </ul>
+       </div>
+    </div>
+    
+    <div data-role="main" class="ui-content">
+         <ul data-role="listview" id="OrderStateUl">         
+         </ul>
+    </div>
+    
+</div>
+</body>
+</html>

@@ -1,0 +1,89 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>活动页面</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="css/mui.min.css" rel="stylesheet" />
+		<link rel="stylesheet" href="css/index.css" />
+		<link rel="stylesheet" href="css/jquery.mobile-1.4.5.css">
+		<link rel="stylesheet" type="text/css" href="css/jquery.mobile-1.4.5.css">   
+		<link rel="stylesheet" type="text/css" href="css/nativedroid2.css">
+		<script src="js/mui.min.js"></script>
+		<script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
+		<script type="text/javascript" src="js/jquery.mobile-1.4.5.min.js"></script>
+		
+		<script type="text/javascript">
+		$(function(){
+			//加载底部导航栏
+			$("#bottom_navigation").load("bottomNavigation.html").trigger("create");
+		});
+			mui.init();
+		</script>
+		<script type="text/javascript" src="js/index.js" ></script>
+	</head>
+	<body>
+		<footer data-role="footer" data-position="fixed">
+	        <div data-role="navbar" id="bottom_navigation">
+	            
+	        </div>
+   		</footer>
+		<div class="mui-content">
+			
+			<img class="my-media-object" src="">
+			<div class="my-title">
+				<h5 class="middle-title">门票9元起</h5>
+			</div>
+			<ul class="mui-table-view mui-grid-view">
+ 				<li class="mui-table-view-cell mui-media mui-col-xs-6">
+		            <a href="#">
+		                <img class="mui-media-object" src="">
+		                <div class="card-info">
+		                <h5 class="card-left-title">上海野生动物园</h5>
+		                <p calss="card-deicription">大熊猫是我国特级保护动物大熊猫是我国特级保护动物</p>
+		                </div>
+		                <div class="mui-card-footer">
+					<a class="mui-card-link">Like</a>
+					<a class="mui-card-link">Read more</a>
+				</div>
+				</a></li>
+		        <li class="mui-table-view-cell mui-media mui-col-xs-6">
+		            <a href="#">
+		                <img class="mui-media-object" src="">
+		               <div class="card-info">
+		                <h5 class="card-left-title">上海野生动物园</h5>
+		                <p calss="card-deicription">大熊猫是我国特级保护动物大熊猫是我国特级保护动物</p>
+		               </div>
+		               <p class="dis">折扣</p>
+		          <div class="money-bar">
+					<p class="money-dis">抢购价<span calss="money-count">￥9</span>起<span class="dis-loca">坐标</span><s>￥999</s></p>
+				</div></a></li>
+			</ul>
+			<div class="my-title">
+				<h5 class="middle-title">圣诞狂欢</h4>
+			</div>
+			<ul class="mui-table-view mui-grid-view">
+ 				<li class="mui-table-view-cell mui-media mui-col-xs-6">
+		            <a href="#">
+		                <img class="mui-media-object" src="">
+		                <div class="mui-media-body">
+		                <h5>幸福就是可以一起睡觉<h5>
+		                <p></p>
+		                </div>
+		                <div class="mui-card-footer">
+					<a class="mui-card-link">Like</a>
+					<a class="mui-card-link">Read more</a>
+						</div>
+				</a></li>
+		        <li class="mui-table-view-cell mui-media mui-col-xs-6">
+		            <a href="#">
+		                <img class="mui-media-object" src="">
+		                <div class="mui-media-body">想要一间这样的木屋，静静的喝咖啡</div>
+		          <div class="mui-card-footer">
+					<a class="mui-card-link">Like</a>
+					<a class="mui-card-link">Read more</a>
+				</div></a></li>
+			</ul>
+		</div>
+	</body>
+	</html>

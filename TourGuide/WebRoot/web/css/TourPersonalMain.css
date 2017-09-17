@@ -1,0 +1,79 @@
+#main_some_div
+{
+	text-align: right;
+	font-size: 10pt;
+	color: blue;
+}
+#main_image_div
+{
+	text-align: center;
+	width: 100%;
+	height: 30%;
+}
+#main_order
+{
+	width: 100%;
+	height: 30%;
+	text-align: left;
+}
+#main_guide
+{
+	margin-top: 20px;
+	width: 100%;
+	height: 40%;
+}
+#portrait
+{
+   height:90px;
+   width: 90px;
+   
+}
+#main_pname
+{
+	margin-top: auto;
+	text-align: center;
+}
+#main_allorders_id
+{
+	text-decoration: none;
+	color: red;
+	text-align: right;
+	padding-left:60px;
+	float: right;
+}
+#main_orders_statue,#main_guide_table
+{
+	margin-top: 10px;
+	width: 100%;
+	height: 30%;
+}
+#main_will_pay,#main_will_visit,#main_finish
+{
+	font-size: 16pt;
+	text-decoration: none;
+	color: red;
+	padding: 5px;
+}
+th
+{
+	padding-left: 8px;
+	padding-right: 8px;
+	padding-top: 30px;
+	padding-bottom: 30px;
+}
+table
+{
+	border-collapse: collapse;
+}
+#main_guide_apply,#main_visit_apply,#main_orders_manage,#main_guide_relate,#main_mywallet
+{
+	font-size: 14pt;
+	text-decoration: none;
+	color: red;
+}
+
+#main_order_table
+{
+	height: auto;
+	width: 100%;
+}

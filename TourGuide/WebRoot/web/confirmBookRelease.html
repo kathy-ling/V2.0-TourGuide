@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8" />
+		<title>确认订单</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link rel="stylesheet" type="text/css" href="css/jquery.mobile-1.4.5.css">
+		<link rel="stylesheet" type="text/css" href="css/nativedroid2.css">
+		<script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
+		<script type="text/javascript" src="js/jquery.mobile-1.4.5.min.js"></script>
+		<script type="text/javascript" src="js/confirmBookRelease.js"></script>
+
+		<style type="text/css">
+			.ticketMoney p {
+				text-indent: 3em;
+			}
+			#mainPage{
+				margin-top: 1em;
+			}
+		</style>
+
+	</head>
+
+	<body>
+		<div data-role="page">
+			<footer data-role="footer" data-position="fixed">
+		        <div data-role="navbar" id="bottom_navigation">	            
+		        </div>
+   			</footer>
+
+			<div data-role="header">
+				<h1>确认订单</h1>
+			</div>
+			
+			<div data-role="main" class="ui-content" style="padding-top: 50px;padding-bottom: 60px;">
+				<ul data-role="listview">
+					
+					<li data-icon="false" data-icon="false">
+						<a>
+							<h3>导游信息</h3>  
+							性别：<span id="sex" class="sex"></span><br/>
+							语种：<span id="language" class="language"></span>
+						</a>
+					</li>
+					
+					<li data-icon="false">
+						<a>
+							<h3>预约信息</h3> 
+							参观景区：<span id="scenicName" class=""></span><br/> 
+							预约时间：<span id="orderTime" ></span><br/> 
+							预约人数：<span id="visitorCount" class=""></span><br/>
+							联系人手机号：<span id="contactPhone" class=""></span><br/>
+							联系人姓名：<span id="contactName" class=""></span><br/>
+							其他需求：<span id="otherCommand" class=""></span><br/>
+						</a>
+					</li>
+										
+					<li data-icon="false">
+						<a>
+							<h3>费用信息</h3> 讲解费：
+							<span id="guideMoney" class=""></span><br/>		
+						</a>
+					</li>
+				</ul>
+				<button data-theme="a" class="ui-btn-raised clr-warning" id="gopay" onclick="putOrder()">去支付</button>
+			</div><!--data-role="main"--> 
+			
+			
+		</div>
+
+	</body>
+
+</html>

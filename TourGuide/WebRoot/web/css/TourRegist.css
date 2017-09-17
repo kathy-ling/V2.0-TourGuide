@@ -1,0 +1,56 @@
+#regis_div_id
+{
+	vertical-align: middle;
+	margin-top: 15px;
+	height: 100%;
+	margin-bottom: 15px;
+}
+table
+{
+	align-content: center;
+	margin: auto;
+	font-size: 14pt;
+	border-spacing:auto;
+}
+th
+{
+	text-align: right;
+}
+#regis_clau
+{
+	margin-top: 15px;
+	font-size: 10pt;
+	text-align: center;
+}
+a
+{
+	color: blue;
+}
+#regis_btn_id
+{
+	background-color: orangered;
+	color:burlywood;
+	text-align: center;
+	font-size: 18pt;
+}
+#regis_btn_div
+{
+	margin-top: 10px;
+	text-align: center;
+}
+
+#regis_sex
+{
+	text-align: center;
+}
+#regis_tour_image
+{
+	width: 50px;
+	height: 50px;
+}
+#regis_file
+{
+	width: 50px;
+	height: 50px;
+	text-align: right;
+}

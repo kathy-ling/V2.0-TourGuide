@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8" />
+		<title>订单详情</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link rel="stylesheet" type="text/css" href="css/jquery.mobile-1.4.5.css">
+		<link rel="stylesheet" type="text/css" href="css/nativedroid2.css">
+		<script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
+		<script type="text/javascript" src="js/jquery.mobile-1.4.5.min.js"></script>
+		<script type="text/javascript" src="js/jquery.qrcode.min.js"></script>
+		<script type="text/javascript" src="js/scanResult.js"></script>
+		<script type="text/javascript" src="js/myQRCode.js"></script>
+		<style type="text/css">
+			#liimg {
+				width: 5em;
+				height: 5em;
+				margin-top: 0.5em;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div data-role="page" data-add-back-btn="true">
+			
+			<footer data-role="footer" data-position="fixed">
+		        <div data-role="navbar">
+		            <ul>
+			            <li><a href="index.html" target="_top" id="" class="navbar0" >首页</a></li>
+			            <li><a href="pindan.html" target="_top" id="" class="navbar0" >拼讲解员</a></li>
+			            <li><a href="orderGuide.html" target="_top" id="" class="navbar0">预约讲解员</a></li>           
+			            <li><a href="" target="_top" id="" class="navbar0" onclick="isRegist()">个人中心</a></li>           
+		            </ul>
+		        </div>
+   			</footer>
+						
+			
+			<div data-role="main" class="ui-content">
+				
+				<ul data-role="listview" id="infolist">
+					
+					<li>
+						<a href="" class="scenicName" id="scenicNameId">景区名称</a>
+					</li>
+					
+					<li>						
+						<p>
+							 参观人数：<span class="vistorNum"></span><br/><br/>
+							 支付费用：<span class="totalMoney"></span><br/><br/>							
+							 订单状态：<span class="viewState"></span><br/><br/>
+							 参观时间：<span class="vistTime"></span><br/><br/>
+							下单时间:<span class="produceTime"></span><br/><br/>
+							 订单号：<span class="orderFormId"></span><br/><br/>
+						</p>
+						<label id="currentNum"  class="ui-hidden-accessible"></label><!---->
+						<label id="maxNum"  class="ui-hidden-accessible"></label>
+					</li>								
+				</ul>
+				
+				<div>										
+					<div id="forGuide" align="center" data-role="footer" class="ui-content">
+						<a onclick="takeFastOrder()" class="ui-btn ui-icon-delete ui-btn-icon-right ui-btn-b ui-corner-all" ">加入我的团</a>
+					</div>
+				</div>
+				
+			</div>
+		</div>
+	</body>
+
+</html>

@@ -1,0 +1,59 @@
+<!--是否代购门票对话框-->
+<div data-role="popup" id="orderTicketPop">
+  <div data-role="header">
+  	<h1>提示</h1>
+  </div>
+  <div data-role="content">
+   		 <legend>需要为您代购门票吗？</legend>
+            <label for="DirectorderTicket" >是，请为我代购门票</label>
+            <input type="radio" id="DirectorderTicket" class="orderTicketRadio" name="DirectorderTicket" value="1" class="" />
+            <div data-role="collapsible" id="DirectorderTicketPanel" class="orderTicketPanel" data-collapsed="false" hidden="true">
+                     <label for="fullPriceTicketNum" class="ui-hidden-accessible">全价票</label>
+                     <input type="number" id="DirectfullPriceTicketNum" name="fullPriceTicketNum"  placeholder="全价票">
+                     <label for="halfPriceTicketNum" class="ui-hidden-accessible">半价票</label>
+                     <input type="number" id="DirecthalfPriceTicketNum" name="halfPriceTicketNum"  placeholder="半价票">
+                     <label for="discountTicketNum" class="ui-hidden-accessible">折扣票</label>
+                     <input type="number" id="DirectdiscountTicketNum" name="discountTicketNum"  placeholder="半价票">
+            </div>
+            <label for="DirectnotorderTicketRadio" value="0">否，不用了，谢谢</label>
+            <input type="radio" id="DirectnotorderTicketRadio" class="notorderTicketRadio" name="DirectorderTicket" value="0" class="" />
+            <a class="ui-btn" href="#" data-theme="b" data-rel="back" id="DirectorderTicketSub">确定</a>
+  </div>
+
+<script type="text/javascript">
+	//直接预约 是否订购门票
+	 $(".orderTicketRadio").bind('click', function(event) {
+        $(".orderTicketPanel").toggle('200');
+    });
+    $(".notorderTicketRadio").bind('click', function(event) {
+            $(".orderTicketPanel").hide('200');
+    });
+	$("#DirectorderTicketSub").click(function(){
+		//var phone = $(this).attr("phone");
+		if(!phone){
+			alert("Error no PhoneNumber");
+			return false;
+		}
+		var HalfPrice = 0;
+		var DiscoutPrice = 0;
+		var FullPrice = 0;
+		var PurchaseTicket = $("input[name='DirectorderTicket']:checked").val();
+	if(PurchaseTicket!=null)
+	{
+		if(PurchaseTicket==1)//购票
+		{
+		    FullPrice = $("#DirectfullPriceTicketNum").val();
+			HalfPrice = $("#DirecthalfPriceTicketNum").val();
+			DiscoutPrice = $("#DirectdiscountTicketNum").val();
+		}
+
+		URL = "orderFormPage.html?phone="+phone+"&purchaseTicket="+PurchaseTicket+"&halfPrice="+HalfPrice+"&discoutPrice="+DiscoutPrice+"&fullPrice="+FullPrice;
+		//window.location=URL;
+		$.mobile.changePage(URL,{transition:"flow"});
+	}else{ 
+		alert("请选择是否代购门票！");
+		return false;
+	}
+	});
+</script>
+</div> 

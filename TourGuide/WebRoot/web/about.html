@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>关于我们</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <link rel="stylesheet" type="text/css" href="css/jquery.mobile-1.4.5.css">
+    <link rel="stylesheet" type="text/css" href="css/nativedroid2.css">
+    <script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
+    <script type="text/javascript" src="js/jquery.mobile-1.4.5.min.js"></script>
+    <script type="text/javascript">
+    	$(function($){
+    		//加载底部导航栏
+			$(".bottom_navigation").load("bottomNavigation.html").trigger("create");
+
+    	});
+    </script>
+</head>
+<body>
+<div data-role="page">
+    <div data-role="header"  id="header" class="header">
+    <a href="#" class="ui-btn ui-corner-all ui-icon-carat-l ui-btn-icon-notext" data-rel="back">返回</a>
+    </div>
+    <div data-role="main" class="ui-content">
+         <ul data-role="listview" data-inset="true">
+          <li><a href="#">联系客服</a></li>
+          <li><a href="#">权利声明</a></li>
+          <li><a href="#">用户协议</a></li>
+        </ul>
+    </div>
+    <footer data-role="footer" data-position="fixed">
+        <div data-role="navbar" class="bottom_navigation">
+            
+        </div>
+   </footer>
+</div>
+</body>
+</html>

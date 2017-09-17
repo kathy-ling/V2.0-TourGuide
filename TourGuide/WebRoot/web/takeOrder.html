@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>可接单列表</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link rel="stylesheet" type="text/css" href="css/jquery.mobile-1.4.5.css">
+		<link rel="stylesheet" type="text/css" href="css/nativedroid2.css">
+		<script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
+    	<script type="text/javascript" src="js/jquery.mobile-1.4.5.min.js"></script>
+    	<script type="text/javascript" src="js/takeOrder.js"></script>
+	</head>
+	
+	
+	<body>
+	<div data-role="page">
+		
+		<footer data-role="footer" data-position="fixed">
+	        <div data-role="navbar" id="bottom_navigation">
+	            
+	        </div>
+   		</footer>
+   		
+		<div data-role="header" style="height: 50px;">
+			<h2>共有可接订单<span id="orderCount"></span>个</h2>
+		</div>
+		
+		<div data-role="main" class="ui-content" style="padding-top: 40px;">						
+			<div data-role = "list">
+				<ul data-role="listview" id="takeOrders">
+					<!--<li>
+						<a href="orderFormInfo.html" target="_top">
+	                    <p>订单号：<span class="orderId">201701020015</span><br />
+	                    	<span class="scenicName:">景区名称：</span>秦始皇兵马俑<br/>
+	                    	参观时间：<span class="vistTime">2017-01-22 16:00</span><br/>
+	                    	参观人数：<span class="visitNum">5</span>
+	                    	可接受价格：<span class="price">30</span><br/>
+	                    	讲解语言：<span class="languange">英语</span>
+	                    	讲解员性别：<span class="sex">女</span>
+	                    </p>
+	                    
+	                    <div class="ui-grid-a" >
+
+                <div class="ui-block-a">
+                	<button type="button" data-inline="ture">一键拨号</button>
+               
+                 </div>
+                 <div class="ui-block-b">
+                    <a calss="right-button" id="pinGuideBtn" data-role="button" href="pindan.html">拼讲解员</a>
+                </div>
+            </div>
+      </li>-->
+         		</ul>
+			</div>         
+		</div>
+	</div>
+	</body>
+</html>

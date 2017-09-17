@@ -1,0 +1,30 @@
+.perheader {
+	position: relative;
+}
+
+.personalInfoHead {
+	height: 75%;
+	display: block;
+	position: absolute;
+	left: 50%;
+	top: 50%;
+}
+
+.personalInfoHead img {
+	width: 100%;
+	height: 100%;
+	margin-left: -50%;
+	margin-top: -50%;
+	border-radius: 50%;
+	border-color: white;
+	border-width: 5px;
+}
+
+tbody {
+	width: 100%;
+}
+
+table {
+	width: 100%;
+	padding-bottom: 60px;
+}
