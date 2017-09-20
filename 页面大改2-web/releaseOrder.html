@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>发布订单</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no"  />
+		<link rel="stylesheet" href="css/jquery-ui-1.10.4.custom.css" />				
+		<link rel="stylesheet" href="css/releaseOrder.css" />
+		<script type="text/javascript" src="js/jquery-1.10.2.js" ></script>
+		<script type="text/javascript" src="js/jquery 1.10.4 ui.min.js" ></script>
+		<script type="text/javascript" src="js/releaseOrder.js" ></script>
+		<link rel="stylesheet" href="http://jqueryui.com/resources/demos/style.css">
+	</head>
+	<body>
+		<div class="tabHead">
+			<img class="backIcon" src="img/返回图标.png"/>
+			<span id="OrderTab" onclick="changeTab1()">预约讲解员</span>
+			<span id="ReleaseTab" class="selected" onclick="changeTab2()">发布订单</span>
+		</div>
+		<select class="selectScenic">
+			<option>请选择景区</option>
+			<option>秦始皇兵马俑</option>
+			<option>大雁塔</option>
+			<option>华山</option>
+			<option>小雁塔</option>
+		</select>
+		<div class="mainContent">
+			<img src="img/6-1日期.png"/>	
+			<span>日期</span>
+			<div id="radio">
+				<input  type="radio" id="radio1" name="radio" checked="checked"/><label for="radio1">01.02</label>
+				<input  type="radio" id="radio2" name="radio"/><label for="radio2">01.03</label>
+				<input  type="radio" id="radio3" name="radio"/><label for="radio3">01.04</label>
+			</div>
+			<p>提供三日内的预约</p>
+			<img src="img/6-2时间.png"/>
+			<span>时间</span>
+			<select>
+				<option>请选择时间</option>
+				<option>8:00</option>
+				<option>8:30</option>
+				<option>9:00</option>
+				<option>9:30</option>
+			</select>
+			<div class="sexDiv">
+				<img src="img/4-3性别.png"/>
+				<span>性别</span>
+				<div id="sex">
+					<input  type="radio" id="radioSex1" name="sex"/><label for="radioSex1">男</label>
+					<input  type="radio" id="radioSex2" name="sex"/><label for="radioSex2">女</label>
+				</div>
+			</div>
+			<div class="languageDiv">
+				<img src="img/4-2语种.png"/>
+				<span>语种</span>
+				<div id="language">
+					<input  type="radio" id="radioLanguage1" name="language"/><label for="radioLanguage1">中文</label>
+					<input  type="radio" id="radioLanguage2" name="language"/><label for="radioLanguage2">英文</label>
+				</div>
+			</div>
+			<div class="bottomInfo">
+				<span>价格</span>
+				<input id="Price" value="100-200"></input>
+			</div>
+			<div class="bottomInfo">
+				<span>参观人数</span>
+				<input id="VisitNum" value="3"></input>
+				<button id="Minus"></button>
+				<button id="Plus"></button>
+			</div>
+			<div class="bottomInfo">
+				<span>联系人姓名</span>
+				<input id="ContactName" value="王凯"></input>
+			</div>
+			<div class="bottomInfo">
+				<span>联系电话</span>
+				<input id="ContactPhone" value="18829027144"></input>
+			</div>
+			<div class="bottomInfo">
+				<span>其它需求</span>
+				<textarea id="OtherCommand" value=""></textarea>
+			</div>
+			<button class="confirmButton">提交订单</button>
+		</div>
+	</body>
+</html>

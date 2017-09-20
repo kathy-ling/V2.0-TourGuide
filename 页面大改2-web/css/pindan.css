@@ -1,0 +1,36 @@
+/*
+* @Author: Marte
+* @Date:   2017-01-02 19:42:51
+* @Last Modified by:   Marte
+* @Last Modified time: 2017-01-02 20:18:31
+*/
+.orderStyle
+{
+	margin-top: 1em;
+}
+.goOrder{
+    position: absolute;
+    bottom: 0px;
+    right: 0px;
+}
+
+
+#panel1
+{
+}
+#panel2
+{
+	margin-bottom: 40px;
+}
+#order_list1
+{
+	margin: 10px;
+	position: relative;
+}
+
+#order_list
+{
+	margin: 10px;
+	position: relative;
+}
+

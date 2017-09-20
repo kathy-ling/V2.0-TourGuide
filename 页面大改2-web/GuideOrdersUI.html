@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>讲解员的订单</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<!--<link rel="stylesheet" type="text/css" href="css/orderFormList.css">-->
+		<link rel="stylesheet" type="text/css" href="css/jquery.mobile-1.4.5.css">
+		<link rel="stylesheet" type="text/css" href="css/nativedroid2.css">
+		<script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
+		<script type="text/javascript" src="js/jquery.mobile-1.4.5.min.js"></script>
+		<!--<script type="text/javascript" src="js/GuideOrders.js"></script>-->
+		
+	</head>
+
+	<body>
+		<div data-role="page" style="background-color: #f1f4fb;">
+			
+			<div data-role="header" id="header" class="header">
+				<div style="width: 50%;height: 44px;float: left;background-color:rgb(28,103,252);text-align: center;">
+					<label class="selector" style="margin: auto;margin-top: 16px;font-size: 16px;color: white;" onclick="djjshow()">待讲解</label>
+					<div id="djjxian" style="position: relative;background-color: white;height: 5px;width: 40%;margin: auto;margin-top: 3px;"></div>
+				</div>
+				<div style="width: 50%;height: 44px;float: left;background-color:rgb(28,103,252);text-align: center;">
+					<label class="selector" style="margin: auto;margin-top: 16px;font-size: 16px;color: white;" onclick="ywcshow()">已完成</label>
+					<div id="ywcxian" style="position: relative;background-color: white;height: 5px;width: 40%;margin: auto;margin-top: 3px;"></div>
+				</div>
+			</div>
+
+			<div data-role="main" class="ui-content" style="width: 100%;padding: 0px;">
+				<div id="djjpage">
+					<div style="background-color: white; width: 100%;box-shadow: 0 4px 2px -2px rgba(0,0,0,0.2);">
+						<div style="width: 90%;margin: auto;border-bottom: 1px dashed #CCCCCC;height: 40px;background-color: white;">
+							<div style="float: left;width: 35%;overflow: hidden;height: 100%;">
+								<span class="selector" style="font-size: 16px;line-height: 45px;">秦始皇兵马俑</span>
+							</div>
+							<div style="float: right;margin-right: 0px;margin-top: 5px;">
+								<p style="font-size: 12px;float: right;line-height: 10px;">参观时间：<span>07.12&nbsp;&nbsp;&nbsp;08:00</span></p>
+								
+							</div>
+						</div>
+						<div style="width: 90%;height: 110px;margin: auto;">
+							<div class="selector" style="width: 90px;height: 90px; background-image: url(img/bluecircle.png);background-size: 100%;margin-top: 5px;text-align: center;float: left;">
+							    <p style="color: #000000;font-size: 12px;margin-top: 28px;"><span style="font-size: 40px;color: #000000;">3</span>&nbsp;小时</p>
+							    <p style="color: #000000;font-size: 12px;margin-top: -8px;">剩余时间</p>
+							</div>
+							<div class="selector" style="width: calc(100% - 90px);height: 100%;float: left;">
+								<div style="height: 110px;width: 60px;float: right;">
+									<a data-toggle="collapse" data-parent="#" href="#xiala_ll">
+										<img src="img/bt-xiangxin.png" style="width: 60px;margin-top: 30px;"/>
+									</a>
+									
+								</div>
+								<div style="height: 100%;float: right;width: calc(100% - 60px);">
+									<table class="selector" style="text-align: center;width: 100%;margin-top: 25px;">
+										<tr  style="font-size: 14px;">
+											<td>&nbsp;参观人数&nbsp;</td>
+											<td>&nbsp;支付费用&nbsp;</td>
+										</tr>
+										<tr style="font-size: 30px;">
+											<td><span>3</span></td>
+											<td><span>150</span></td>
+										</tr>
+									</table>
+								</div>
+								
+							</div>
+							
+						</div>
+					</div>
+					<div id="" style="width: 100%;height: 10px;"></div>
+					<div style="background-color: white; width: 100%;box-shadow: 0 4px 2px -2px rgba(0,0,0,0.2);">
+						<div style="width: 90%;margin: auto;border-bottom: 1px dashed #CCCCCC;height: 40px;background-color: white;">
+							<div style="float: left;width: 35%;overflow: hidden;height: 100%;">
+								<span class="selector" style="font-size: 16px;line-height: 45px;">秦始皇兵马俑</span>
+							</div>
+							<div style="float: right;margin-right: 0px;margin-top: 5px;">
+								<p style="font-size: 12px;float: right;line-height: 10px;">参观时间：<span>07.12&nbsp;&nbsp;&nbsp;08:00</span></p>
+								
+							</div>
+						</div>
+						<div style="width: 90%;height: 110px;margin: auto;">
+							<div class="selector" style="width: 90px;height: 90px; background-image: url(img/bluecircle.png);background-size: 100%;margin-top: 5px;text-align: center;float: left;">
+							    <p style="color: #000000;font-size: 12px;margin-top: 28px;"><span style="font-size: 40px;color: #000000;">3</span>&nbsp;小时</p>
+							    <p style="color: #000000;font-size: 12px;margin-top: -8px;">剩余时间</p>
+							</div>
+							<div class="selector" style="width: calc(100% - 90px);height: 100%;float: left;">
+								<div style="height: 110px;width: 60px;float: right;">
+									<a data-toggle="collapse" data-parent="#" href="#xiala_ll">
+										<img src="img/bt-xiangxin.png" style="width: 60px;margin-top: 30px;"/>
+									</a>
+									
+								</div>
+								<div style="height: 100%;float: right;width: calc(100% - 60px);">
+									<table class="selector" style="text-align: center;width: 100%;margin-top: 25px;">
+										<tr  style="font-size: 14px;">
+											<td>&nbsp;参观人数&nbsp;</td>
+											<td>&nbsp;支付费用&nbsp;</td>
+										</tr>
+										<tr style="font-size: 30px;">
+											<td><span>3</span></td>
+											<td><span>150</span></td>
+										</tr>
+									</table>
+								</div>
+								
+							</div>
+							
+						</div>
+					</div>
+					<div id="" style="width: 100%;height: 10px;"></div>
+				</div>
+			
+				<div id="ywcpage">
+					<div style="background-color: white; width: 100%;box-shadow: 0 4px 2px -2px rgba(0,0,0,0.2);">
+						<div style="width: 90%;margin: auto;border-bottom: 1px dashed #CCCCCC;height: 40px;background-color: white;">
+							<div style="float: left;width: 35%;overflow: hidden;height: 100%;">
+								<span class="selector" style="font-size: 16px;line-height: 45px;">秦始皇兵马俑</span>
+							</div>
+							<div style="float: right;margin-right: 0px;margin-top: 5px;">
+								<p style="font-size: 12px;float: right;line-height: 10px;">参观时间：<span>07.12&nbsp;&nbsp;&nbsp;08:00</span></p>
+								
+							</div>
+						</div>
+						<div style="width: 90%;height: 110px;margin: auto;">
+							<div class="selector" style="width: 100%;height: 100%;float: left;">
+								<div style="height: 110px;width: 120px;float: right;text-align: center;">
+									<a data-toggle="collapse" data-parent="#" href="#xiala_ll">
+										<img src="img/bt-xiangxin.png" style="width: 60px;margin-top: 30px;"/>
+									</a>
+									
+								</div>
+								<div style="height: 100%;float: right;width: calc(100% - 120px);">
+									<table class="selector" style="text-align: center;width: 100%;margin-top: 25px;">
+										<tr  style="font-size: 14px;">
+											<td>&nbsp;参观人数&nbsp;</td>
+											<td>&nbsp;支付费用&nbsp;</td>
+										</tr>
+										<tr style="font-size: 30px;">
+											<td><span>3</span></td>
+											<td><span>150</span></td>
+										</tr>
+									</table>
+								</div>
+								
+							</div>
+							
+						</div>
+					</div>
+					<div id="" style="width: 100%;height: 10px;"></div>
+				</div>
+			</div>
+			
+		</div>
+		<script>
+			$(function($) {
+				$("#ywcxian").hide();
+				$("#ywcpage").hide();
+			});
+			
+			function djjshow(){
+				$("#ywcxian").hide(300);
+				$("#ywcpage").hide(300);
+				$("#djjxian").show(300);
+				$("#djjpage").show(300);
+			}
+			
+			function ywcshow(){
+				$("#djjxian").hide(300);
+				$("#djjpage").hide(300);
+				$("#ywcxian").show(300);
+				$("#ywcpage").show(300);
+			}
+		</script>
+
+	</body>
+
+</html>

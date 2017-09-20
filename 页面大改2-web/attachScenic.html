@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>挂靠景区(当前挂靠)</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no"  />
+		<link rel="stylesheet" href="css/attachScenic.css" />
+		<script type="text/javascript" src="js/jquery-1.11.3.min.js" ></script>
+		<script type="text/javascript" src="js/attachScenic.js" ></script>
+	</head>
+	<body>
+		<div class="tabHead">
+			<img class="backIcon" src="img/返回图标.png"/>
+			<span id="Attach" class="selected" onclick="changeTab1()">当前挂靠</span>
+			<span id="AttachHistroy" onclick="changeTab2()">挂靠记录</span>
+		</div>
+		<input type="text" value="输入景区名称进行搜索" class="search"/>
+		<div class="bar1">			
+		</div>
+		<div class="listItem">
+			<div class="scenicImg">
+				<img id="ScenicImg" src="img/9-2大雁塔.png"/>
+			</div>
+			<div class="detailInfo">
+				<div class="name">
+					<span id="ScenicName">大雁塔</span>
+				</div>
+				<div class="scenicGuideInfo">
+					<span>导游费：</span>
+					<span id="GuideFee">300</span>
+				</div>
+				<div class="scenicGuideInfo">
+					<span>导游人数：</span>
+					<span id="GuideNum">40</span>
+				</div>
+				<div class="scenicGuideInfo">
+					<span>客流量：</span>
+					<span id="GuideNum">5267000</span>
+					<span>人/年</span>
+				</div>
+			</div>
+			<div class="applyAttachDiv">
+				<button class="applyAttach">申请挂靠</button>
+			</div>
+		</div>
+		<div class="listItem">
+			<div class="scenicImg">
+				<img id="ScenicImg" src="img/9-3华山.png"/>
+			</div>
+			<div class="detailInfo">
+				<div class="name">
+					<span id="ScenicName">华山</span>
+				</div>
+				<div class="scenicGuideInfo">
+					<span>导游费：</span>
+					<span id="GuideFee">300</span>
+				</div>
+				<div class="scenicGuideInfo">
+					<span>导游人数：</span>
+					<span id="GuideNum">40</span>
+				</div>
+				<div class="scenicGuideInfo">
+					<span>客流量：</span>
+					<span id="GuideNum">5267000</span>
+					<span>人/年</span>
+				</div>
+			</div>
+			<div class="applyAttachDiv">
+				<button class="cancelAttach">取消挂靠</button>
+			</div>
+		</div>
+	</body>
+</html>

@@ -1,0 +1,168 @@
+html,body
+{
+	height: 100%;
+	width: 100%;
+	padding: 0;
+	margin: 0;
+	font-family: "微软雅黑";
+}
+.scenicImg
+{
+	height: 45%;
+}
+#ScenicImg
+{
+	height: 100%;
+	width: 100%;
+}
+#ScenicName
+{
+	color: white;
+	position: absolute;
+	top: 3%;
+	left: 45%;
+	font-family: "微软雅黑";
+	font-size: 1.1em;
+}
+.backIcon
+{
+	position: absolute;
+	top: 2%;
+	left: 5px;
+	width: 8%;
+}
+#ScenicName1
+{
+	font-family: "微软雅黑";
+	font-size: 1.4em;
+	margin-left: 4%;
+	margin-top: 10px;
+	display: inline-block;
+}
+#visitedNum
+{
+	display: inline;
+	float: right;
+	margin-top: 15px;
+	margin-right: 4%;
+}
+.scenicPrice
+{
+	margin-top:2%;
+	margin-left: 4%;
+}
+#ScenicPrice
+{
+	font-size: 1.5em;
+	color: #01BCFF;
+}
+.bar1
+{
+	height: 1%;
+	background: url(../img/各模块间隔条.png) no-repeat;
+	background-size:cover ;
+}
+.middleDiv
+{
+	height: 7%;
+	margin-top: 4%;
+}
+.onlineTour
+{
+	float: left;
+	width: 30%;
+	height: 60%;
+	position: relative;
+	margin-left: 10%;
+}
+.pinNum
+{
+	float: left;
+	width: 30%;
+	height: 60%;
+	position: relative;
+	/*margin-left: 1%;*/
+}
+.pinFee
+{
+	float: left;
+	width: 30%;
+	height: 60%;
+	position: relative;
+	/*margin-left: 1%;*/
+	/*margin-right: 1%;*/
+}
+.onlineTour span
+{
+	display: block;
+	width: 60%;
+	height: 100%;
+	background: url(../img/黄色.png) no-repeat;
+	background-size: cover;
+	text-align: center;
+	margin-top: -1%;
+	color:white;
+}
+.pinNum span
+{
+	display: block;
+	width: 60%;
+	height: 100%;
+	background: url(../img/绿色.png) no-repeat;
+	background-size: cover;
+	text-align: center;
+	margin-top: -1%;
+	color:white;
+}
+.pinFee span
+{
+	text-align: center;
+	display: block;
+	width: 60%;
+	height: 100%;
+	background: url(../img/蓝色.png) no-repeat;
+	background-size: cover;
+	margin-top: -1%;
+	color:white;
+}
+.middleText1
+{
+	margin-left: -10%;
+	margin-top: 4%;
+	font-size: 0.9em;
+}
+.middleText2
+{
+	margin-top: 4%;
+	margin-left: -6%;
+	font-size: 0.9em;
+}
+.middleText3
+{
+	margin-left: -8%;
+	margin-top: 4%;
+	font-size: 0.9em;
+}
+.bar2
+{
+	height: 1%;
+	background: url(../img/各模块间隔条.png) no-repeat;
+	background-size:cover ;
+	margin-top: 10%;
+}
+.scenicIntro img
+{
+	width: 10%;
+}
+.scenicIntro span
+{
+	display: inline-block;
+	vertical-align: top;
+	margin-top: 2%;
+}
+#ScenicIntro
+{
+	margin-left: 4%;
+	margin-right: 4%;
+	text-align: justify;
+}

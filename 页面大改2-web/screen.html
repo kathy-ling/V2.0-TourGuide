@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>筛选</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no"/>
+		<link rel="stylesheet" href="css/jquery-ui-1.10.4.custom.css" />			
+		<link rel="stylesheet" href="css/jquery.raty.css" />
+		<link rel="stylesheet" href="css/releaseOrder.css" />
+		<link rel="stylesheet" href="css/screen.css" />
+		<script type="text/javascript" src="js/jquery-1.10.2.js" ></script>
+		<script type="text/javascript" src="js/jquery 1.10.4 ui.min.js" ></script>
+		<script type="text/javascript" src="js/jquery.raty.min.js" ></script>
+		<script type="text/javascript" src="js/screen.js" ></script>
+		<link rel="stylesheet" href="http://jqueryui.com/resources/demos/style.css">
+	</head>
+	<body>
+		<div class="top">
+			<img class="backIcon" src="img/返回图标.png"/>
+			<span>筛选</span>
+		</div>
+		<div class="mainContent" style="margin-top: 0;height: 100%;">
+			<img src="img/6-1日期.png"/>	
+			<span>日期</span>
+			<div id="radio">
+				<input  type="radio" id="radio1" name="radio" checked="checked"/><label for="radio1">01.02</label>
+				<input  type="radio" id="radio2" name="radio"/><label for="radio2">01.03</label>
+				<input  type="radio" id="radio3" name="radio"/><label for="radio3">01.04</label>
+			</div>
+			<p>提供三日内的预约</p>
+			<img src="img/6-2时间.png"/>
+			<span>时间</span>
+			<select>
+				<option>请选择时间</option>
+				<option>8:00</option>
+				<option>8:30</option>
+				<option>9:00</option>
+				<option>9:30</option>
+			</select>
+			<div class="sexDiv">
+				<img src="img/4-3性别.png"/>
+				<span>性别</span>
+				<div id="sex">
+					<input  type="radio" id="radioSex1" name="sex"/><label for="radioSex1">男</label>
+					<input  type="radio" id="radioSex2" name="sex"/><label for="radioSex2">女</label>
+				</div>
+			</div>
+			<div class="ageDiv">
+				<img src="img/2-1年龄.png"/>
+				<span>年龄</span>
+				<div id="age">
+					<input  type="radio" id="radioAge1" name="age"/><label for="radioAge1">20-30</label>
+					<input  type="radio" id="radioAge2" name="age"/><label for="radioAge2">30-40</label>
+					<input  type="radio" id="radioAge3" name="age"/><label for="radioAge3">40-50</label>
+				</div>
+			</div>
+			<div class="languageDiv">
+				<img src="img/4-2语种.png"/>
+				<span>语种</span>
+				<div id="language">
+					<input  type="radio" id="radioLanguage1" name="language"/><label for="radioLanguage1">中文</label>
+					<input  type="radio" id="radioLanguage2" name="language"/><label for="radioLanguage2">英文</label>
+				</div>
+			</div>
+			<div class="starLevelDiv">
+				<img src="img/2-2导游级别图标.png"/>
+				<span>星级</span>
+				<div class="grade">
+					<span>1</span>
+					<span style="margin-left: 9%;">2</span>
+					<span style="margin-left: 9%;">3</span>
+					<span style="margin-left: 9%;">4</span>
+					<span style="margin-left: 9%;">5</span>
+					<span style="margin-left: 9%;">6</span>
+					<span style="margin-left: 9%;">7</span>
+				</div>
+				<div id="starLevel" data-score = "2">
+					
+				</div>
+				<div class="money">
+					<span>&nbsp;&yen;<br/>50</span>
+					<span style="margin-left: 3%;">&nbsp;&yen;<br/>100</span>
+					<span style="margin-left: 3%;">&nbsp;&yen;<br/>150</span>
+					<span style="margin-left: 3%;">&nbsp;&yen;<br/>200</span>
+					<span style="margin-left: 3%;">&nbsp;&yen;<br/>250</span>
+					<span style="margin-left: 3%;">&nbsp;&yen;<br/>300</span>
+					<span style="margin-left: 3%;">&nbsp;&yen;<br/>350</span>
+				</div>
+				<p>星级不同，讲解费会有相应调整</p>
+			</div>
+			<button class="confirmButton" style="margin-top: 8%;">提交订单</button>
+			
+		</div>	
+	</body>
+</html>

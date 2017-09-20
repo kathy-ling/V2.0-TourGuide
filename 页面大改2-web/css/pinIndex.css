@@ -1,0 +1,48 @@
+html,body
+{
+	height: 100%;
+	width: 100%;
+}
+body
+{
+	height: 100%;
+	width: 100%;
+	background: url(../img/拼团首页大底图.png) no-repeat;
+	background-size:cover;
+}
+.content img
+{
+	width: 30%;
+	margin-left: 35%;
+	margin-top: 40%;
+}
+.text
+{
+	color: white;
+	text-align: center;
+	margin-top: 45%;
+	font-size: 0.8em;
+}
+.buttonSelect
+{
+	margin-top: 16%;
+	width: 100%;
+	margin-left: 8%;
+	margin-right: 8%;
+}
+#Select,#Pin
+{
+	width: 40%;
+	background:url(../img/开始选团按钮底图.png) no-repeat;
+	background-size:cover;
+	padding: 10px 25px;
+	border-radius: 3px;	
+	color: white;
+	font-size: 1.1em;
+	font-family: "times new roman";
+	border: none;
+}
+#Pin
+{
+	margin-left:4%;
+}

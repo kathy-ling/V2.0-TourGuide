@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title>导游发送聚集点位置</title>
+		<link rel="stylesheet" type="text/css" href="css/mapLocationGuide.css">
+		<link rel="stylesheet" type="text/css" href="css/jquery.mobile-1.4.5.css">
+		<link rel="stylesheet" type="text/css" href="css/nativedroid2.css">
+		<script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
+		<script type="text/javascript" src="js/jquery.mobile-1.4.5.js"></script>
+		<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=rmCoNtfD8AU4lX24etmcDbBlO52WAvy2"></script>
+		<script type="text/javascript" src="js/mapLocationGuide.js"></script>
+		<script type="text/javascript" src="js/jquery.cookie.js"></script>
+		
+		<link rel="stylesheet" href="css/navigate.css" />
+		<script type="text/javascript" src="js/navigationbar.js" ></script>
+	</head>
+	<body>
+		<div id="map">
+			
+		</div>
+		<div style="position: fixed;width: 100%;height: 80px;bottom: 50px;background-color: white;">
+			<div class="selector" style="width: 90%;height: 50px;background: -webkit-gradient(linear, 0% 0%, 100% 0%, from(#2488fa), to(#31b6f8));margin: auto;margin-top: 10px;border-radius: 25px;color: white;text-align: center;line-height: 48px;font-size: 22px;">
+				确定发送该位置
+			</div>
+		</div>
+	</body>
+	<script>
+		$(function($){
+			addNavigate(4);
+		});
+	</script>
+</html>

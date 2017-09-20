@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>扫码信息</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no"/>
+		<link rel="stylesheet" href="css/scanInfo.css" />
+		<link rel="stylesheet" href="css/scan.css" />
+		<script type="text/javascript" src="js/scanInfo.js" ></script>
+	</head>
+	<body>
+		<div class="topIcon">
+			<img src="img/拼团信息图标.png"/>
+			<p>拼团订单</p>
+		</div>
+		<div class="orderInfo">
+			<div class="visitNum">
+				<span>参观人数</span><br/>
+				<span id="VisitNum">2</span>
+			</div>
+			<div class="visitStatue">
+				<span>订单状态</span><br/>
+				<span id="VisitStatue">待游览</span>
+			</div>
+		</div>
+		<button class="join" onclick="joinMyTour()">加入我的团</button>
+		<button class="join" onclick="joinMyTour()" style="margin-top: 2px;">取消加入</button>
+	</body>
+</html>

@@ -1,0 +1,172 @@
+html,body
+{
+	height: 100%;
+	width: 100%;
+	padding: 0;
+	margin: 0;
+	font-family: "微软雅黑";
+}
+.tabHead
+{
+	background: url(../img/5-1顶部底图.png) no-repeat;
+	background-size:cover;
+	height: 10%;
+	text-align: center;
+	/*border: 1px solid red;*/
+}
+.backIcon
+{
+	position: absolute;
+	top: 2%;
+	left: 5px;
+	width: 8%;
+}
+#OrderTab
+{
+	display: inline-block;
+	width: 40%;
+	margin-left: 10%;
+	font-size: 1.2em;
+	color: white;
+	margin-top: 4%;
+}
+#ReleaseTab
+{
+	display: inline-block;
+	width: 40%;
+	margin-right: 8%;
+	font-size: 1.2em;
+	color: white;
+	margin-top: 4%;
+}
+.selected
+{
+	border-bottom: 4px solid white;
+	padding-bottom: 4%;
+}
+.selectScenic
+{
+	width: 70%;
+	height: 6%;
+	margin-top: 2%;
+	background: url(../img/7-1请选择景区底图.png) no-repeat;
+	background-size:100% ;
+	border: none;
+	margin-left: 15%;
+	padding-left: 20%;
+	padding-bottom: 2%;
+	-moz-appearance: none;
+    -webkit-appearance:none;
+    appearance:none;
+}
+.mainContent
+{
+	height: 100%;
+	background-color: #EEEEEE;
+	padding-top:3% ;
+	margin-top: 2%;
+}
+.mainContent img
+{
+	width: 8%;
+	margin-left: 4%;
+	margin-top: 1%;
+}
+.mainContent span
+{
+	display: inline-block;
+	vertical-align: top;
+	margin-top: 2%;
+}
+.mainContent p
+{
+	margin-left: 30%;
+	font-size: 0.7em;
+}
+.mainContent select
+{
+	background: url(../img/4-1请选择时间底图.png) no-repeat;
+	background-size:100% ;
+	-moz-appearance: none;
+    -webkit-appearance:none;
+    appearance:none;
+    border: none;
+	position: absolute;
+	margin-left: 6%;
+	height: 7%;
+	width: 55%;
+	padding-left: 16%;
+	border-radius: 6%;
+	margin-top: 1%;
+	padding-bottom: 6%;
+	padding-top: 1%;
+}
+#radio
+{
+	display: inline-block;
+	position: absolute;
+	margin-left: 5%;
+}
+.sexDiv,.languageDiv
+{
+	margin-top: 3%;
+}
+#sex,#language
+{
+	display: inline-block;
+	position: absolute;
+	margin-left: 7%;
+	margin-top: 1%;
+}
+.bottomInfo
+{
+	height: 6%;
+	margin-top: 2%;
+	border-bottom: 2px solid gainsboro;
+	padding-bottom: 4%;
+	margin-left: 4%;
+	margin-right: 4%;
+}
+.bottomInfo span
+{
+	margin-top: 3%;
+}
+#Price,#VisitNum,#ContactName,#ContactPhone,#OtherCommand
+{
+	display: inline-block;
+	position: absolute;
+	margin-left: 8%;
+	margin-top: 4%;
+	text-align: center;
+	border: none;
+	background-color: #EEEEEE;
+}
+#Minus
+{
+	background: url(../img/6-3减.png) no-repeat;
+	background-size:100%;
+	height: 60%;
+	width: 8%;
+	margin-left: 59%;
+	margin-top: 3%;
+}
+#Plus
+{
+	background: url(../img/6-4加.png) no-repeat;
+	background-size:100%;
+	height: 60%;
+	width: 8%;
+}
+.confirmButton
+{
+	background: url(../img/6-5确认订单.png) no-repeat;
+	background-size:100% ;
+	border: none;
+	margin-top: 3%;
+	height: 13%;
+	width: 75%;
+	color: white;
+	font-size: 1.2em;
+	margin-left: 15%;
+	padding-bottom: 9%;
+}

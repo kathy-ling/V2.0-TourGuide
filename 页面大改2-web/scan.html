@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>扫一扫</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no"  />
+		<link rel="stylesheet" href="css/scan.css" />
+		<script type="text/javascript" src="js/scan.js" ></script>
+	</head>
+	<body>
+		<div class="topIcon">
+			<img src="img/拼团信息图标.png"/>
+			<p>拼团信息</p>
+		</div>
+		<div class="middleDiv">
+			<div class="leftTime">
+				<img src="img/剩余时间.png"/>
+				<span>2</span>
+			</div>
+			<div class="rightInfo">
+				<div class="rightNum">
+					<span>拼团人数</span><br />
+					<span id="haveNum">12</span>&nbsp;
+					<span class="hh">/</span>&nbsp;
+					<span id="allNum">20</span>
+				</div>
+				<div class="rightFee">
+					<br />
+					<span>当日讲解费</span><br />
+					<span id="todayFee">30</span>
+					<span class="hh">元/人</span>
+				</div>
+			</div>
+		</div>
+		<button id="join" onclick="startScan()">开始扫码</button>
+		<button id="cancel">完成拼团</button>
+	</body>
+</html>

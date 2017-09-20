@@ -1,0 +1,147 @@
+/*
+* @Author: Marte
+* @Date:   2017-01-02 21:47:48
+* @Last Modified by:   Marte
+* @Last Modified time: 2017-01-12 20:07:52
+*/
+.personHome
+{
+	margin-bottom: 60px;
+}
+p,a{
+    text-shadow: none;
+}
+.perheader{
+    height:40%;
+    background-color: #ED1313;
+}
+.personalHomeBGimg{
+        height:100%;
+        overflow: hidden;
+}
+.personalHomeBGimg img{
+    width:100%;
+    height:auto;
+}
+.personalHomeHead{
+    height: 50%;
+    display: block;
+    position: absolute;
+    left: 0;
+    padding-left:50%;
+    margin-left: -12.5%;
+    top:25%;
+}
+.personalHomeHead img{
+        width:100%;
+        height:100%;
+        border-radius: 50%;
+        border:2px solid white;
+    }
+.personalHomeHead a{
+    position:relative;
+    display: block;
+    top:-100%;
+    width:100%;
+    height: 100%;
+}
+p.guideHeadername{
+    text-align: center;
+    width:100%;
+    margin:0.1em 0;
+    padding:0;
+    color:black;
+    font-size:2em;
+    font-weight: bold;
+    position:absolute;
+    top:75%;
+}
+
+/* 以上代码和guideinfo.css中相同*/
+.about{
+    position:absolute;
+    top: 0.5em;
+    right:0.5em;
+}
+.titlebar{
+    background-color:#F0F0F0;
+    position:relative;
+    width:100%;
+}
+.titlebar a,p{
+    margin:0;
+    padding: 0.5em 0;
+    text-indent: 1em;
+}
+
+.rightlink{
+    position:absolute;
+    right: 1em;
+    top:0px;
+}
+.marginRL{
+    padding: 0 1em;
+}
+table.per{
+    width: 100%;
+    border-collapse: collapse;
+    table-layout: fixed;
+}
+td{
+    padding:0;
+    margin:0;
+}
+ul.btnPanel{
+    list-style: none;
+    text-decoration:none;
+    padding: 0;
+}
+ul.btnPanel li{
+    float: left;
+    width:33.33%;
+    margin:-1px;
+}
+ul.btnPanel li a{
+    color:white;
+}
+.link a:hover,a:active{
+    color:white;
+    text-decoration: none;
+}
+
+a.my-ui-block{
+    text-decoration: none;
+    font-style: none;
+    display:block;
+    width:100%;
+    text-align: center;
+    position: relative;
+    font-size: 1em;
+   }
+a.my-ui-block:hover{
+    box-shadow: 0 0 5px rgba(81, 203, 238, 1);
+    border: 1px solid rgba(81, 203, 238, 1);
+    background-color: #E5E5E5;
+}
+a.borderLeft
+{
+    border-left: 1px solid #E5E5E5;
+}
+a.borderBottom{
+    border-bottom: 1px solid #E5E5E5;
+}
+.borderRight{
+     border-right: 1px solid #E5E5E5;
+}
+a.my-ui-block span{
+    display: block;
+    position:absolute;
+    width:100%;
+    bottom: 0;
+    font-size:1em;
+    font-weight:normal;
+    padding-bottom: 50%;
+    margin-bottom: -0.5em;
+    color:black;
+
+   }

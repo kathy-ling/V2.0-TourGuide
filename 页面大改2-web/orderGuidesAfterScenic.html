@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>选择景区后讲解员列表</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no"  />
+		<link rel="stylesheet" href="css/orderGuidesAfterScenic.css" />
+		<script type="text/javascript" src="js/jquery-1.11.3.min.js" ></script>
+		<script type="text/javascript" src="js/orderGuidesAfterScenic.js" ></script>
+	</head>
+	<body>
+		<div class="tabHead">
+			<img class="backIcon" src="img/返回图标.png"/>
+			<span id="OrderTab" class="selected" onclick="changeTab1()">预约讲解员</span>
+			<span id="ReleaseTab" onclick="changeTab2()">发布订单</span>
+		</div>
+		<select class="selectScenic">
+			<option>请选择景区</option>
+			<option>秦始皇兵马俑</option>
+			<option>大雁塔</option>
+			<option>华山</option>
+			<option>小雁塔</option>
+		</select>
+		<button class="select" onclick="screenButton()">筛选</button>
+		<div class="listItem">
+			<div class="head">
+				<img src="img/4-4导游头像.png"/>
+			</div>
+			<div class="detailInfo">
+				<div class="name">
+					<span>刘晓凯</span>
+					<span id="GuideSexMale">男</span>
+				</div>
+				<div class="guideFee">
+					<img class="leftIcon" src="img/4-6导游费图标.png"/>
+					<span class="spanText">导游费:</span>
+					<span class="spanInfo1">300</span>
+				</div>
+				<div class="guideLevel">
+					<img class="leftIcon" src="img/4-7导游级别图标.png"/>
+					<span class="spanText">导游级别:</span>
+					<span class="spanInfo">4</span>
+				</div>
+				<div class="guideNum">
+					<img class="leftIcon" src="img/4-8接待人次图标.png"/>
+					<span class="spanText">接待人次:</span>
+					<span class="spanInfo">52</span>
+				</div>
+				
+			</div>
+			<div class="isOrder">
+				<button class="order" onclick="orderGuide()">立即<br/>预约</button>
+			</div>
+		</div>
+		<div class="listItem">
+			<div class="head">
+				<img src="img/4-9导游头像.png"/>
+			</div>
+			<div class="detailInfo">
+				<div class="name">
+					<span>何婧媛</span>
+					<span id="GuideSexFemale">女</span>
+				</div>
+				<div class="guideFee">
+					<img class="leftIcon" src="img/4-6导游费图标.png"/>
+					<span class="spanText">导游费:</span>
+					<span class="spanInfo1">150</span>
+				</div>
+				<div class="guideLevel">
+					<img class="leftIcon" src="img/4-7导游级别图标.png"/>
+					<span class="spanText">导游级别:</span>
+					<span class="spanInfo">3</span>
+				</div>
+				<div class="guideNum">
+					<img class="leftIcon" src="img/4-8接待人次图标.png"/>
+					<span class="spanText">接待人次:</span>
+					<span class="spanInfo">45</span>
+				</div>		
+			</div>
+			<div class="isOrder">
+				<button class="order" onclick="orderGuide()">立即<br/>预约</button>
+			</div>
+		</div>
+	</body>
+</html>

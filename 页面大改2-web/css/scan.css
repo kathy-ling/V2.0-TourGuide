@@ -1,0 +1,110 @@
+html,body
+{
+	height: 100%;
+	width: 100%;
+	margin: 0;
+	padding: 0;
+}
+.topIcon
+{
+	height:10%;
+	width: 100%;
+	border-bottom: 1px solid gainsboro;
+}
+.topIcon p
+{
+	float: left;
+	margin-top: 25px;
+	margin-left: 3%;
+}
+.topIcon img
+{
+	float: left;
+}
+.middleDiv
+{
+	height: 45%;
+	margin-right: 6%;	
+}
+.leftTime
+{ 
+	height: 100%;
+	width: 50%;
+	display: inline;
+}
+.leftTime img
+{
+	width: 40%;
+	margin-left: 30px;
+	margin-top: 60px;
+	z-index: 1;
+	position: absolute;
+}
+.leftTime span
+{
+	font-size: 3em;
+	margin-left: 70px;
+	margin-top: 90px;
+	position: absolute;
+	z-index: 2;
+}
+.rightInfo
+{
+	height: 100%;
+	width: 50%;
+	float: right;
+}
+.rightNum
+{
+	height: 20%;
+	width: 100%;
+	text-align: center;
+	margin-top: 65px;
+	font-size: 1.3em;
+	font-family: "黑体";
+}
+.hh
+{
+	font-size: 1.4em;
+}
+#haveNum,#allNum,#todayFee
+{
+	font-size: 1.4em;
+}
+.rightFee
+{
+	height: 20%;
+	width: 100%;
+	text-align: center;
+	margin-top: 2px;
+	font-size: 1.3em;
+	font-family: "黑体";
+}
+#join
+{
+	height: 8%;
+	width: 80%;
+	padding-left: 50px;
+	margin-top: 10%;
+	margin-left: 10%;
+	margin-right: 10%;
+	background: url(../img/开始扫描底图.png) no-repeat;
+	background-size:cover ;
+	color: white;
+	font-size: 1.1em;
+	border: none;
+}
+#cancel
+{
+	height: 8%;
+	width: 80%;
+	padding-left: 50px;
+	margin-top: 5%;
+	margin-left: 10%;
+	margin-right: 10%;
+	background: url(../img/完成拼团底图.png);
+	background-size:cover ;
+	color: white;
+	font-size: 1.1em;
+	border: none;
+}

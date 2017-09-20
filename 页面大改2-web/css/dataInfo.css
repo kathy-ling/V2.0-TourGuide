@@ -1,0 +1,88 @@
+#GuideName
+{
+	margin-top: -16%;
+	position: absolute;
+	color: white;
+	margin-left: 2%;
+	font-size: 1.1em;
+}
+.percentDiv
+{
+	margin-top: -10%;
+	position: absolute;
+	color: white;
+	margin-left: 2%;
+	display: inline;
+}
+#Percent
+{
+	display: inline;
+}
+.background
+{
+	height: 70%;
+	background: url(../img/11-2背景图片.png) no-repeat;
+	background-size:100% ;
+}
+.GradeNumMoney,.NumMoney
+{
+	height: 20%;
+	/*border: 1px solid red;*/
+}
+.grade,.orderNum,.totalMoney,.numMoney
+{
+	width: 32%;
+	height: 100%;
+	/*border: 1px solid yellow;*/
+	float: left;
+}
+.gradeP
+{
+	padding: 0;
+	margin: 0;
+	color: white;
+	text-align: center;
+	margin-top: 20%;
+	margin-left: 16%;
+}
+#Grade,#OrderNum,#TotalMoney,#totalVisNum,#monthOrderNum,#monthMoney
+{
+	padding: 0;
+	margin: 0;
+	color: white;
+	text-align: center;
+	margin-left: 4%;
+}
+.contrastIcon
+{
+	width: 14%;
+}
+.contrastSpan
+{
+	color: white;
+	margin-top: 4%;
+	position: absolute;
+}
+.left
+{
+	color: white;
+	margin-left: 10%;
+}
+.right
+{
+	color: white;
+	float: right;
+	margin-right: 10%;
+}
+.right1
+{
+	color: white;
+	float: right;
+	margin-right: 30%;
+}
+.right2
+{
+	color: white;
+	float: right;
+	margin-right: 26%;
+}
