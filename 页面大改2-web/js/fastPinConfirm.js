@@ -1,14 +1,123 @@
 $(function(){
-	var num = $("#VisitNum").val();
-    $("#Minus").click(function(){
-    	if(num > 0){
-    		$("#VisitNum").val(--num);
-    	} 
-    	else{
-    		alert("选择不合法");
-    	}
-    })
-    $("#Plus").click(function(){
-    	$("#VisitNum").val(++num);
-    })
+	   
+    addAllScenics();
 });
+
+
+//选则景区后，显示该景区当日的讲解费
+function getFee()
+{
+	$('#TodayFee').empty();
+	var scenicName = $("#chooseScenicName").val();
+
+	if (scenicName=='') {
+		alert('请选择景区');
+		return;
+	}
+
+	var d = new Date();
+	var str = d.getFullYear()+"-0"+(d.getMonth()+1)+"-"+d.getDate();
+	
+	var url = HOST+"/getIntroFee.do";
+	var fee;
+	
+	$.ajax({
+		type:"get",
+		url:url,
+		async:true,
+		data:{scenicName:scenicName,date:str},
+		success:function(data)
+		{			
+			$("#TodayFee").html(data);
+		},
+	});
+}
+
+//点击减人数按钮
+function setMinusVisitNum(){
+	var num = $("#VisitNum").val();
+	var guideFee = $("#TodayFee").html();
+
+	if(num > 0){
+		$("#VisitNum").val(--num);
+		
+		$("#totalFee").html(parseInt(num) * guideFee);
+	} 
+	else{
+		alert("选择不合法");
+	} 
+}
+
+//点击加人数按钮
+function setPlusVisitNum(){
+	var num = $("#VisitNum").val();
+	var guideFee = $("#TodayFee").html();
+	
+	$("#VisitNum").val(++num);
+    $("#totalFee").html(num * guideFee);
+}
+
+//【去结算】按钮的点击事件
+function payOnclick()
+{	
+	var scenicName = $("#chooseScenicName").val();	
+	var guideFee = document.getElementById("TodayFee").innerText;
+	var num = $("#VisitNum").val();
+	
+	$("#totalFee").html(parseInt(num) * guideFee);
+	
+	var vistPhone = '18191762572';
+	var openId = 'o_tM3wO_YzJjKjU0a7VVNjRz_VsY';
+	
+	if (scenicName=='') {
+		alert('请选择景区，进行支付');
+		return;
+	}
+	if (num=='') {
+		alert("拼团人数不能为空！");
+		return;
+	}
+	
+	var data = {scenicName:scenicName,
+		visitNum:num,
+		guideFee:guideFee,
+		visitorPhone:vistPhone
+	};
+	
+	if(vistPhone == "null" || vistPhone == undefined || vistPhone == openId){
+		alert("出错啦！");
+		return;
+	}else{
+		alert(openId);
+		alert(num*guideFee);
+		callpay(openId, num*guideFee);
+	}
+}
+
+//查询所有的景区名称
+function addAllScenics() {
+	var url = HOST + "/getAllScenics.do";
+	$.ajax({
+		type : "post",
+		url : url,
+		async : true,
+		datatype : "JSON",
+		success : function(data) {
+			addSelect(data);
+		}
+	});
+}
+
+function addSelect(a) {
+	$.each(a, function(index, value) {
+		addOption(value.scenicName);
+	});
+}
+
+function addOption(a) {
+
+	// 根据id查找对象，
+	var obj = document.getElementById('chooseScenicName');
+	// 这个只能在IE中有效
+	obj.options.add(new Option(a, a));
+}

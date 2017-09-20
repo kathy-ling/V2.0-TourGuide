@@ -4,7 +4,7 @@ var orderId = GetUrlem("orderId");
 
 
 $(function($){
-	alert(orderId);
+//	alert(orderId);
 	setData();
 });
 
