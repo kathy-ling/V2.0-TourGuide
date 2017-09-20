@@ -7,6 +7,7 @@ import java.util.Date;
 import org.springframework.expression.ParseException;
 
 import com.TourGuide.common.DateConvert;
+import com.TourGuide.common.MyDateFormat;
 import com.TourGuide.model.WeixinOauth2Token;
 import com.TourGuide.weixin.util.Oauth2Util;
 
@@ -16,12 +17,15 @@ public class test {
 
 	public static void main(String[] args) throws java.text.ParseException {
 		
-		String imgString = "640 (1).jpg";
 		
-		String[] tmp = imgString.split("\\.");
-		String fileName = tmp[0] + new Date().getTime() + "."+tmp[1];
+		System.out.println(MyDateFormat.form1(new Date()));
 		
-		System.out.println(fileName);
+//		String imgString = "640 (1).jpg";
+//		
+//		String[] tmp = imgString.split("\\.");
+//		String fileName = tmp[0] + new Date().getTime() + "."+tmp[1];
+//		
+//		System.out.println(fileName);
 		
 //		SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 //		Date date=null;

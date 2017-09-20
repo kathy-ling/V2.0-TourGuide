@@ -2,7 +2,9 @@ package com.TourGuide.controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -15,7 +17,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.TourGuide.common.CommonResp;
+import com.TourGuide.common.MyDateFormat;
+import com.TourGuide.model.IntroFeeAndMaxNum;
 import com.TourGuide.model.ScenicTickets;
+import com.TourGuide.service.IntroFeeAndMaxNumService;
 import com.TourGuide.service.ScenicSpotService;
 import com.TourGuide.service.ScenicTicketService;
 import com.google.gson.Gson;
@@ -28,6 +33,117 @@ public class ScenicSpotController {
 	
 	@Autowired
 	public ScenicTicketService scenicTicketService;
+	
+	@Autowired
+	IntroFeeAndMaxNumService introFeeAndMaxNumService;
+	
+	/**
+	 * 根据景区编号，查看景区的详细信息
+	 * @param resp
+	 * @param scenicID   景区编号
+	 * @return 景区详细信息
+ 	 * 景区图片、编号、名称、简介、省、市、详细位置、等级、历史参观人数、开放时间
+	 * @throws IOException
+	 */
+	@RequestMapping(value = "/getDetailScenicByScenicID.do")
+	@ResponseBody
+	public Object getDetailScenicByScenicID(HttpServletResponse resp,
+			@RequestParam("scenicID") String scenicID) throws IOException{
+		
+		CommonResp.SetUtf(resp);
+		
+		List<Map<String , Object>> list = scenicSpotService.getDetailScenicByScenicID(scenicID);
+		
+		return list;
+	}
+	
+	/**
+	 * 根据景区编号，查询该景区的门票信息
+	 * @param resp
+	 * @param scenicNo   景区编号
+	 * @throws IOException
+	 */
+	@RequestMapping(value = "/geTicketsByScenicNo.do")
+	public void geTicketsByScenicNo(HttpServletResponse resp,
+			@RequestParam("scenicNo") String scenicNo) throws IOException{
+	
+		CommonResp.SetUtf(resp);
+		
+		ScenicTickets scenicTickets = scenicTicketService.geTicketsByScenicNo(scenicNo);
+		
+		PrintWriter writer = resp.getWriter();
+		writer.write(new Gson().toJson(scenicTickets));
+		writer.flush();
+	}
+	
+	/**
+	 * 查询某天该景区的拼单讲解费
+	 * @param resp
+	 * @param scenicNo  景区编号
+	 * @param date   日期
+	 * @throws IOException
+	 */
+	@RequestMapping(value = "/getConsistFee.do")
+	public void getConsistFee(HttpServletResponse resp,
+			@RequestParam("scenicNo") String scenicNo) throws IOException{
+	
+		CommonResp.SetUtf(resp);
+		
+		String date = MyDateFormat.form1(new Date());
+							
+		//讲解费,？元/人		
+		IntroFeeAndMaxNum introFeeAndMaxNum = 
+				introFeeAndMaxNumService.getIntroFeeAndMaxNum(date,scenicNo);
+		int fee = introFeeAndMaxNum.getFee();
+		
+		PrintWriter writer = resp.getWriter();
+		writer.write(new Gson().toJson(fee));
+		writer.flush();
+	}
+	
+	
+	/**
+	 * 查询该景区当前在线的导游人数
+	 * @param resp
+	 * @param scenicNo  景区编号
+	 * @throws IOException
+	 */
+	@RequestMapping(value = "/getOnlineGuide.do")
+	public void getOnlineGuide(HttpServletResponse resp,
+			@RequestParam("scenicNo") String scenicNo) throws IOException{
+	
+		CommonResp.SetUtf(resp);
+		
+		int num = scenicSpotService.getOnlineGuide(scenicNo);
+		
+		PrintWriter writer = resp.getWriter();
+		writer.write(new Gson().toJson(num));
+		writer.flush();
+	}
+	
+	
+	/**
+	 * 获取该景区当前的可拼团数
+	 * @param resp
+	 * @param scenicNo  景区编号
+	 * @throws IOException
+	 */
+	@RequestMapping(value = "/getConsistNum.do")
+	public void getConsistNum(HttpServletResponse resp,
+			@RequestParam("scenicNo") String scenicNo) throws IOException{
+	
+		CommonResp.SetUtf(resp);
+		
+		int num = 0;
+		
+		num = scenicSpotService.getConsistNum(scenicNo);
+		
+		PrintWriter writer = resp.getWriter();
+		writer.write(new Gson().toJson(num));
+		writer.flush();
+	}
+///////////////////*************************************************////////////////
+///////////////////*************************************************////////////////
 	
 	/**
 	 * 推荐景点
@@ -69,25 +185,7 @@ public class ScenicSpotController {
 	}
 	
 	
-	/**
-	 * 根据景区编号，查看景区的详细信息
-	 * @param resp
-	 * @param scenicID   景区编号
-	 * @return 景区详细信息
- 	 * 景区图片、编号、名称、简介、省、市、详细位置、等级、历史参观人数、开放时间
-	 * @throws IOException
-	 */
-	@RequestMapping(value = "/getDetailScenicByScenicID.do")
-	@ResponseBody
-	public Object getDetailScenicByScenicID(HttpServletResponse resp,
-			@RequestParam("scenicID") String scenicID) throws IOException{
-		
-		CommonResp.SetUtf(resp);
-		
-		List<Map<String , Object>> list = scenicSpotService.getDetailScenicByScenicID(scenicID);
-		
-		return list;
-	}
+	
 	
 	
 	/**
@@ -126,28 +224,6 @@ public class ScenicSpotController {
 		
 		return list;
 	}
-	
-	
-	
-	/**
-	 * 根据景区编号，查询该景区的门票信息
-	 * @param resp
-	 * @param scenicNo   景区编号
-	 * @throws IOException
-	 */
-	@RequestMapping(value = "/geTicketsByScenicNo.do")
-	public void geTicketsByScenicNo(HttpServletResponse resp,
-			@RequestParam("scenicNo") String scenicNo) throws IOException{
-	
-		CommonResp.SetUtf(resp);
-		
-		ScenicTickets scenicTickets = scenicTicketService.geTicketsByScenicNo(scenicNo);
-		
-		PrintWriter writer = resp.getWriter();
-		writer.write(new Gson().toJson(scenicTickets));
-		writer.flush();
-	}
-	
 	
 	
 	/**

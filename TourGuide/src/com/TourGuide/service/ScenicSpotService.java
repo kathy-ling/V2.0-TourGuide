@@ -15,6 +15,24 @@ public class ScenicSpotService {
 	@Autowired
 	public ScenicSpotDao scenicSpotDao;
 	
+	/***
+	 * 获取该景区当前在线的导游人数
+	 * @param scenicNo
+	 * @return
+	 */
+	public int getOnlineGuide(String scenicNo){
+		return scenicSpotDao.getOnlineGuide(scenicNo);
+	}
+	
+	/***
+	 * 获取该景区当前的可拼团数
+	 * @param scenicNo
+	 * @return
+	 */
+	public int getConsistNum(String scenicNo){
+		return scenicSpotDao.getConsistNum(scenicNo);
+	}
+	
 	/**
 	 * 根据用户的位置（省份），获取对应省份的热门景点
 	 * @param location 用户当前的位置

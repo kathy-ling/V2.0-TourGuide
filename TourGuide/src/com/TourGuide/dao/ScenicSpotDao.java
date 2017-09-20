@@ -30,6 +30,62 @@ public class ScenicSpotDao {
 	private final int recommandNum = 4;  //相关景点的推荐数目
 	
 	
+	/***
+	 * 获取该景区当前在线的导游人数
+	 * @param scenicNo
+	 * @return
+	 */
+	public int getOnlineGuide(String scenicNo){
+		
+		int num = 0;
+		
+		DataSource dataSource =jdbcTemplate.getDataSource();
+		 
+		try {
+			Connection conn = dataSource.getConnection();
+			CallableStatement cst=conn.prepareCall("call getOnlineGuide(?)");
+			cst.setString(1, scenicNo);			
+			ResultSet rst=cst.executeQuery();
+			
+			while (rst.next()) {
+				num = rst.getInt(1);
+			}							
+			conn.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} 	
+		
+		return num;		
+	}
+	
+	/***
+	 * 获取该景区当前的可拼团数
+	 * @param scenicNo
+	 * @return
+	 */
+	public int getConsistNum(String scenicNo){
+		
+		int num = 0;
+		
+		DataSource dataSource =jdbcTemplate.getDataSource();
+		 
+		try {
+			Connection conn = dataSource.getConnection();
+			CallableStatement cst=conn.prepareCall("call getConsistNum(?)");
+			cst.setString(1, scenicNo);			
+			ResultSet rst=cst.executeQuery();
+			
+			while (rst.next()) {
+				num = rst.getInt(1);
+			}							
+			conn.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} 	
+		
+		return num;		
+	}
+	
 	/**
  	 * 根据景区编号，查看景区的详细信息
  	 * @param scenicNo  景区编号
