@@ -37,6 +37,9 @@ public class GuideController {
 	
 	private String imgPath;
 	
+	
+	
+	
 	/**
 	 * 讲解员提交相应的信息，申请认证
 	 * @param resp
