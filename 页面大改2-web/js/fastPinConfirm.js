@@ -62,12 +62,13 @@ function payOnclick()
 {	
 	var scenicName = $("#chooseScenicName").val();	
 	var guideFee = document.getElementById("TodayFee").innerText;
-	var num = $("#VisitNum").val();
+	var num = $("#VisitNum").val();	
 	
 	$("#totalFee").html(parseInt(num) * guideFee);
 	
-	var vistPhone = '18191762572';
-	var openId = 'o_tM3wO_YzJjKjU0a7VVNjRz_VsY';
+//	alert(vistPhone);
+//	alert(openId);
+//	alert(num*guideFee);
 	
 	if (scenicName=='') {
 		alert('请选择景区，进行支付');
@@ -88,10 +89,35 @@ function payOnclick()
 		alert("出错啦！");
 		return;
 	}else{
-		alert(openId);
-		alert(num*guideFee);
-		callpay(openId, num*guideFee);
+		
+		releaseFastOrder(data);
 	}
+}
+
+function releaseFastOrder(data){
+	
+	var guideFee = document.getElementById("TodayFee").innerText;
+	var num = $("#VisitNum").val();	
+	
+	var url=HOST+"/releaseFastOrder.do";
+	
+	$.ajax({
+		type:"post",
+		url:url,
+		data:data,
+		error:function()
+		{
+			alert('快捷拼团失败，请重新拼团');
+		},
+		success:function(data)
+		{
+			if(data != null){
+				var orderID = data;
+//				alert(orderID);
+				callpay(openId, num*guideFee, orderID);
+			}					
+		}
+	});
 }
 
 //查询所有的景区名称

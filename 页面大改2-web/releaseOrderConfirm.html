@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>发布订单确认</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no"  />
+		<link rel="stylesheet" href="css/isOrder.css" />
+		<link rel="stylesheet" href="css/confirmOrder.css" />
+		<script type="text/javascript" src="js/jquery-1.11.3.min.js" ></script>
+		<script type="text/javascript" src="js/CommonSession.js" ></script>
+		<script src="js/wechatPay.js"></script>
+		<script type="text/javascript" src="js/releaseOrderConfirm.js" ></script>
+	</head>
+	<body>
+		<div class="orderInfo" style="margin-top: 4%; height: 60%;">
+			<div class="orderInfoIcon">
+				<img src="img/8-1预约信息图标.png"/>
+				<span>发布订单信息</span>
+			</div>
+			<div class="orderInfo1">
+				<div class="orderScenicName">
+					<span>参观景区</span>
+					<span id="ScenicName">华山</span>
+				</div>
+				<div class="orderTime">
+					<span>预约时间</span>
+					<span id="OrderTime">07-23 10:00</span>
+				</div>
+				<div class="orderNum">
+					<span>预约人数</span>
+					<span id="OrderNum">10</span>
+				</div>
+			</div>
+			<div class="orderInfo2">
+				<div class="contactName">
+					<span>联系人</span>
+					<span id="ContactNameConfirm">王栋凯</span>
+				</div>
+				<div class="contactPhone">
+					<span>联系电话</span>
+					<span id="ContactPhoneConfirm">18829027144</span>
+				</div>
+			</div>
+			<div class="orderInfo3">
+				<span style="font-size: 0.8em;">其它需求</span>
+				<span id="OtherCommandConfirm">希望讲解员对青铜器的知识比较精通，有些青铜器的问题想请教。</span>
+			</div>
+		</div>
+		<div class="bar2">			
+		</div>
+		<div class="toPay">
+			<button onclick="topay()">去结算</button>
+			<span id="GuideFee1">1500</span>
+			<span>&yen;</span>			
+			<span>讲解费：</span>
+		</div>
+	</body>
+</html>

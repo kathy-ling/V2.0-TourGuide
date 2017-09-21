@@ -10,21 +10,14 @@ html,body
 {
 	background: url(../img/5-1顶部底图.png) no-repeat;
 	background-size:cover;
-	height: 10%;
+	height: 8%;
 	text-align: center;
 	/*border: 1px solid red;*/
-}
-.backIcon
-{
-	position: absolute;
-	top: 2%;
-	left: 5px;
-	width: 8%;
 }
 #OrderTab
 {
 	display: inline-block;
-	width: 40%;
+	width: 30%;
 	margin-left: 10%;
 	font-size: 1.2em;
 	color: white;
@@ -33,31 +26,31 @@ html,body
 #ReleaseTab
 {
 	display: inline-block;
-	width: 40%;
-	margin-right: 8%;
+	width: 28%;
+	margin-left: 8%;
 	font-size: 1.2em;
 	color: white;
 	margin-top: 4%;
 }
 .selected
 {
-	border-bottom: 4px solid white;
-	padding-bottom: 4%;
+	border-bottom: 3px solid white;
+	padding-bottom: 10px;
 }
 .selectScenic
 {
-	width: 70%;
+	width: 90%;
 	height: 6%;
-	margin-top: 2%;
-	background: url(../img/7-1请选择景区底图.png) no-repeat;
-	background-size:100% ;
-	border: none;
-	margin-left: 15%;
-	padding-left: 20%;
-	padding-bottom: 2%;
-	-moz-appearance: none;
+	margin-top: 2%;	
+	border-radius:30px;
+	background-color: #efece6;
+	margin-left: 5%;
+	padding-left: 30%;
+	padding-top: 6px;
+	padding-bottom: 6px;
+	/*-moz-appearance: none;
     -webkit-appearance:none;
-    appearance:none;
+    appearance:none;*/
 }
 .mainContent
 {
@@ -107,6 +100,10 @@ html,body
 	position: absolute;
 	margin-left: 5%;
 }
+#radioLabel1,#radioLabel2,#radioLabel3
+{
+	padding: 10px;
+}
 .sexDiv,.languageDiv
 {
 	margin-top: 3%;
@@ -131,7 +128,13 @@ html,body
 {
 	margin-top: 3%;
 }
-#Price,#VisitNum,#ContactName,#ContactPhone,#OtherCommand
+#Price
+{
+	width: 60%;
+	margin-left: 12%;
+	margin-top: 2%;
+}
+#VisitNum,#ContactName,#ContactPhone,#OtherCommand
 {
 	display: inline-block;
 	position: absolute;
@@ -140,6 +143,7 @@ html,body
 	text-align: center;
 	border: none;
 	background-color: #EEEEEE;
+	width: 30%;
 }
 #Minus
 {

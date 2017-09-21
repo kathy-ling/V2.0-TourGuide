@@ -7,33 +7,36 @@
 		<link rel="stylesheet" href="css/orderGuides.css" />
 		<link rel="stylesheet" href="css/swiper-3.4.2.min.css" />
 		<script type="text/javascript" src="js/jquery-1.11.3.min.js" ></script>
+        <script src="js/CommonSession.js"></script>
         <script type="text/javascript" src="js/swiper-3.4.2.jquery.min.js" ></script>
         <script type="text/javascript" src="js/orderGuides.js" ></script>
 	</head>
 	<body>
 		<div class="tabHead">
-			<img class="backIcon" src="img/返回图标.png"/>
+			<!--<img class="backIcon" src="img/返回图标.png"/>-->
 			<span id="OrderTab" class="selected" onclick="changeTab1()">预约讲解员</span>
 			<span id="ReleaseTab" onclick="changeTab2()">发布订单</span>
 		</div>
 		<div class="orderContent">
 			<div class="selectScenic">
-				<select>
-					<option class="background">请选择景区</option>
-					<option class="background">秦始皇兵马俑</option>
-					<option class="background">华山</option>
-					<option class="background">大雁塔</option>
-					<option class="background">小雁塔</option>
+				<select id="chooseScenicName" onchange="getGuidesbyScenic()">
+					<option value="" class="background">请选择景区</option>					
 				</select>
-				<button class="confirm">确定</button>
-				<button class="screen">筛选</button>
+				<div class="confirmDiv">
+					<button class="confirm" onclick="confirmButton()">确定</button>
+				</div>
+				<div class="screenDiv">
+					<button class="screen">筛选</button>
+				</div>				
 			</div>
+			
 			<div class="guidesDiv">
-				<div class="swiper-container" style="height: 100%; width: 100%;">
-					<div class="swiper-wrapper" style="height: 100%;">
+				<div id="guideList" class="swiper-container" style="height: 100%; width: 100%;">
+					<!--<div class="swiper-wrapper" style="height: 100%;">-->
 						<div id="head1" class="swiper-slide swiper-slide-active" style="height: 100%;">
 							<div class="guide">
-								<div class="guideImg1">					
+								<div class="guideImg1">	
+									<!--<img src="img/1.jpg"/>-->
 								</div>
 								<div class="guideInfo">
 									<span>韩月茹</span>
@@ -54,7 +57,7 @@
 								</div>
 							</div>
 						</div>
-						<div id="head2" class="swiper-slide swiper-slide-next" style="height: 100%;">
+						<!--<div id="head2" class="swiper-slide swiper-slide-next" style="height: 100%;">
 							<div class="guide">
 								<div class="guideImg2">					
 								</div>
@@ -76,8 +79,8 @@
 									<button class="order" onclick="orderGuide()">立即<br/>预约</button>
 								</div>
 							</div>
-						</div>
-						<div id="head3" class="swiper-slide" style="height: 100%;">
+						</div>-->
+						<!--<div id="head3" class="swiper-slide" style="height: 100%;">
 							<div class="guide">
 								<div class="guideImg3">					
 								</div>
@@ -99,8 +102,8 @@
 									<button class="order" onclick="orderGuide()">立即<br/>预约</button>
 								</div>
 							</div>
-						</div>
-					</div>
+						</div>-->
+					<!--</div>-->
 					<!-- 如果需要分页器 -->
    					<!--<div class="swiper-pagination"></div>--> 
 				</div>

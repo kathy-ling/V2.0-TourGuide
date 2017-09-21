@@ -36,11 +36,13 @@ var nonceStr = "";
 var packageValue = "";
 var paySign = "";
 
-function callpay(openId,money){
+function callpay(openId,money,orderID){
+	
+	alert("into callpay");
 	
 	$.ajax({
 		type:"post",
-		url:"http://www.zhoudaoly.com/TourGuide/TopayServlet?openId="+openId+"&money="+money+"",
+		url:"http://www.zhoudaoly.com/TourGuide/TopayServlet?openId="+openId+"&money="+money+"&orderID="+orderID+"",
 		async:false,
 		datatype: "JSON",
 		error:function(data)
@@ -57,7 +59,7 @@ function callpay(openId,money){
                packageValue = data.packageValue;
                paySign = data.sign;
                
-               pay();
+               pay(orderID);
             }
 		}
 	});
@@ -83,7 +85,7 @@ function callpay(openId,money){
 
 ///////////////////////////////////////////////////////////////////
 //唤起微信支付  
-function pay(){    
+function pay(orderID){    
     if (typeof WeixinJSBridge == "undefined"){    
        if( document.addEventListener ){    
            document.addEventListener('WeixinJSBridgeReady', onBridgeReady, false);    
@@ -92,13 +94,13 @@ function pay(){
            document.attachEvent('onWeixinJSBridgeReady', onBridgeReady);    
        }    
     }else{    
-       onBridgeReady();    
+       onBridgeReady(orderID);    
     }     
         
 }    
   
 //开始支付  
-function onBridgeReady(){    
+function onBridgeReady(orderID){    
     WeixinJSBridge.invoke(    
         'getBrandWCPayRequest', {    
             "appId" : appId,
@@ -110,7 +112,8 @@ function onBridgeReady(){
         },    
             
         function(res){         
-            if(res.err_msg == "get_brand_wcpay_request:ok" ) {    
+            if(res.err_msg == "get_brand_wcpay_request:ok" ) {  
+            	updatePayInfo(orderID);
                 alert("支付成功");  // 使用以上方式判断前端返回,微信团队郑重提示：res.err_msg将在用户支付成功后返回    ok，但并不保证它绝对可靠。                  
             }else if (res.err_msg == "get_brand_wcpay_request:cancel")  {  
                 alert("支付过程中用户取消");  
@@ -120,4 +123,24 @@ function onBridgeReady(){
             }       
         }    
     );     
- }   
+ } 
+ 
+ //支付成功，更新订单相关的信息
+ function updatePayInfo(orderID){
+ 	var url=HOST+"/updatePayInfo.do";
+	
+	$.ajax({
+		type:"post",
+		url:url,
+		data:orderID,
+		error:function()
+		{
+			alert('快捷拼团支付失败，请重新支付');
+		},
+		success:function(data)
+		{
+			alert("支付信息更新结果="+data);
+			
+		}
+	});
+ }

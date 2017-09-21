@@ -1,7 +1,8 @@
 $(function($){
 	$("#zhuce2").hide()
 });
-
+var nickName;
+var yanzhengma;
 window.onload = function() {
 
 	getUserInfo();
@@ -14,27 +15,55 @@ window.onload = function() {
 	});
 }
 
-
-//从服务端获取用户的部分信息，并显示在页面
-function getUserInfo() {
-	var url = HOST + "/getInfobyOpenID.do";
-//	alert("openid="+openId);
+function SendSMS()
+{
+	var phone=$("#tel").val();
+	if (phone =="") {
+		return false;
+	}
+	var url = HOST + "/SendSMS.do";
 
 	$.ajax({
 		type: "post",
 		url: url,
 		async: true,
 		data: {
-			openId: openId//'o8AUTxMhNb82uSM4DcIxesDyDZnY'//
+			phone: phone
 		},
 		datatype: "JSON",
 		error: function() {
 			alert("获取个人信息Request error!");
 		},
 		success: function(data) {
-//			alert(JSON.stringify(data));
+			if (data==0) {
+				alert("发送验证码出错,请重新发送");
+			} else{
+				yanzhengma=data;
+				alert("验证码已发送，请注意查看短信");
+			}
+		}
+	});
+}
+
+
+//从服务端获取用户的部分信息，并显示在页面
+function getUserInfo() {
+	var url = HOST + "/getInfobyOpenID.do";
+
+	$.ajax({
+		type: "post",
+		url: url,
+		async: true,
+		data: {
+			openId: openId
+		},
+		datatype: "JSON",
+		error: function() {
+			alert("获取个人信息Request error!");
+		},
+		success: function(data) {
 			if(JSON.stringify(data) != "{}") {
-				$("#nickname").val(data.nickName);
+				nickName=data.nickName;
 				$("#visitor_img").attr("src", data.image);
 			}
 		}
@@ -61,7 +90,17 @@ function changePerHeadImg()
 {
 	var path = document.getElementById("visitor_img").src;	
 	var patt1 = new RegExp("wx.qlogo.cn");
+	var yanzhengma1=$("#yanzhengma1").val();
+	if(yanzhengma==undefined)
+	{
+		alert("请获取验证码进行注册");
+		return false;
+	}
 	
+	if (yanzhengma!=yanzhengma1) {
+		alert("验证码不正确，请重新输入验证码");
+		return false;
+	} 
 	if(check()){
 		//如果是微信服务器的图片，则直接注册；否则先上传图片再注册
 		if(patt1.test(path)){
@@ -96,9 +135,9 @@ function Regist() {
 	
 //	if(check()) {
 		var postdata = {
-			"nickName": $("#nickname").val(),
+			"nickName": nickName,
 			"sex": $("input:radio[name='guideSex']:checked").val(),
-			"name": $("#name").val(),
+			"name": nickName,
 			"phone": $("#tel").val(),
 			"passwd": $("#password").val(),
 			"openID": openId
@@ -127,9 +166,9 @@ function RegistwithImg() {
 //	if(check()) {
 		var img = document.getElementById("visitor_img").src;
 		var postdata = {
-			"nickName": $("#nickname").val(),
+			"nickName": nickName,
 			"sex": $("input:radio[name='guideSex']:checked").val(),
-			"name": $("#name").val(),
+			"name": nickName,
 			"phone": $("#tel").val(),
 			"passwd": $("#password").val(),
 			"image": img,
@@ -148,6 +187,7 @@ function RegistwithImg() {
 			},
 			success: function(data) {
 				window.location = HOST + "/web/index.html?phone=" + postdata.phone;	
+				
 				sessionStorage.setItem("vistPhone", postdata.phone);
 			}
 		});

@@ -82,61 +82,63 @@ function getOrderList()
 			$.each(data, function(i,n) {			
 				
 				var str = n.visitTime;
-				var tmp = str.split(':');
-				var tmp1 = tmp[0]+":"+tmp[1];
-				var tmp2 = tmp1.split("-");
-				//06-12 13:00
-				var time = tmp2[1]+"-"+tmp2[2];
-								
-				var str1 = str.split('.');
-				//2017-06-10 11:00:00
-				var time1 = str1[0];
 
-				//时间差
-				var diff = getTimeDiff(now, time1);
-				
-				var mainDiv = document.getElementById("mMain");
-				
-				
-				var div = '<div class="orderinfocontent"><div  class="orderinfosurplus">'+
-				'<p><span>'+diff+'</span>&nbsp;小时<br/>剩余时间</p></div><div class="orderinforight">'+
-				'<div class="orderinfo_bt"><p  orderId="'+n.OrderID+'"  Type="'+n.type+'" onclick="detailOrderInfo($(this))">'+
-				'详细<br/>信息</p></div><div class="orderinfotable"><table><tr class="tr1">'+
-				'<td>&nbsp;参观人数&nbsp;</td><td>&nbsp;支付费用&nbsp;</td></tr><tr class="tr2">'+
-				'<td><span>'+n.visitNum+'</span></td><td><span>'+n.totalMoney+'</span></td></tr></table></div></div></div>';
-				
-				var div1 = document.createElement("div");
-				if(n.orderState=="待评价"){
-					div1.className = "orderinfo orderdpj";
-					div1.innerHTML = '<div class="orderinfotitle">'+
-					'<div class="orderinfoname"><span>'+n.scenicName+'</span></div>'+
-					'<div class="orderinfotime"><p>参观时间：<span>'+time+'</span></p>'+
-					'<img src="img/icon-dpj.png"/></div></div></div>'+div+'';
-				}
-				if(n.orderState=="已完成"){
-					div1.className = "orderinfo orderywc";
-					div1.innerHTML = '<div class="orderinfotitle">'+
-					'<div class="orderinfoname"><span>'+n.scenicName+'</span></div>'+
-					'<div class="orderinfotime"><p>参观时间：<span>'+time+'</span></p>'+
-					'<img src="img/icon-ywc.png"/></div></div></div>'+div+'';
-				}
-				if(n.orderState=="待付款"){
-					div1.className = "orderinfo orderdfk";
-					div1.innerHTML = '<div class="orderinfotitle">'+
-					'<div class="orderinfoname"><span>'+n.scenicName+'</span></div>'+
-					'<div class="orderinfotime"><p>参观时间：<span>'+time+'</span></p>'+
-					'<img src="img/icon-dfk.png"/></div></div></div>'+div+'';
-				}
-				if(n.orderState=="待游览"){
-					div1.className = "orderinfo orderdyl";
-					div1.innerHTML = '<div class="orderinfotitle">'+
-					'<div class="orderinfoname"><span>'+n.scenicName+'</span></div>'+
-					'<div class="orderinfotime"><p>参观时间：<span>'+time+'</span></p>'+
-					'<img src="img/icon-dyl.png"/></div></div></div>'+div+'';
-				}
-				
-				mainDiv.appendChild(div1);
-												
+				if(str != undefined){									
+					var tmp = str.split(':');
+					var tmp1 = tmp[0]+":"+tmp[1];
+					var tmp2 = tmp1.split("-");
+					//06-12 13:00
+					var time = tmp2[1]+"-"+tmp2[2];
+									
+					var str1 = str.split('.');
+					//2017-06-10 11:00:00
+					var time1 = str1[0];
+	
+					//时间差
+					var diff = getTimeDiff(now, time1);
+					
+					var mainDiv = document.getElementById("mMain");
+					
+					
+					var div = '<div class="orderinfocontent"><div  class="orderinfosurplus">'+
+					'<p><span>'+diff+'</span>&nbsp;小时<br/>剩余时间</p></div><div class="orderinforight">'+
+					'<div class="orderinfo_bt"><p  orderId="'+n.OrderID+'"  Type="'+n.type+'" onclick="detailOrderInfo($(this))">'+
+					'详细<br/>信息</p></div><div class="orderinfotable"><table><tr class="tr1">'+
+					'<td>&nbsp;参观人数&nbsp;</td><td>&nbsp;支付费用&nbsp;</td></tr><tr class="tr2">'+
+					'<td><span>'+n.visitNum+'</span></td><td><span>'+n.totalMoney+'</span></td></tr></table></div></div></div>';
+					
+					var div1 = document.createElement("div");
+					if(n.orderState=="待评价"){
+						div1.className = "orderinfo orderdpj";
+						div1.innerHTML = '<div class="orderinfotitle">'+
+						'<div class="orderinfoname"><span>'+n.scenicName+'</span></div>'+
+						'<div class="orderinfotime"><p>参观时间：<span>'+time+'</span></p>'+
+						'<img src="img/icon-dpj.png"/></div></div></div>'+div+'';
+					}
+					if(n.orderState=="已完成"){
+						div1.className = "orderinfo orderywc";
+						div1.innerHTML = '<div class="orderinfotitle">'+
+						'<div class="orderinfoname"><span>'+n.scenicName+'</span></div>'+
+						'<div class="orderinfotime"><p>参观时间：<span>'+time+'</span></p>'+
+						'<img src="img/icon-ywc.png"/></div></div></div>'+div+'';
+					}
+					if(n.orderState=="待付款"){
+						div1.className = "orderinfo orderdfk";
+						div1.innerHTML = '<div class="orderinfotitle">'+
+						'<div class="orderinfoname"><span>'+n.scenicName+'</span></div>'+
+						'<div class="orderinfotime"><p>参观时间：<span>'+time+'</span></p>'+
+						'<img src="img/icon-dfk.png"/></div></div></div>'+div+'';
+					}
+					if(n.orderState=="待游览"){
+						div1.className = "orderinfo orderdyl";
+						div1.innerHTML = '<div class="orderinfotitle">'+
+						'<div class="orderinfoname"><span>'+n.scenicName+'</span></div>'+
+						'<div class="orderinfotime"><p>参观时间：<span>'+time+'</span></p>'+
+						'<img src="img/icon-dyl.png"/></div></div></div>'+div+'';
+					}
+					
+					mainDiv.appendChild(div1);
+				}												
 			});
 		}
 	});	

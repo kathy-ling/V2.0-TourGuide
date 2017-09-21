@@ -12,14 +12,10 @@
 		<script type="text/javascript" src="js/fastPinConfirm.js" ></script>
 	</head>
 	<body>
-		<div class="guideImg">
-			<img id="GuideImg" src="img/1-1背景图片.png"/>
-			<img class="backIcon" src="img/返回图标.png"/>
-			<span id="name">快捷拼单</span>	
-	
+		<div class="guideImg">	
 			<select class="selectScenic" id="chooseScenicName" name="scenicName" onchange="getFee()">
 				<option value="" selected="selected">请选择景区</option>
-			</select>
+			</select>		
 		</div>
 		
 		<div class="fee">
@@ -31,8 +27,9 @@
 			<span id="TodayFee">_</span>
 			<span>/人</span>
 		</div>
+		<p class="num">参观人数</p>
 		<div class="visitorNum">
-			<p>参观人数</p>			
+						
 			<input id="VisitNum" value="3"></input>
 			<button id="Minus" onclick="setMinusVisitNum()"></button>
 			<button id="Plus" onclick="setPlusVisitNum()"></button>			
@@ -43,7 +40,7 @@
 		</div>
 		<div class="toPay">
 			<button onclick="payOnclick()">去结算</button>
-			<span id="totalFee" style="color:#007FFF;">&yen; </span>
+			<span id="totalFee" style="color:#007FFF;">&yen; 0</span>
 			<span>讲解费：</span>
 		</div>
 	</body>
