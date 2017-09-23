@@ -135,9 +135,9 @@ public class BookOrderDao {
 						orderState, contactPhone, language,sex,visitorName});
 				
 				String payTime = MyDateFormat.form(new Date());
-				String sqlUpdate = "update t_bookorder set orderState='待游览',hadPay=1,payTime='"+payTime+"' "
-						+ "where bookOrderID='"+orderID+"'";
-				int j = jdbcTemplate.update(sqlUpdate);
+//				String sqlUpdate = "update t_bookorder set orderState='待游览',hadPay=1,payTime='"+payTime+"' "
+//						+ "where bookOrderID='"+orderID+"'";
+//				int j = jdbcTemplate.update(sqlUpdate);
 				
 				/*int hour = 0;
 				try {			
@@ -159,15 +159,20 @@ public class BookOrderDao {
 				String timeTo = DateConvert.addHourToTime(visitTime+":00", hour);
 				int k = jdbcTemplate.update(sqlInsert, new Object[]{orderID, guidePhone, visitTime,
 						timeFrom, timeTo});*/
-				guideDao.guideBeOrdered(scenicID, orderID, guidePhone, visitTime);
-	
+				guideDao.guideBeOrdered(scenicID, orderID, guidePhone, visitTime);					
+				
+				if(i != 0){
+					ret = 1;
+				}
+				
+//				if(i != 0 && j!=0){
+//					ret = 1;
+//				}
+				
 				conn.commit();//提交JDBC事务 
 				conn.setAutoCommit(true);// 恢复JDBC事务的默认提交方式
 				conn.close();
 				
-				if(i != 0 && j!=0){
-					ret = 1;
-				}
 			} catch (SQLException e) {
 				conn.rollback();
 				e.printStackTrace();

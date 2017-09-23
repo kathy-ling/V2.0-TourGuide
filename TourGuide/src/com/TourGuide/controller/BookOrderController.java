@@ -183,7 +183,11 @@ public class BookOrderController {
 				visitorPhone, visitTime, scenicID, Integer.parseInt(visitNum),
 				Integer.parseInt(guideFee), contactPhone, language, visitorName);
 		
-		return ret;
+		if(ret == 1){
+			return orderID;
+		}
+		
+		return "null";
 	}
 	
 	
