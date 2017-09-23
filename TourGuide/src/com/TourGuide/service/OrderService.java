@@ -17,6 +17,15 @@ public class OrderService {
 	@Autowired
 	public OrderDao orderDao;
 	
+	/***
+	 * 根据订单号，进行微信支付 的信息更新
+	 * 全部订单包括：拼单（用户自己发起的拼单、与他人进行拼单）
+	 * 			  预约单（选择讲解员进行预约、自己发布预约订单）
+	 */
+	public boolean wechatPayOrder(String orderID){
+		return orderDao.wechatPayOrder(orderID);
+	}
+	
 	/**
 	 * 根据用户的手机号，查询用户的所有订单
 	 * 全部订单包括：拼单（用户自己发起的拼单、与他人进行拼单）

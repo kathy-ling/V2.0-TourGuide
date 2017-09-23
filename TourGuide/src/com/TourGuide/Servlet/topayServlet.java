@@ -2,6 +2,7 @@ package com.TourGuide.Servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.math.BigDecimal;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Random;
@@ -22,6 +23,7 @@ import com.TourGuide.weixin.util.TokenUtil;
 import com.google.gson.Gson;
 
 import net.sf.json.JSONObject;
+
 import com.TourGuide.common.CommonResp;
 
 public class topayServlet extends HttpServlet{
@@ -41,19 +43,18 @@ public class topayServlet extends HttpServlet{
 		
 		Random random=new Random();
 		String openId = request.getParameter("openId");
-		String orderNo = "1482391452aaabbb"+random.nextInt(99999999);
+		String orderNo = request.getParameter("orderID");
 		String money = request.getParameter("money");
 		
-		System.out.println("openId="+openId);	
-		System.out.println("money"+money);					
+//		orderNo = "a53cb8d8cb01411398332c2879a389";
 		
-		//金额转化为分为单位
-		Double doubleMoney = Double.parseDouble(money);
+		System.out.println("openId="+openId);
+		System.out.println("orderID"+orderNo);
+		System.out.println("money"+money);		
+		int doubleMoney=Integer.parseInt(money);
+        
 		String finalmoney = doubleMoney * 100 + "";
-/*		float sessionmoney = Float.parseFloat(money);
-		String finalmoney = String.format("%.2f", sessionmoney);
-		finalmoney = finalmoney.replace(".", "");*/
-		
+		finalmoney="1";
 		String currTime = TenpayUtil.getCurrTime();
 		String strTime = currTime.substring(8, currTime.length());
 		String strRandom = TenpayUtil.buildRandom(4) + "";
@@ -62,9 +63,9 @@ public class topayServlet extends HttpServlet{
 		//商户号
 		String mch_id = partner;
 		String nonce_str = strReq;
-		String body = "支付测试";
+		String body = "订单测试";
 		String out_trade_no = orderNo;
-		String spbill_create_ip = "202.200.112.54";
+		String spbill_create_ip = "47.93.204.132";
 		String notify_url ="http://www.zhoudaoly.com/TourGuide/NotifyServlet";
 		
 		String trade_type = "JSAPI";
@@ -92,7 +93,7 @@ public class topayServlet extends HttpServlet{
 				"<body><![CDATA["+body+"]]></body>"+				
 				"<out_trade_no>"+out_trade_no+"</out_trade_no>"+
 				//金额，这里写的1 分到时修改
-				"<total_fee>"+finalmoney+"</total_fee>"+
+				"<total_fee>"+finalmoney+"</total_fee>"+ //finalmoney
 				"<spbill_create_ip>"+spbill_create_ip+"</spbill_create_ip>"+
 				"<notify_url>"+notify_url+"</notify_url>"+
 				"<trade_type>"+trade_type+"</trade_type>"+
@@ -115,6 +116,9 @@ public class topayServlet extends HttpServlet{
 				request.setAttribute("ErrorMsg", "统一支付接口获取预支付订单出错");
 				response.sendRedirect("error.jsp");
 			}
+//			else{
+//				System.out.println("prepay_id获取成功，支付成功");
+//			}
 		} catch (Exception e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();

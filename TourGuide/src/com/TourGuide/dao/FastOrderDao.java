@@ -70,6 +70,8 @@ public class FastOrderDao {
 		}
 		return bool;
 	}
+	
+	
 	public boolean payReleaseFastOrder(String consistOrderID){
 		
 		boolean bool = false;

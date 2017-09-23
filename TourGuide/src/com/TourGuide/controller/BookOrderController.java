@@ -119,7 +119,11 @@ public class BookOrderController {
 				Integer.parseInt(fullPriceNum), Integer.parseInt(discoutPriceNum), Integer.parseInt(halfPriceNum),
 				fullPrice, halfPrice, discoutPrice,contact);
 		
-		return bool;
+		if(bool == true){
+			return bookOrderID;
+		}
+		
+		return "null";
 	}
 
 	

@@ -1,5 +1,5 @@
 
-//vistPhone='18191762572';
+vistPhone='18191762572';
 
 $(document).ready(function()
 {	

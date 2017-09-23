@@ -34,6 +34,22 @@ public class OrderController {
 	@Autowired
 	OrderService orderService;
 	
+	/**
+	 * 根据订单号，进行微信支付 的信息更新
+	 */
+	@RequestMapping(value = "/updatePayInfo.do")
+	public void wechatPayOrder(HttpServletResponse resp,
+			@RequestParam("orderID") String orderID) throws IOException{
+		
+		CommonResp.SetUtf(resp);
+		
+		boolean bool = orderService.wechatPayOrder(orderID);
+		
+		PrintWriter writer = resp.getWriter();
+		writer.write(new Gson().toJson(bool));
+		writer.flush();
+	}
+	
 	
 	/**
 	 * 根据用户的手机号，查询用户的所有订单

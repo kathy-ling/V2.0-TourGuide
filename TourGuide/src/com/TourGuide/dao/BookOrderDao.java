@@ -74,13 +74,13 @@ public class BookOrderDao {
 				+ "visitTime,visitNum,language,guideSex,visitorPhone,visitorName,"
 				+ "priceRange,purchaseTicket,otherCommand,releaseByVisitor,orderState,"
 				+ "totalTicket,totalTicketNum,fullPriceNum,discoutPriceNum,halfPriceNum,fullPrice,"
-				+ "discoutPrice,halfPrice,visitorVisible,guideVisible,contact,guideFee,hadPay) values "
+				+ "discoutPrice,halfPrice,visitorVisible,guideVisible,contact,totalGuideFee,hadPay) values "
 				+ "(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 		int i = jdbcTemplate.update(sqlString, new Object[]{bookOrderID, scenicID, 
 				produceTime, visitTime,visitNum, language, guideSex, visitorPhone, 
 				visitorName, priceRange, purchaseTicket, otherCommand, releaseByVisitor, orderState,
 				totalTicket,totalTicketNum, fullPriceNum,discoutPriceNum,halfPriceNum,
-				fullPrice, discoutPrice, halfPrice,visitorVisible,guideVisible,contact,priceRange,1});
+				fullPrice, discoutPrice, halfPrice,visitorVisible,guideVisible,contact,priceRange,0});
 		
 		if(i == 1){
 			bool = true;

@@ -69,7 +69,11 @@ public class FastOrderController {
 		boolean bool = fastOrderService.releaseFastOrder(consistOrderID, scenicID, 
 				Integer.parseInt(visitNum), Integer.parseInt(guideFee), visitorPhone);
 		
-		return bool;
+		if(bool == true){
+			return consistOrderID;
+		}
+		
+		return "null";
 	}
 	
 	

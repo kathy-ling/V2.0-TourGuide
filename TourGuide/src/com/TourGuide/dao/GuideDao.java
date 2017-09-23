@@ -213,20 +213,37 @@ public class GuideDao {
 		
 		//若景区为空，则筛选visitTime时所有景区的空闲讲解员；否则，筛选特定景区的visitTime时的空闲讲解员
 		if(scenicID.equals("null")){
-			String sqlString = "select t_guideinfo.phone,image,`name`,sex,age,`language`,selfIntro,"
-					+ "t_guideotherinfo.guideLevel,t_guideotherinfo.historyTimes,t_scenicspotinfo.scenicName from t_guideinfo,"
-					+ "t_guideotherinfo,t_scenicspotinfo where t_guideinfo.phone = t_guideotherinfo.phone "
-					+ "and guideLevel >= 2 AND t_guideotherinfo.scenicBelong=t_scenicspotinfo.scenicNo and t_guideotherinfo.phone in "
-					+ "(select guidePhone from t_guideworkday where "+selectDay+"=1)"
-					+ "ORDER BY guideLevel desc,historyTimes desc";
+//			String sqlString = "select t_guideinfo.phone,image,`name`,sex,age,`language`,selfIntro,"
+//					+ "t_guideotherinfo.guideLevel,t_guideotherinfo.historyTimes,t_scenicspotinfo.scenicName from t_guideinfo,"
+//					+ "t_guideotherinfo,t_scenicspotinfo where t_guideinfo.phone = t_guideotherinfo.phone "
+//					+ "and guideLevel >= 2 AND t_guideotherinfo.scenicBelong=t_scenicspotinfo.scenicNo and t_guideotherinfo.phone in "
+//					+ "(select guidePhone from t_guideworkday where "+selectDay+"=1)"
+//					+ "ORDER BY guideLevel desc,historyTimes desc";
+			
+			String sqlString = "SELECT t_guideotherinfo.phone,t_guideotherinfo.guideLevel,t_guideotherinfo.historyTimes,"
+			+ "t_feetolevel.guideFee,image,`name`,sex,age,`language` FROM t_guideotherinfo,t_feetolevel,"
+			+ "t_guideinfo WHERE t_guideotherinfo.guideLevel = t_feetolevel.guideLevel AND "
+			+ "t_guideotherinfo.scenicBelong = t_feetolevel.scenicsBelong and t_guideotherinfo.phone="
+			+ "t_guideinfo.phone AND t_guideotherinfo.phone IN ( SELECT guidePhone FROM t_guideworkday "
+			+ "WHERE  "+selectDay+"= 1 ) ORDER BY guideLevel DESC,historyTimes DESC";
+			
 			list = jdbcTemplate.queryForList(sqlString);
 		}else {
-			String sqlSelect = "select t_guideinfo.phone,image,`name`,sex,age,`language`,selfIntro,"
-					+ "t_guideotherinfo.guideLevel,t_guideotherinfo.historyTimes,t_scenicspotinfo.scenicName from t_guideinfo,t_guideotherinfo,t_scenicspotinfo "
-					+ "where t_guideinfo.phone = t_guideotherinfo.phone and scenicBelong = '"+scenicID+"' "
-					+ "and guideLevel >= 2 AND t_guideotherinfo.scenicBelong=t_scenicspotinfo.scenicNo and t_guideotherinfo.phone in "
-					+ "(select guidePhone from t_guideworkday where "+selectDay+"=1)"
-					+ "ORDER BY guideLevel desc,historyTimes desc";
+//			String sqlSelect = "select t_guideinfo.phone,image,`name`,sex,age,`language`,selfIntro,"
+//					+ "t_guideotherinfo.guideLevel,t_guideotherinfo.historyTimes,t_scenicspotinfo.scenicName from t_guideinfo,t_guideotherinfo,t_scenicspotinfo "
+//					+ "where t_guideinfo.phone = t_guideotherinfo.phone and scenicBelong = '"+scenicID+"' "
+//					+ "and guideLevel >= 2 AND t_guideotherinfo.scenicBelong=t_scenicspotinfo.scenicNo and t_guideotherinfo.phone in "
+//					+ "(select guidePhone from t_guideworkday where "+selectDay+"=1)"
+//					+ "ORDER BY guideLevel desc,historyTimes desc";
+			
+			String sqlSelect = "SELECT t_guideotherinfo.phone,t_guideotherinfo.guideLevel,t_guideotherinfo.historyTimes,"
+					+ "t_feetolevel.guideFee,image,`name`,sex,age,`language` FROM t_guideotherinfo,t_feetolevel,"
+					+ "t_guideinfo WHERE t_guideotherinfo.guideLevel = t_feetolevel.guideLevel AND "
+					+ "t_guideotherinfo.scenicBelong = t_feetolevel.scenicsBelong and scenicBelong = '"+scenicID+"'"
+					+ " and t_guideotherinfo.phone=t_guideinfo.phone AND t_guideotherinfo.phone IN "
+					+ "( SELECT guidePhone FROM t_guideworkday "
+					+ "WHERE  "+selectDay+"= 1 ) ORDER BY guideLevel DESC,historyTimes DESC";
+			
 			list = jdbcTemplate.queryForList(sqlSelect);
 		}
 		
@@ -512,7 +529,8 @@ public class GuideDao {
 				map.put("singleMax", rst.getInt(14));
 				map.put("scenicName", rst.getString(15));
 				map.put("workAge", rst.getString(16));
-				map.put("authorized", rst.getInt(17));				
+				map.put("authorized", rst.getInt(17));	
+				map.put("scenicImagePath", rst.getString(18));
 				list.add(map);
 			}							
 			conn.close();

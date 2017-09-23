@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -17,6 +18,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
 import com.TourGuide.common.DateConvert;
+import com.TourGuide.common.MyDateFormat;
 import com.TourGuide.model.ScenicTickets;
 
 @Repository
@@ -36,6 +38,30 @@ public class OrderDao {
 	
 	@Autowired
 	IntroFeeAndMaxNumDao introFeeAndMaxNumDao;
+	
+	
+	/***
+	 * 根据订单号，进行微信支付 的信息更新
+	 * 全部订单包括：拼单（用户自己发起的拼单、与他人进行拼单）
+	 * 			  预约单（选择讲解员进行预约、自己发布预约订单）
+	 */
+	public boolean wechatPayOrder(String orderID){
+		boolean bool = false;
+		
+		String time = MyDateFormat.form(new Date());
+		
+		String payBook = "update t_bookorder set orderState='待游览',payTime="+time+",hadPay=1 where bookOrderID='"+orderID+"'";
+		String payConsist = "update t_consistorder set orderState='待游览',payTime="+time+",hadPay=1 where consistOrderID='"+orderID+"'";
+		
+		int i = jdbcTemplate.update(payBook);
+		int j = jdbcTemplate.update(payConsist);
+		
+		if(i!=0 || j!=0){
+			bool = true;
+		}
+		
+		return bool;
+	}
 	
 	
 	/**
