@@ -22,16 +22,32 @@ public class GuideWorkdayController {
 	@Autowired
 	private GuideworkdayService guideworkdayService;
 	
+	@RequestMapping(value = "/isNotWork.do")
+	public void isNotWork(HttpServletResponse resp,
+			@RequestParam("phone") String phone,
+			@RequestParam("day") String day) throws IOException{
+		
+		CommonResp.SetUtf(resp);
+		
+		boolean bool = guideworkdayService.isNotWork(phone, day);
+		
+		PrintWriter writer = resp.getWriter();
+		writer.write(new Gson().toJson(bool));
+		writer.flush();
+		
+	}
+	
+	
 	/**
 	 * 设置导游的工作时间，
-	 * @param days 不工作的日期，如2017-1-12
+	 * @param days 日期，如2017-1-12
 	 * @param phone  手机号
 	 * @throws IOException
 	 */
 	@RequestMapping(value = "/setGuideWorkday.do")
 	public void setGuideWorkday(HttpServletResponse resp,
 			@RequestParam("phone") String phone,
-			@RequestParam("days") List<String> days) throws IOException{
+			@RequestParam("days") String days) throws IOException{
 		
 		CommonResp.SetUtf(resp);
 		
@@ -43,6 +59,27 @@ public class GuideWorkdayController {
 		
 	}
 	
+	
+	/**
+	 * 设置导游的不工作时间，
+	 * @param days 日期，如2017-1-12
+	 * @param phone  手机号
+	 * @throws IOException
+	 */
+	@RequestMapping(value = "/setGuideNotWorkday.do")
+	public void setGuideNotWorkday(HttpServletResponse resp,
+			@RequestParam("phone") String phone,
+			@RequestParam("days") String days) throws IOException{
+		
+		CommonResp.SetUtf(resp);
+		
+		boolean bool = guideworkdayService.setGuideNotWorkday(days, phone);
+		
+		PrintWriter writer = resp.getWriter();
+		writer.write(new Gson().toJson(bool));
+		writer.flush();
+		
+	}
 	
 	
 	/**

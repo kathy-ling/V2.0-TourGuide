@@ -23,48 +23,129 @@ public class GuideWorkdayDao {
 	
 	/**
 	 * 设置导游的工作时间，
-	 * @param days 不工作的日期，如2017-1-12
+	 * @param days 日期，如2017-1-12
 	 * @param phone  手机号
 	 * 1：工作          0：请假
 	 * @return 
 	 */
-	public boolean setGuideWorkday(List<String> days, String phone){
+	public boolean setGuideWorkday(String days, String phone){
 		
 		boolean bool = false;
 		
-		int one = 1, two = 1, three = 1, four = 1;
+		String selectDay = "";
+		int one = 1, two = 1, three = 1;
 		
 		Date date1=new Date();
-    	String dayNow=new SimpleDateFormat("yyyy-MM-dd").format(date1);
+    	String dayNow=new SimpleDateFormat("yyyy-MM-dd").format(date1);		
 		
-		for(int i=0; i<days.size(); i++){
-			int day = DateConvert.getDaysBetweenDate(days.get(i), dayNow);
-			switch (day) {
-			case 0:
-				one = 0;
-				break;
-			case 1:
-				two = 0;			
-				break;
-			case 2:
-				three = 0;
-				break;
-			case 3:
-				four = 0;
-				break;
-
-			default:
-				break;
-			}
+		int day = DateConvert.getDaysBetweenDate(days, dayNow);
+		switch (day) {
+		case 0:
+			one = 0;
+			selectDay = "one";
+			break;
+		case 1:
+			two = 0;	
+			selectDay = "two";
+			break;
+		case 2:
+			three = 0;
+			selectDay = "three";
+			break;
 		}
 		
-		String sqlString = "update t_guideworkday set one=?,two=?,three=?,four=? where phone=? ";
-		int i = jdbcTemplate.update(sqlString, new Object[]{one, two, three, four, phone});
+		String sqlString = "update t_guideworkday set "+selectDay+"=?  where guidePhone=? ";
+		int i = jdbcTemplate.update(sqlString, new Object[]{1, phone});
 		
 		if(i != 0){
 			bool = true;
 		}
 		
+		return bool;
+	}
+	
+	/**
+	 * 设置导游的不工作时间，
+	 * @param days 日期，如2017-1-12
+	 * @param phone  手机号
+	 * 1：工作          0：请假
+	 * @return 
+	 */
+public boolean setGuideNotWorkday(String days, String phone){
+		
+		boolean bool = false;
+		
+		String selectDay = "";
+		int one = 1, two = 1, three = 1;
+		
+		Date date1=new Date();
+    	String dayNow=new SimpleDateFormat("yyyy-MM-dd").format(date1);		
+		
+		int day = DateConvert.getDaysBetweenDate(days, dayNow);
+		switch (day) {
+		case 0:
+			one = 0;
+			selectDay = "one";
+			break;
+		case 1:
+			two = 0;	
+			selectDay = "two";
+			break;
+		case 2:
+			three = 0;
+			selectDay = "three";
+			break;
+		}
+		
+		String sqlString = "update t_guideworkday set "+selectDay+"=?  where guidePhone=? ";
+		int i = jdbcTemplate.update(sqlString, new Object[]{0, phone});
+		
+		if(i != 0){
+			bool = true;
+		}
+		
+		return bool;
+	}
+	
+	
+	/**
+	 * 查看讲解员该天是否工作，即设置接单
+	 * @param phone
+	 * @param day
+	 * @return  true:该天不工作
+	 */
+	public boolean isNotWork(String phone, String day){
+		
+		boolean bool = false;
+		int ret = 0;
+		
+		Date date1=new Date();
+    	String dayNow=new SimpleDateFormat("yyyy-MM-dd").format(date1);
+    	
+    	int diff = DateConvert.getDaysBetweenDate(day, dayNow);
+    	
+    	String sqlSelect = "select one,two,three from t_guideworkday where guidePhone='"+phone+"'";
+    	List<Map<String , Object>> list = jdbcTemplate.queryForList(sqlSelect);
+    	
+    	for(int i=0; i<list.size(); i++){    		
+    		switch (diff) {
+    		case 0:
+    			ret = (int) list.get(i).get("one");
+    			break;
+    		case 1:
+    			ret = (int)list.get(i).get("two");			
+    			break;
+    		case 2:
+    			ret = (int)list.get(i).get("three");
+    			break;
+    		}
+    	}
+    	
+    	//不工作
+    	if(ret == 0){
+    		bool = true;
+    	}
+    	
 		return bool;
 	}
 	
@@ -89,7 +170,6 @@ public class GuideWorkdayDao {
 		}
     	return bool;
 	}
-	
 	
 	
 	/**

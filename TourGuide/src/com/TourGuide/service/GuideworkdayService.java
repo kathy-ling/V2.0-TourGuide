@@ -15,15 +15,31 @@ public class GuideworkdayService {
 	@Autowired
 	private GuideWorkdayDao guideWorkdayDao;
 	
+	//查看讲解员该天是否工作，即设置接单
+	public boolean isNotWork(String phone, String day){
+		return guideWorkdayDao.isNotWork(phone, day);
+	}
+	
 	
 	/**
 	 * 设置导游的工作时间，
-	 * @param days 不工作的日期，如2017-1-12
+	 * @param days 日期，如2017-1-12
 	 * @param phone  手机号
 	 * @return 
 	 */
-	public boolean setGuideWorkday(List<String> days, String phone){
+	public boolean setGuideWorkday(String days, String phone){
 		return guideWorkdayDao.setGuideWorkday(days, phone);
+	}
+	
+	/**
+	 * 设置导游的不工作时间，
+	 * @param days 日期，如2017-1-12
+	 * @param phone  手机号
+	 * 1：工作          0：请假
+	 * @return 
+	 */
+	public boolean setGuideNotWorkday(String days, String phone){
+		return guideWorkdayDao.setGuideNotWorkday(days, phone);
 	}
 	
 	
