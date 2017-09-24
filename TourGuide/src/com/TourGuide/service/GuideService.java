@@ -110,6 +110,17 @@ public class GuideService {
 		return guideDao.getDetailGuideInfoByPhone(phone);
 	}
 	
+	
+	/**
+	 * 根据手机号，查询导游的收入
+	 * @param phone 手机号
+	 * @return  
+	 * 星级，总订单数，总接待人数，总收入，本月接单，本月收入，上月接单，上月收入，总星级，排名
+	 */
+	public Map<String , Object> getGuideDataInfoByPhone(String phone){
+		return guideDao.getGuideDataInfoByPhone(phone);
+	}
+	
 	/**
 	 * 判断该讲解员已经被预约了的时间(被预约了的时间要大于当前时间)与time是否冲突
 	 * 若有冲突，则返回数据；否则，查询结果为空

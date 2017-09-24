@@ -711,6 +711,46 @@ public class GuideDao {
 	}
 	
 	
+	/**
+	 * 根据手机号，查询导游的收入
+	 * @param phone 手机号
+	 * @return  
+	 * 星级，总订单数，总接待人数，总收入，本月接单，本月收入，上月接单，上月收入，总星级，排名
+	 */
+	public Map<String , Object> getGuideDataInfoByPhone(String phone){
+		 
+		Map<String , Object> map = new HashMap<String, Object>();
+ 		DataSource dataSource =jdbcTemplate.getDataSource();
+		 
+		try {
+			Connection conn = dataSource.getConnection();
+			CallableStatement cst=conn.prepareCall("call getGuideDataInfo(?)");
+			cst.setString(1, phone);
+			ResultSet rst=cst.executeQuery();
+			
+			while (rst.next()) {
+				map.put("guideLevel", rst.getInt(1));
+				map.put("historyTimes", rst.getInt(2));
+				map.put("historyNum", rst.getInt(3));
+				map.put("cashTotal", rst.getBigDecimal(4));
+				map.put("orders", rst.getInt(5));
+				map.put("monthFee", rst.getBigDecimal(6));
+				map.put("lastOrders", rst.getInt(7));
+				map.put("lastMonthFee", rst.getBigDecimal(8));
+				map.put("topLevel", rst.getInt(9));
+				map.put("range", rst.getInt(10));
+				map.put("image", rst.getString(11));
+				map.put("name", rst.getString(12));
+			}							
+			conn.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} 		
+		
+		return map;
+	}
+	
+	
 	//在t_guidebeordered表中插入导游的被预约信息
 	public void guideBeOrdered(String scenicID, String orderID, String guidePhone, String visitTime){
 		
