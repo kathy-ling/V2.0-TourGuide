@@ -6,6 +6,7 @@ import java.io.PrintWriter;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -37,7 +38,26 @@ public class GuideController {
 	
 	private String imgPath;
 	
-	
+	/**
+	 * 根据手机号，查询导游的收入
+	 * @param phone 手机号
+	 * @return  
+	 * 星级，总订单数，总接待人数，总收入，本月接单，本月收入，上月接单，上月收入，总星级，排名
+	 */
+
+	@RequestMapping(value = "/getGuideDataInfoByPhone.do")
+	@ResponseBody
+	public Object getGuideDataInfoByPhone(HttpServletResponse resp,
+			@RequestParam("guidePhone") String guidePhone) throws IOException{
+		
+		CommonResp.SetUtf(resp);
+		
+		Map<String , Object> map = new HashMap<String, Object>();
+		
+		map = guideService.getGuideDataInfoByPhone(guidePhone);
+		
+		return map;
+	}
 	
 	
 	/**

@@ -130,8 +130,9 @@ public class FastOrderDao {
 		String orderID = UUID.randomUUID().toString().replace("-", "");
 //		String dateNow = new SimpleDateFormat("yyyy-MM-dd").format(new Date());
 		String timeNow = MyDateFormat.form(new Date());
-		//现在时间+30min，设为参观时间和导游被预约时间
-		String visitTime = DateConvert.addMinuteToTime(timeNow, 30);
+		//默认，现在时间+120min，设为参观时间
+		String visitTime = DateConvert.addMinuteToTime(timeNow, 120);
+
 		int visitNum = 0;
 		String scenicNo = null;
 		String scenicName = null;
@@ -170,7 +171,7 @@ public class FastOrderDao {
 				visitNum = (int) listNum.get(0).get("visitNum");
 			}
 			
-			guideDao.guideBeOrdered(scenicNo, orderID, guidePhone, visitTime);
+			guideDao.guideBeOrdered(scenicNo, orderID, guidePhone, timeNow);
 		}
 								
 		map.put("orderID", orderID);
@@ -178,6 +179,7 @@ public class FastOrderDao {
 		map.put("guideFee", guideFee);
 		map.put("scenicName", scenicName);
 		map.put("visitNum", visitNum);
+		map.put("visitTime", visitTime);
 				
 		return map;
 	}
