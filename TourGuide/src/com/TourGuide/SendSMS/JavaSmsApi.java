@@ -51,7 +51,7 @@ public class JavaSmsApi {
 			return "0";
 		}
 		 
-		 return code;
+		return code;
 		 
 	}
 	
@@ -82,7 +82,6 @@ public class JavaSmsApi {
 	* @param paramsMap 提交<参数，值>Map 
 	* @return 提交响应 
 	*/  
-	  
 	public static String post(String url, Map<String, String> paramsMap) {  
 	    CloseableHttpClient client = HttpClients.createDefault();  
 	    String responseText = "";  

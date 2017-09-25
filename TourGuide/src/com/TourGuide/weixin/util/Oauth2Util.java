@@ -153,9 +153,6 @@ public class Oauth2Util {
 		Oauth2Url = Oauth2Url.replace("APPID", appid);
 		Oauth2Url = Oauth2Url.replace("REDIRECT_URI", redirectUrI);
 		Oauth2Url = Oauth2Url.replace("SCOPE", scope);
-		
-		https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx6e58a089f2d129f4&redirect_uri=REDIRECT_URI&response_type=code&scope=SCOPE&state=STATE#wechat_redirect
-		
 		return Oauth2Url;
 	}
 }

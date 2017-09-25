@@ -37,7 +37,6 @@ public class OAuthServlet extends HttpServlet{
 		// 用户同意授权后，能获取到code
 		// 如果code等于"authdeny"，表示用户不同意授权，则直接跳转到目标页面。
 		String code = request.getParameter("code");
-		
 		// 用户同意授权
 		if (!"authdeny".equals(code)) {
 			// 获取网页授权access_token
@@ -78,7 +77,6 @@ public class OAuthServlet extends HttpServlet{
 					
 	}
 	
-
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
