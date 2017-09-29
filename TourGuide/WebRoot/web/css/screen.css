@@ -1,0 +1,71 @@
+html,body
+{
+	height: 100%;
+	width: 100%;
+	padding: 0;
+	margin: 0;
+	font-family: "微软雅黑";
+}
+body
+{
+	overflow: hidden;
+}
+.top
+{
+	height: 6%;
+	background: url(../img/5-1顶部底图.png) no-repeat;
+	background-size:cover ;
+}
+.top span
+{
+	color: white;
+	text-align: center;
+	margin-left: 45%;
+	margin-top: 2%;
+	display: inline-block;
+}
+.backIcon
+{
+	position: absolute;
+	top: 1%;
+	left: 5px;
+	width: 8%;
+}
+.ageDiv
+{
+	margin-top: 3%;
+	/*border: 1px solid red;*/
+}
+.starLevelDiv
+{
+	margin-top: 6%;
+}
+#starLevel
+{
+	/*margin-top: -9%;*/
+	margin-left: 25%;
+}
+#SelectTime
+{
+	background: url(../img/4-1请选择时间底图.png) no-repeat;
+	background-size:100% ;
+	position: relative;
+	top: -8px;
+}
+#age
+{
+	display: inline-block;
+	position: relative;
+	top: -8px;
+	margin-left: 7%;
+	margin-top: 1%;
+}
+.money
+{
+	margin-left: 29%;
+}
+.grade
+{
+	margin-left: 30%;
+	margin-top: -12%;
+}

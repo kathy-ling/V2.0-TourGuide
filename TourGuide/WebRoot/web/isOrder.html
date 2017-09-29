@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>立即预约</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no"  />
+		<link rel="stylesheet" href="css/jquery-ui-1.10.4.custom.css" />
+		<link rel="stylesheet" href="css/isOrder.css" />
+		
+		<link rel="stylesheet" type="text/css" href="css/navigate.css" />
+		<script type="text/javascript" src="js/navigationbar.js"></script>
+		<script type="text/javascript" src="js/jquery-1.10.2.js" ></script>
+		<script type="text/javascript" src="js/jquery 1.10.4 ui.min.js" ></script>
+		<script src="js/CommonSession.js"></script>
+		<script type="text/javascript" src="js/isOrder.js" ></script>
+		<link rel="stylesheet" href="http://jqueryui.com/resources/demos/style.css">
+		<style type="text/css">
+			select
+			{
+				-moz-appearance: none;
+			    -webkit-appearance:none;
+			    appearance:none;
+			}
+	
+		</style>
+	</head>
+	<body>
+		<p id="body">
+			<div class="guideInfo">
+				<div class="headImg">
+					<img id="GuideHead" src="img/导游头像.png"/>
+					<div id="GuideName">何静媛</div>
+					<div id="GuideSex">女</div>
+					<span id="GuideScenic">秦始皇兵马俑</span>
+				</div>
+				
+				<div class="detailInfo1">
+					<div class="guideFee">					
+						<p>讲解费(元)</p>
+						<p id="GuideFee">150</p>
+					</div>
+					<div class="rightDiv">
+						<div class="guideLevel">
+							<p>导游级别</p>
+							<p id="GuideLevel">2</p>
+						</div>
+						<div class="guideAge">
+							<p>导游年龄</p>
+							<p id="GuideAge">26</p>
+						</div>
+						<div class="guideLanguage">
+							<p>语种</p>
+							<p id="GuideLanguage">英语</p>
+						</div>
+						<div class="guideNum">
+							<p>接待人次</p>
+							<p id="GuideNum">35</p>
+						</div>
+					</div>
+				</div>			
+			</div>
+			<div class="confirmInfo">
+				<img src="img/6-1日期.png"/>	
+				<span>日期</span>
+				<div id="radio">
+					<input  type="radio" id="radio1" name="radioDate" value="" onchange="showVisitTime()"/><label for="radio1" id="radioLabel1">01.02</label>
+					<input  type="radio" id="radio2" name="radioDate" value="" onchange="showVisitTime()"/><label for="radio2" id="radioLabel2">01.03</label>
+					<input  type="radio" id="radio3" name="radioDate" value="" onchange="showVisitTime()"/><label for="radio3" id="radioLabel3">01.04</label>
+				</div>
+				<p>提供三日内的预约</p>
+				<img src="img/6-2时间.png"/>
+				<span>时间</span>
+				<select id="SelectTime">
+					<option value="">请选择时间</option>
+					<option>8:00</option>
+					<option>8:30</option>
+					<option>9:00</option>
+					<option>9:30</option>
+					<option>10:00</option>
+					<option>10:30</option>
+					<option>11:00</option>
+					<option>11:30</option>
+					<option>12:00</option>
+					<option>12:30</option>
+					<option>13:00</option>
+					<option>13:30</option>
+					<option>14:00</option>
+					<option>14:30</option>
+					<option>15:00</option>
+					<option>15:30</option>
+					<option>16:00</option>
+					<option>16:30</option>
+					<option>17:00</option>
+				</select>
+				<div class="bottomInfo">
+					<span>参观人数</span>
+					<input id="VisitNum" value="1"></input>
+					<button id="Minus"></button>
+					<button id="Plus"></button>
+				</div>
+				<div class="bottomInfo">
+					<span>联系人姓名</span>
+					<input id="ContactName" value=""></input>
+				</div>
+				<div class="bottomInfo">
+					<span>联系电话</span>
+					<input id="ContactPhone" value="" onblur="checkPhone()"></input>
+				</div>
+				<button class="confirmButton" onclick="isOrder()">确认</button>
+				<div style="height: 70px; width: 100%;">
+					
+				</div>
+			</div>
+		</p>
+		<script>
+			$(function($) {
+				addNavigate(0);
+			});
+		</script>
+		
+	</body>
+</html>

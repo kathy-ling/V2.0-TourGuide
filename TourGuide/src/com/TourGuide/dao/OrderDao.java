@@ -50,12 +50,12 @@ public class OrderDao {
 		
 		String time = MyDateFormat.form(new Date());
 		
-		String payBook = "update t_bookorder set orderState='待游览',payTime="+time+",hadPay=1 where bookOrderID='"+orderID+"'";
-		String payConsist = "update t_consistorder set orderState='待游览',payTime="+time+",hadPay=1 where consistOrderID='"+orderID+"'";
+		String payBook = "update t_bookorder set orderState='待游览',payTime='"+time+"',hadPay=1 where bookOrderID='"+orderID+"'";
+		String payConsist = "update t_consistorder set orderState='待游览',payTime='"+time+"',hadPay=1 where consistOrderID='"+orderID+"'";
 		
 		int i = jdbcTemplate.update(payBook);
 		int j = jdbcTemplate.update(payConsist);
-		
+		System.out.println(i+" "+j);
 		if(i!=0 || j!=0){
 			bool = true;
 		}

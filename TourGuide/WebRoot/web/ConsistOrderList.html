@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">		
+		<title>从可拼单列表中进行拼单</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+        <link rel="stylesheet" type="text/css" href="css/pindan.css">
+	    <link rel="stylesheet" type="text/css" href="css/jquery.mobile-1.4.5.css">
+		<link rel="stylesheet" type="text/css" href="css/mystyle.css">
+		<link rel="stylesheet" type="text/css" href="css/nativedroid2.css">
+	    <script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
+		<script type="text/javascript" src="js/jquery.mobile-1.4.5.min.js"></script>
+   	    <script type="text/javascript" src="js/ConsistOrderList.js"></script>
+   	    
+   	    <script type="text/javascript" src="js/navigationbar.js" ></script>
+   	    <link rel="stylesheet" type="text/css" href="css/navigate.css"/>
+  	    <script src="http://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
+		<script src="js/wechatPay.js"></script>
+  	    <style>
+			.tabletr{
+				font-size: 14px;
+			}
+  	    
+  	    </style>
+	</head>
+	<body class="selector" >
+		<div data-role="page" id="page" style="background-color: #f1f4fb;"> 
+			<div data-role = "main">
+				<div style="width: 100%;height: 165px;overflow: hidden;">
+					<img src="img/1-1背景图片.png"  style="width: 100%;"/>
+				</div>
+				<div style="background-color: white;border-radius: 50%;border: 3px solid #268efa;width: 84px;height: 84px;position: absolute;top:120px;left: 10px;text-align: center;">
+					<p style="font-size: 12px;margin-top: 20px;margin-left: -4px;"><span style="font-size: 40px;margin-left: -4px;" id="Hour">3</span>小时</p>
+					<p style="font-size: 12px;margin-top: -10px;margin-left: -10px;">剩余时间</p>
+					
+				</div>
+				<div style="width: 100%;background-color: #ffffff;background: cover;">
+					<div style="width: 100%;height: 10px;"></div>
+					<div style="margin-left: 140px;font-size: 18px;" id="pintuanNum">拼团人数：12/20</div>
+					
+					<div style="width: 100%;text-align: center;margin-top: 30px;">
+						<span style="font-size: 24px;" id="scenicName">秦始皇兵马俑</span>
+					</div>
+					<div style="width: 100%;text-align: center;margin-top: 20px;">
+						<div class="tabletr">讲解费(元)</div>
+						<div style="font-size: 32px;color: #268efa;"><span id="guideFee">150</span>/人</div>
+					</div>
+					<div style="width: 100%;text-align: center;margin-top: 20px;">
+						<table style="margin: auto;table-layout: fixed;width: 90%;">
+							<tr class="tabletr">
+								<td >
+									拼团人数
+								</td>
+								<td>
+									游览时间
+								</td>
+							</tr>
+							<tr style="font-size: 20px;color: #268efa;">
+								<td><span id="pintuanNum1">3</span></td>
+								<td><span id="visitTime">09-25 10:00</span></td>
+							</tr>
+							<tr style="height: 10px ;"></tr>
+							<tr class="tabletr" >
+								<td >
+									联系人
+								</td>
+								<td>
+									联系电话
+								</td>
+							</tr>
+							<tr style="font-size: 20px;color: #268efa;">
+								<td><span id="visitname">王鑫涛</span></td>
+								<td><span id="phone">13187987909</span></td>
+							</tr>
+						</table>
+					</div>
+					
+					<div style="text-align: center;margin-top: 10px;">
+						<p style="font-size: 13px;">
+							付款后请向讲解员展示订单二维码&nbsp;<br/>
+							&nbsp;&nbsp;&nbsp;订单二维码可以在【个人中心】中找到
+						</p>
+					</div>
+					<div style="width: 100%;height: 30px;"></div>
+				</div>
+				
+			</div>
+			<div style="position: fixed;bottom: 60px;width: 100%;height: 50px;background-color: white;">
+				<div style="height: 100%;width: 100px;background: -webkit-gradient(linear, 0% 0%, 100% 0%, from(#2488fa), to(#31b6f8));float: right;line-height: 50px;text-align: center;color: white;" onclick="wechatPay()">
+					去结算
+				</div>
+				<div style="float: right;height: 100%;width: 80px;">
+					
+					<p style="font-size: 24px;color: #268efa;margin-left: -20px;">￥<span id="totalGuideFee">150</span></p>
+
+				</div>
+				<div style="font-size: 16px;float: right;height: 100%;line-height: 56px;">讲解费：</div>
+			</div>
+			
+			<div style="width: 100%;height: 120px;"></div>
+			
+		</div>
+		
+	</body>
+	<script>
+		addNavigate(2);
+	</script>
+</html>
+<!-- <legend>需要为您代购门票吗？</legend>
+                <label for="orderTicketRadio" value ="1">是，请为我代购门票</label>
+                <input type="radio" id="orderTicketRadio" name="pindan_orderTicket" value="1" class="" />
+                <div data-role="collapsible" id="orderTicketPanel" data-collapsed="false" hidden="true">
+                        <label for="fullPriceTicketNum" class="ui-hidden-accessible">全价票</label>
+                        <input type="number" id="fullPriceTicketNum" name="fullPriceTicketNum" value="" placeholder="全价票">
+                        <label for="halfPriceTicketNum" class="ui-hidden-accessible">半价票</label>
+                        <input type="number" id="halfPriceTicketNum" name="halfPriceTicketNum" value="" placeholder="半价票">
+                        <label for="discountTicketNum" class="ui-hidden-accessible">折扣票</label>
+                        <input type="number" id="discountTicketNum" name="discountTicketNum" value="" placeholder="半价票">
+                </div>
+                <label for="notorderTicketRadio" value="0">否，不用了，谢谢</label>
+                <input type="radio" id="notorderTicketRadio" name="pindan_orderTicket" value="0" class="" />-->

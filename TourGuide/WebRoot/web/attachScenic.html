@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>挂靠景区(当前挂靠)</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no"  />
+		<link rel="stylesheet" href="css/attachScenic.css" />
+		<script type="text/javascript" src="js/jquery-1.11.3.min.js" ></script>
+		<script type="text/javascript" src="js/CommonSession.js" ></script>
+		<script type="text/javascript" src="js/attachScenic.js" ></script>
+	<style type="text/css">
+		select
+		{
+			-moz-appearance: none;
+		    -webkit-appearance:none;
+		    appearance:none;
+		}
+
+	</style>
+	</head>
+	<body>
+		<div class="tabHead">
+			<span id="Attach" class="selected" onclick="changeTab1()">当前挂靠</span>
+			<span id="AttachHistroy" onclick="changeTab2()">挂靠记录</span>
+		</div>
+		<input type="text" value="输入景区名称进行搜索" class="search"/>
+		<div class="bar1">			
+		</div>
+		
+		
+		<!--当前挂靠-->
+		<div class="list"  id="currentList" style="height: 100px; width: 100%;top: 120px; position: absolute;">
+			
+		</div>
+		
+		<!--全部景点-->
+		<div class="list" id="allList" style="height: 100%; width: 100%; margin-top: 150px;">
+		
+		</div>
+		
+	</body>
+</html>

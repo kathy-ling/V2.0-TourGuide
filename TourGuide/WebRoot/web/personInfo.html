@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>个人信息页面</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no"  />
+		<link rel="stylesheet" href="css/personInfo.css" />
+		<script src="http://www.jq22.com/jquery/jquery-1.10.2.js"></script>   
+		<script type="text/javascript" src="js/CommonSession.js" ></script>
+		<script type="text/javascript" src="js/PersonalInfo.js" ></script>
+	</head>
+	<body>
+		<div class="topHead">
+			
+		</div>
+		<div class="guideHeadImg">
+			<img src="img/4-9导游头像.png" id="GuideHeadImg"/>
+			<img src="img/增加按钮.png" class="guideHeadImgAdd"/>
+		</div>
+		<div class="personInfo">
+			<span>账号</span>
+			<input id="person_info_tel" value=""></input>
+		</div>
+		<div class="personInfo">
+			<span>姓名</span>
+			<input id="person_info_name" value=""></input>
+		</div>
+
+		<button class="confirmModi" onclick="setperinfo()">确认修改</button>
+	</body>
+</html>

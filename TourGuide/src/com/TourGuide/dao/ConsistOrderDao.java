@@ -101,10 +101,10 @@ public class ConsistOrderDao {
 			/**
 			 * 假设付款成功
 			 */
-			String payTime = MyDateFormat.form(new Date());
+			/*String payTime = MyDateFormat.form(new Date());
 			String sqlUpdate = "update t_consistOrder set hadPay=1,payTime='"+payTime+"' "
 					+ "where consistOrderID='"+consistOrderID+"'";
-			int k = jdbcTemplate.update(sqlUpdate);	
+			int k = jdbcTemplate.update(sqlUpdate);	*/
 			
 			if(visitNum >= maxNum-3){
 				boolean assign = AssignGuide(visitTime, visitNum, maxNum, scenicID, orderID);
@@ -114,7 +114,7 @@ public class ConsistOrderDao {
 			conn.setAutoCommit(true);// 恢复JDBC事务的默认提交方式
 			conn.close();
 			
-			if(i!=0 && j!=0 && k!=0){
+			if(i!=0 && j!=0 ){
 				bool = true;
 			}			
 		} catch (SQLException e) {

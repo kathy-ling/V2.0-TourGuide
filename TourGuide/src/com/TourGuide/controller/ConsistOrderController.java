@@ -146,11 +146,17 @@ public class ConsistOrderController {
 //		int totalTicket = money.get(1);  //门票费总额
 //		int totalMoney = money.get(2);  //讲解费总额 + 门票费总额
 		
+		String orderState = "待付款";
+		
 		boolean bool = consistOrderService.ReleaseConsistOrder(consistOrderID, orderID, 
 				scenicID, produceTime, visitTime, Integer.parseInt(visitNum), visitorPhone,
 				contact, orderState, isConsisted, introFeeAndMaxNum.getMaxNum(), totalFee, fee);
+		if (bool) {
+			return consistOrderID;
+		} else {
+			return null;
+		}
 		
-		return bool;
 	}
 	
 	
@@ -252,6 +258,7 @@ public class ConsistOrderController {
 //		int totalMoney = money.get(2);  //讲解费总额 + 门票费总额
 		
 		isConsisted = 1;
+//		String orderState = "待付款";
 		
 		boolean bool = consistOrderService.consistWithconsistOrderID(orderID, 
 				consistOrderID, scenicID, produceTime, visitTime, 

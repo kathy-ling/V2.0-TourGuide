@@ -1,0 +1,47 @@
+html,body
+{
+	height: 100%;
+	width: 95%;
+}
+body
+{
+	background: url(../img/拼团首页大底图.png) no-repeat;
+	background-size:cover;
+}
+.content img
+{
+	width: 30%;
+	margin-left: 40%;
+	margin-top: 30%;
+}
+.text
+{
+	color: white;
+	text-align: center;
+	margin-top: 35%;
+	font-size: 0.8em;
+}
+.buttonSelect
+{
+	margin-top: 35%;
+	width: 100%;
+	margin-left: 8%;
+	margin-right: 8%;
+}
+#Select,#Pin
+{
+	width: 40%;
+	background-color:#2897f9;
+	background-size:cover;
+	padding: 10px 25px;
+	border-radius: 5px;	
+	color: white;
+	font-weight: 700;
+	font-size: 16px;
+	font-family: "times new roman";
+	border: none;
+}
+#Pin
+{
+	margin-left:4%;
+}

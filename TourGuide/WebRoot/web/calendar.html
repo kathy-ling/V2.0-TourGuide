@@ -1,0 +1,76 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0,user-scalable=no" name="viewport">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>签到</title>
+	<link rel="stylesheet" type="text/css" href="css/navigate.css"/>
+	<link rel="stylesheet" href="css/rili.css">
+	<link rel="stylesheet" type="text/css" href="css/navigate.css" />
+		<script type="text/javascript" src="js/navigationbar.js"></script>
+    <script src="http://www.jq22.com/jquery/jquery-1.10.2.js"></script>   
+	<script type="text/javascript" src="js/navigationbar.js" ></script>
+	<script type="text/javascript" src="js/CommonSession.js" ></script>
+	<script type="text/javascript" src="js/calendar.js" ></script>
+</head>
+
+<body>
+    <!-- 账户主要表格 -->
+    <div class="account-box">
+        <h2 class="account-title">
+            <a href="###" class="f-btn-fhby right" style="margin-right: 20px;">返回本月</a>
+            <div class="clearfix right" style="float: left;width: calc(100%-80px);">
+                <div class="f-btn-jian left" style="margin-left:20px;">&lt;</div><div class="left f-riqi"><span class="f-year">2017</span>年<span class="f-month">1</span>月</div><div class="f-btn-jia left">&gt;</div><!-- 一定不能换行-->
+            </div>
+        </h2>
+        <div class="f-rili-table">
+            <div class="f-rili-head celarfix">
+                <div class="f-rili-th">周日</div>
+                <div class="f-rili-th">周一</div>
+                <div class="f-rili-th">周二</div>
+                <div class="f-rili-th">周三</div>
+                <div class="f-rili-th">周四</div>
+                <div class="f-rili-th">周五</div>
+                <div class="f-rili-th">周六</div>
+                <div class="clear"></div>
+            </div>
+            <div class="f-tbody clearfix">
+				
+            </div>
+        </div>
+    </div>
+    <div id="todaypage" style="width: 100%;height: 50px;margin-top: 20px;">
+    	<!--<div style="width: 90%;height: 100%;background-image: url(img/bluejbbt.png);background-size: 100% 100%;text-align: center;margin: auto;">
+    		<span style="color: white;font-size: 24px;line-height: 46px;">查看当日订单</span>
+    	</div>   	-->
+    	<div style="width: 90%;height: 100%;background-image: url(img/bluejbbt.png);background-size: 100% 100%;text-align: center;margin: auto;">
+    		<span onclick="todayConfirm()" style="color: white;font-size: 24px;line-height: 46px;">确认接单</span>
+    	</div>
+    	<div style="width: 100%;height: 20px;"></div>
+    	<div style="width: 90%;height: 100%;background-image: url(img/bluejbbt.png);background-size: 100% 100%;text-align: center;margin: auto;">
+    		<span onclick="todayCancle()" style="color: white;font-size: 24px;line-height: 46px;">取消接单</span>
+    	</div>
+    </div>
+    <div id="tomopage" style="width: 100%;height: 50px;margin-top: 20px;">
+    	<div style="width: 90%;height: 100%;background-image: url(img/bluejbbt.png);background-size: 100% 100%;text-align: center;margin: auto;">
+    		<span onclick="tomorrowConfirm()" style="color: white;font-size: 24px;line-height: 46px;">确认接单</span>
+    	</div>
+    	<div style="width: 100%;height: 20px;"></div>
+    	<div style="width: 90%;height: 100%;background-image: url(img/bluejbbt.png);background-size: 100% 100%;text-align: center;margin: auto;">
+    		<span onclick="tomorrowCancle()" style="color: white;font-size: 24px;line-height: 46px;">取消接单</span>
+    	</div>  
+    </div>
+    <div id="dayaftpage" style="width: 100%;height: 50px;margin-top: 20px;">
+    	<div style="width: 90%;height: 100%;background-image: url(img/bluejbbt.png);background-size: 100% 100%;text-align: center;margin: auto;">
+    		<span onclick="dayAfterCancle()" style="color: white;font-size: 24px;line-height: 46px;">确认接单</span>
+    	</div>
+    	<div style="width: 100%;height: 20px;"></div>
+    	<div style="width: 90%;height: 100%;background-image: url(img/bluejbbt.png);background-size: 100% 100%;text-align: center;margin: auto;">
+    		<span onclick="dayAfterCancle()" style="color: white;font-size: 24px;line-height: 46px;">取消接单</span>
+    	</div>  
+    </div>
+    
+    
+</body>
+</html>

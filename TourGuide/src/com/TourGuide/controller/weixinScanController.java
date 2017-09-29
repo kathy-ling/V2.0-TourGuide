@@ -26,12 +26,11 @@ public class weixinScanController {
 	@RequestMapping(value = "/weixinScan.do")
 	 @ResponseBody
 	 public Object weixinScan( HttpServletRequest request,
-			 HttpServletResponse response) throws Exception {
+			 HttpServletResponse response,String url ) throws Exception {
 		CommonResp.SetUtf(response);
-		 String weburl = request.getParameter("url"); 
 
 	     Map<String, String> resMap = new HashMap<String, String>();
-	     resMap = JsSignUtil.sign(weburl);
+	     resMap = JsSignUtil.sign(url);
 	     
 	     return resMap;
 	 }

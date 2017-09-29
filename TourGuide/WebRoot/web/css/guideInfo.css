@@ -1,0 +1,92 @@
+/*
+* @Author: Marte
+* @Date:   2017-01-01 22:47:27
+* @Last Modified by:   Marte
+* @Last Modified time: 2017-01-02 15:00:30
+*/
+.pStyle
+{
+	text-indent:0 ;
+	position: absolute;
+	top:-12%;		
+}
+.liStyle
+{
+	/*height: 30%;*/
+	bottom: 30%;
+}
+.aStyle
+{
+	padding: 20px;
+}
+.yuyue{
+	padding: 20px;
+}
+#guideinfoPage
+{
+	margin-bottom: 50px;
+}
+.infoheader{
+    height:40%;
+    background-color: #ED1313;
+}
+.guideInfoBGimg{
+        height:100%;
+        overflow: hidden;
+}
+.guideInfoBGimg img{
+    width:100%;
+    height:auto;
+}
+.guideInfoHead{
+    height: 50%;
+    display: block;
+    position: absolute;
+    left: 0;
+    padding-left:50%;
+    margin-left: -12.5%;
+    top:25%;
+}
+.guideInfoHead img{
+        width:100%;
+        height:100%;
+        border-radius: 50%;
+        border:2px solid white;
+    }
+.sideRadius{
+	width: 4em;
+	height: 4em;
+	border-radius: 4em;
+	background-color: #FF2C2C;
+	position:fixed;
+	right: 0;
+	bottom:30%;
+	z-index: 100;
+}
+.sideRadius:hover{
+	background-color: #111111;
+}
+.sideRadius a.sidebtn{
+	display: block;
+	text-align: center;
+	text-decoration: none;
+	text-shadow: none;
+	padding: 0;
+	width: 3em;
+	height: 3em;
+	line-height: 1.5em;
+	letter-spacing:0.2em;
+	margin:0.5em;
+	color:#FFFFFF;
+}
+
+.sideRadius a.sidebtn:visited{
+	color:#FFFFFF;
+}
+.sideRadius a.sidebtn:hover{
+	color:#FFFFFF;
+}
+#commentList a{
+	font-size: 0.75em;
+	font-weight: normal;
+}

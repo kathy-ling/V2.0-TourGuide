@@ -1,0 +1,121 @@
+body
+{
+	overflow: hidden;
+	position: fixed;
+}
+table
+{
+	height: 100%; 
+	width: 100%; 
+	border-spacing:0px ;
+	/*border: 1px solid yellow;*/
+}
+tr
+{
+	height: 50%; 
+	width: 100%; 
+	/*border: 1px solid black;*/
+}
+.middleInfo td
+{
+	background-color: #2489fb;
+	border: none;
+	border: 1px solid #4aa1fb;
+}
+.middleInfo
+{
+	height: 26%; 
+	/*border: 1px solid red;*/
+}
+#GuideName
+{
+	margin-top: -50px;
+	position: absolute;
+	color: white;
+	right: 0;
+	margin-right: 20px;
+	font-size: 1.1em;
+}
+.percentDiv
+{
+	margin-top: -30px;
+	position: absolute;
+	right: 0;
+	margin-right: 20px;
+	color: white;
+	display: inline;
+}
+#Percent
+{
+	display: inline;
+}
+.background
+{
+	height: 44%;
+	/*border: 1px solid red;*/
+	background-color: #2489fb;
+	margin-top: -1px;
+}
+
+.GradeNumMoney,.NumMoney
+{
+	height: 20%;
+	/*border: 1px solid red;*/
+}
+.grade,.orderNum,.totalMoney,.numMoney
+{
+	height: 50%;
+	/*border: 1px solid black;*/
+	width: 33%;
+	
+}
+.gradeP
+{
+	padding: 0;
+	margin: 0;
+	color: white;
+	text-align: center;
+	margin-top: 14px;
+	margin-left: 16px;
+}
+#Grade,#OrderNum,#TotalMoney,#totalVisNum,#monthOrderNum,#monthMoney
+{
+	padding: 0;
+	margin: 0;
+	color: white;
+	text-align: center;
+	margin-left: 4%;
+}
+.contrastIcon
+{
+	width: 50px;
+}
+.contrastSpan
+{
+	color: white;
+	margin-top: 16px;
+	position: absolute;
+}
+.left
+{
+	color: white;
+	margin-left: 10%;
+}
+.right
+{
+	color: white;
+	float: right;
+	margin-right: 10%;
+}
+.right1
+{
+	color: white;
+	float: right;
+	margin-right: 30%;
+}
+.right2
+{
+	color: white;
+	float: right;
+	margin-right: 26%;
+}

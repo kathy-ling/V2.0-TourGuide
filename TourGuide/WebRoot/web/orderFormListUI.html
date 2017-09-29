@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8" />
+		<title>订单列表</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		
+		<link rel="stylesheet" href="css/navigate.css" />
+		<link rel="stylesheet" type="text/css" href="css/jquery.mobile-1.4.5.css">
+		<link rel="stylesheet" type="text/css" href="css/nativedroid2.css">
+		<link rel="stylesheet" type="text/css" href="css/orderFormListUI.css">
+		<script type="text/javascript" src="js/navigationbar.js" ></script>
+		<script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
+		<script type="text/javascript" src="js/jquery.mobile-1.4.5.min.js"></script>
+		<script type="text/javascript" src="js/orderFormListUI.js"></script>		
+	</head>
+	
+
+	<body>
+		<div id="mPage" data-role="page" style="background-color: #f1f4fb;">
+
+			<div data-role="header" id="header" style="width: 100%;height: 50px;background-color: #f2f5fb;padding: 5px;">
+				<div class="headerdiv selector" style="width: 100%;height: 40px;margin: auto;margin-top: 5px;text-align: center;color: #000000;line-height: 40px;font-weight: normal;">
+					<div id="btqb" class="bgw" onclick="qbon()">全部</div>
+					<div id="btywc" class="bgw" onclick="ywcon()">已完成</div>
+					<div id="btdyl" class="bgw" onclick="dylon()">待游览</div>
+					<div id="btdfk" class="bgw" onclick="yfkon()">待付款</div>
+					<div id="btdpj" class="bgw" onclick="dpjon()">待评价</div>
+				</div>
+			</div>
+
+			<div id="mMain" data-role="main" class="ui-content selector" style="width: 100%;padding: 0px;overflow-y: scroll;">								
+			
+			</div>
+		</div>
+		
+	</body>
+	<script>
+		$(function($){
+			addNavigate(4);
+		});
+	</script>
+</html>

@@ -1,0 +1,31 @@
+html,body
+{
+	height: 100%;
+	width: 100%;
+	padding: 0;
+	margin: 0;
+}
+.visitNum,.visitStatue
+{
+	text-align: center;
+	margin-top: 15%;
+	font-size: 1.2em;
+}
+#VisitNum,#VisitStatue
+{
+	font-size: 1.5em;
+}
+.join
+{
+	height: 8%;
+	width: 80%;
+	padding-left: 50px;
+	margin-top: 30%;
+	margin-left: 10%;
+	margin-right: 10%;
+	background: url(../img/开始选团按钮底图.png) no-repeat;
+	background-size:cover ;
+	color: white;
+	font-size: 1.1em;
+	border: none;
+}

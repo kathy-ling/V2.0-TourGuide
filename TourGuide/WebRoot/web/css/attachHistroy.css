@@ -1,0 +1,86 @@
+.histroyListItem
+{
+	height: 18%;
+	border-bottom: 2px solid gainsboro;
+	margin-top: 2%;
+	position: relative;
+}
+.HistroyscenicImg
+{
+	width: 32%;
+	height: 100%;
+	/*border: 1px solid black;*/
+	float: left;
+	position: absolute;
+}
+.histroyScenicImg
+{
+	border-radius:50% ;
+	width: 90px;
+	height: 90px;
+	margin-left: 20px;
+	margin-top: 10%;
+}
+.histroyInfo
+{
+	width: 60%;
+	height: 100%;
+	/*border: 1px solid black;*/
+	float: left;
+	margin-left: 120px;
+	position: relative;
+}
+.name1
+{
+	/*border: 1px solid red;*/
+	width: 100px;
+	height: 20%;
+	position: absolute;
+	top: 10%;
+}
+.time1
+{
+	height: 30%;
+	width: 100%;
+	/*border: 1px solid blue;*/
+	position: absolute;
+	top: 36%;
+	left: 0;
+}
+.time2
+{
+	height: 30%;
+	width: 100%;
+	/*border: 1px solid blue;*/
+	position: absolute;
+	top: 60%;
+}
+/*#ScenicName
+{
+	margin-left: 3%;
+}*/
+.applyTime
+{
+	display: inline-block;
+	/*margin-top: 3%;
+	margin-left: 3%;*/
+	background: url(../img/9-7申请时间底图.png) no-repeat;
+	background-size:100% ;
+	padding-bottom: 4%;
+	padding-left: 2%;
+	padding-right: 2%;
+	color: white;
+}
+.cancelTime
+{
+	display: inline-block;
+	/*margin-top: 3%;
+	margin-left: 3%;*/
+	background: url(../img/9-8取消时间底图.png) no-repeat;
+	background-size:100% ;
+	padding-bottom: 4%;
+	padding-left: 2%;
+	padding-right: 2%;
+	color: white;
+	
+}

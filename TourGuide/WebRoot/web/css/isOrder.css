@@ -1,0 +1,222 @@
+html,body
+{
+	height: 100%;
+	width: 100%;
+	padding: 0;
+	margin: 0;
+	font-family: "微软雅黑";
+}
+
+.top
+{
+	height: 6%;
+	background: url(../img/5-1顶部底图.png) no-repeat;
+	background-size:cover ;
+}
+.top span
+{
+	width: 100%;
+	color: white;
+	text-align: center;
+	margin-top: 2%;
+	display: inline-block;
+}
+.guideInfo
+{
+	height: 24%;
+	width: 100%;
+	margin-right:5px ;
+	margin-top: 2%;
+}
+.headImg
+{
+	height: 40%;
+	position: relative;
+}
+#GuideHead
+{
+	border-radius:50% ;
+	width: 80px;
+	height: 80px;
+	position: absolute;
+	left: 8%;
+}
+#GuideName
+{
+	display: inline-block;
+	position: absolute;
+	left: 33%;
+	bottom:6%;
+}
+#GuideSex
+{
+	display: inline-block;
+	position: absolute;
+	left: 48%;
+	bottom:6%;
+	color: red;
+	border: 1px solid red;
+	padding-left: 8px;
+	padding-right: 8px;
+	font-size: 0.9em;
+}
+#GuideScenic
+{
+	position: absolute;
+	right: 2%;
+	bottom: 6%;
+	margin-top: 10%;
+	font-size: 0.8em;
+	margin-right: 3%;
+}
+.detailInfo
+{
+	height: 180px;
+	position: relative;
+}
+.detailInfo1
+{
+	height: 180px;
+	position: relative;
+}
+.guideFee
+{
+	width: 30%;
+	height: 50%;
+	position: absolute;
+	left: 20px;
+	display: inline-block;
+	text-align: center;
+	vertical-align: top;
+	margin-top: 20px;
+}
+#GuideFee
+{
+	color: #0050EF;
+	font-size: 2em;
+	margin-top: 2%;
+}
+.rightDiv
+{
+	width: 50%;
+	height: 100%;
+	display: inline-block;
+	margin-left: 6%;
+	margin-top: 8px;
+	position: absolute;
+	right: 0;
+}
+.guideLevel,.guideAge,.guideLanguage,.guideNum
+{
+	width: 40%;
+	height: 45%;
+	font-size: 0.7em;
+	text-align: center;
+	display: inline-block;
+	margin-top: 6px;
+}
+#GuideLevel,#GuideAge,#GuideLanguage,#GuideNum
+{
+	color: #0050EF;
+	font-size:2em;
+	margin-top: -4%;
+}
+.confirmInfo
+{
+	background-color: #EEEEEE;
+	height: 65%;
+	width: 100%;
+	margin-top: 34%;
+	padding-top: 6%;
+}
+.confirmInfo img
+{
+	width: 8%;
+	margin-left: 4%;
+	margin-top: 1%;
+}
+.confirmInfo span
+{
+	display: inline-block;
+	vertical-align: top;
+	margin-top: 2%;
+}
+.confirmInfo p
+{
+	margin-left: 30%;
+	font-size: 0.7em;
+}
+.confirmInfo select
+{
+	width: 56%;
+	height: 36px;
+	padding-left: 16%;
+	border-radius: 30px;
+	margin-top: -34px;
+	margin-left:28%;
+	border: none;
+	display: block;
+}
+#radio
+{
+	display: inline-block;
+	position: absolute;
+	margin-left: 5%;
+}
+#radioLabel1,#radioLabel2,#radioLabel3
+{
+	padding: 10px;
+}
+.bottomInfo
+{
+	height: 7%;
+	margin-top: 2%;
+	border-bottom: 2px solid gainsboro;
+	padding-bottom: 4%;
+	margin-left: 4%;
+	margin-right: 4%;
+}
+.bottomInfo span
+{
+	margin-top: 3%;
+}
+#VisitNum ,#ContactName,#ContactPhone
+{
+	display: inline-block;
+	position: absolute;
+	margin-left: 8%;
+	margin-top: 4%;
+	text-align: center;
+	border: none;
+	background-color: #EEEEEE;
+	width: 30%;
+}
+#Minus
+{
+	background: url(../img/6-3减.png) no-repeat;
+	background-size:100%;
+	height: 26px;
+	width: 26px;
+	margin-left: 54%;
+	margin-top: 3%;
+}
+#Plus
+{
+	background: url(../img/6-4加.png) no-repeat;
+	background-size:100%;
+	height: 26px;
+	width: 26px;
+}
+.confirmButton
+{
+	background: url(../img/6-5确认订单.png) no-repeat;
+	background-size:100% ;
+	border: none;
+	margin-top: 2%;
+	height: 14%;
+	width: 75%;
+	color: white;
+	font-size: 1.2em;
+	margin-left: 15%;
+}
+*/

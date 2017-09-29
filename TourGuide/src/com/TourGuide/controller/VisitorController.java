@@ -236,15 +236,14 @@ public class VisitorController {
 	 * @throws IOException
 	 */
 	@RequestMapping(value = "/isBlackened.do")
-	public void isBlackened(HttpServletResponse resp,
+	@ResponseBody
+	public boolean  isBlackened(HttpServletResponse resp,
 			@RequestParam("phone") String phone) throws IOException{
 		
 		CommonResp.SetUtf(resp);
 		
 		boolean bool = visitorService.isBlackened(phone);
 		
-		PrintWriter writer = resp.getWriter();
-		writer.write(new Gson().toJson(bool));
-		writer.flush();
+		return bool;
 	}
 }

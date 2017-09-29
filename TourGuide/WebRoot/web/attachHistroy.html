@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>挂靠记录</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no"  />
+		<link rel="stylesheet" href="css/attachScenic.css" />
+		<link rel="stylesheet" href="css/attachHistroy.css" />
+		<script type="text/javascript" src="js/jquery-1.11.3.min.js" ></script>
+		<script type="text/javascript" src="js/CommonSession.js" ></script>
+		<script type="text/javascript" src="js/attachHistroy.js" ></script>
+	</head>
+	<style type="text/css">
+		select
+		{
+			-moz-appearance: none;
+		    -webkit-appearance:none;
+		    appearance:none;
+		}
+
+	</style>
+	<body>
+		<div class="tabHead">
+			<span id="Attach" onclick="changeTab1()">当前挂靠</span>
+			<span id="AttachHistroy" class="selected" onclick="changeTab2()">挂靠记录</span>
+		</div>
+		<input type="text" value="输入景区名称进行搜索" class="search"/>
+		<div class="bar1">			
+		</div>
+		<div class="list" id="list">
+			<div class="histroyListItem">
+				<!--<div class="HistroyscenicImg">
+					<img class="histroyScenicImg" id="HistroyScenicImg" src="img/9-5钟楼.png"/>
+				</div>
+				<div class="histroyInfo">
+					<div class="name1">
+						<span id="ScenicName">钟楼</span>
+					</div>
+					<div class="time1">
+						<span class="applyTime">申请时间</span>
+						<span id="ApplyTime">2016.06.15</span>
+					</div>
+					<div class="time2">
+						<span class="cancelTime">取消时间</span>
+						<span id="CancelTime">2017.06.15</span>
+					</div>
+				</div>-->
+			</div>
+		</div>
+		
+		<!--<div class="histroyListItem">
+			<div class="HistroyscenicImg">
+				<img id="HistroyScenicImg" src="img/9-6壶口瀑布.png"/>
+			</div>
+			<div class="histroyInfo">
+				<div class="name">
+					<span id="ScenicName">壶口瀑布</span>
+				</div>
+				<div>
+					<span class="applyTime">申请时间</span>
+					<span id="ApplyTime">2014.05.23</span>
+				</div>
+				<div>
+					<span class="cancelTime">取消时间</span>
+					<span id="CancelTime">2016.06.15</span>
+				</div>
+			</div>
+		</div>-->
+	</body>
+</html>

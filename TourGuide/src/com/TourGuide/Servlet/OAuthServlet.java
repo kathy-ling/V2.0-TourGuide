@@ -30,7 +30,7 @@ public class OAuthServlet extends HttpServlet{
 	public void doGet(HttpServletRequest request, HttpServletResponse response) 
 
 			throws ServletException, IOException {		
-		
+		System.out.println("获取授权");
 		request.setCharacterEncoding("utf-8");
 		response.setCharacterEncoding("utf-8");
 

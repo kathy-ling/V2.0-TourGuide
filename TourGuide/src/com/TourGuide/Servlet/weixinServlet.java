@@ -22,20 +22,23 @@ public class weixinServlet extends HttpServlet {
 		
 		// 微信加密签名
 		String signature = request.getParameter("signature");
+		System.out.println("signature:"+signature);
 		// 时间戳
 		String timestamp = request.getParameter("timestamp");
+		System.out.println("timestamp"+timestamp);
 		// 随机数
 		String nonce = request.getParameter("nonce");
+		System.out.println("nonce"+nonce);
 		// 随机字符串
 		String echostr = request.getParameter("echostr");
-
+		System.out.println("timestamp"+timestamp);
 		PrintWriter out = response.getWriter();
 		// 请求校验，若校验成功则原样返回echostr，表示接入成功，否则接入失败
 		if (SignUtil.checkSignature(signature, timestamp, nonce)) {
 			out.print(echostr);
 		}
 		out.close();
-		out = null;
+		out.flush();
 	}
 
 	
@@ -47,9 +50,11 @@ public class weixinServlet extends HttpServlet {
 
 		// 接收参数微信加密签名、 时间戳、随机数
 		String signature = request.getParameter("signature");
+		System.out.println("signature:"+signature);
 		String timestamp = request.getParameter("timestamp");
+		System.out.println("timestamp"+timestamp);
 		String nonce = request.getParameter("nonce");
-
+		System.out.println("nonce"+nonce);
 		PrintWriter out = response.getWriter();
 		// 请求校验
 		if (SignUtil.checkSignature(signature, timestamp, nonce)) {
@@ -58,7 +63,7 @@ public class weixinServlet extends HttpServlet {
 			out.print(respXml);
 		}
 		out.close();
-		out = null;
+		out.flush();
 	}
 }
 

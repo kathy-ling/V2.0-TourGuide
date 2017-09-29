@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>可接单列表</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link rel="stylesheet" type="text/css" href="css/jquery.mobile-1.4.5.css">
+		<link rel="stylesheet" type="text/css" href="css/nativedroid2.css">
+		<script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
+    	<script type="text/javascript" src="js/jquery.mobile-1.4.5.min.js"></script>
+    	<script type="text/javascript" src="js/takeOrder.js"></script>
+	</head>
+	<style>
+		.orderitem{
+			background-color: white; width: 100%;box-shadow: 0 4px 2px -2px rgba(0,0,0,0.2);
+		}
+		.orderitemtop{
+			width: 90%;margin: auto;border-bottom: 1px dashed #CCCCCC;height: 40px;background-color: white;
+		}
+		.orderscenicname{
+			float: left;width: 35%;overflow: hidden;height: 100%;
+		}
+		.orderscenicname span{
+			font-size: 16px;line-height: 45px;
+		}
+		
+		.ordervisittime{
+			float: right;margin-right: 0px;margin-top: 5px;
+		}
+		.ordervisittime p{
+			font-size: 12px;float: right;line-height: 10px;
+		}
+		.orderitembottom{
+			width: 90%;height: 110px;margin: auto;
+		}
+		
+		.orderremaintime{
+			width: 84px;height: 84px; margin-top: 10px;text-align: center;float: left;border-radius: 50%;border: 3px solid #268efa;
+		}
+		.orderremaintime p{
+			font-size: 12px;margin-top: 12px;
+		}
+		.orderremaintime span{
+			font-size: 40px;line-height: 40px;
+		}
+		.orderitembtntable{
+			width: calc(100% - 90px);height: 100%;float: left;
+		}
+		
+		.orderitembtdiv{
+			height: 110px;width: 60px;float: right;
+		}
+		.orderitembtdiv a{
+			text-decoration: none;
+		}
+		.orderitembt{
+			width: 60px;height: 59px;margin: auto;border-radius: 5px;color: white;font-size: 20px;background: -webkit-gradient(linear, 0% 0%, 100% 0%, from(#2488fa), to(#31b6f8));margin-top: 30px;text-align: center;
+			padding-top: 1px;
+		}
+		.orderitembt p{
+			margin-top: 9px;
+		}
+		
+		
+		.orderitemtable{
+			height: 100%;float: right;width: calc(100% - 60px);
+		}
+		.orderitemtable table{
+			text-align: center;width: 100%;margin-top: 30px;
+		}
+		.orderitemtable span{
+			font-size: 30px;
+		}
+		.orderitemtabletr1{
+			font-size: 14px;
+		}
+	</style>
+	
+	<body>
+	<div data-role="page" class="selector" style="background-color: #f1f4fb;">
+
+		<div style="position: fixed;height: 44px;width: 100%;background-color: #1b66fc;text-align: center;">
+			<p style="line-height: 14px;color: white;">可接订单<span id="orderCount">0</span>个</p>
+		</div>
+		
+		
+		
+		<div data-role="main" style="margin-top: 44px;">
+
+			<div id="takeOrders">
+				<!--<div class="orderitem">
+						<div class="orderitemtop">
+							<div class="orderscenicname">
+								<span>秦始皇兵马俑</span>
+							</div>
+							<div class="ordervisittime">
+								<p>参观时间：<span>07.12&nbsp;&nbsp;&nbsp;08:00</span></p>
+								
+							</div>
+						</div>
+						<div class="orderitembottom">
+							<div class="orderremaintime">
+							    <p><span>3</span>&nbsp;小时<br/>剩余时间</p>
+							</div>
+							<div class="orderitembtntable">
+								<div class="orderitembtdiv">
+									<a href = "DetailBeTakenOrder.html?Orderid=aaaaaa">
+									    <div class="orderitembt">
+										    <p>详细<br/>信息</p>
+									    </div>
+									</a>
+
+								</div>
+								<div class="orderitemtable">
+									<table>
+										<tr class="orderitemtabletr1">
+											<td>&nbsp;参观人数&nbsp;</td>
+											<td>&nbsp;支付费用&nbsp;</td>
+										</tr>
+										<tr>
+											<td><span>3</span></td>
+											<td><span>150</span></td>
+										</tr>
+									</table>
+								</div>
+								
+							</div>
+							
+						</div>
+					</div>
+				<div style="width: 100%;height: 10px;"></div>
+			-->
+			
+			</div>
+		
+			<div style="width: 100%;height: 70px;"></div>
+		</div>
+	</div>
+	</body>
+</html>

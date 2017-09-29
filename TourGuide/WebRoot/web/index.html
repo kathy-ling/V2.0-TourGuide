@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<script type="text/javascript" src="js/jquery-1.11.3.min.js" ></script>
+		<script type="text/javascript" src="js/CommonSession.js" ></script>
+		
+		<title>周道旅游</title>
+	</head>
+	<style>
+
+	</style>
+	<body id="mMain" style="background: url(img/indexbg.png) ; background-size: 100% 100%;">
+		<div style="width: 100%; margin-top: 100px;">
+
+			<table style="width: 60%;margin: auto;">
+				<tr>
+					<td>
+						<img src="img/icon-yuyue.png" style="width: 100%;" onclick="window.location.href='orderGuides.html'"/>
+					</td>
+					<td style="width: 10%;">
+						
+					</td>
+					<td>
+						<img src="img/icon-pindan.png" style="width: 100%;" onclick="window.location.href='pinIndex.html'"/> 
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<img src="img/icon-geren.png" style="width: 100%;"  onclick="window.location.href='personalHome.html'"/>
+					</td>
+					<td></td>
+					<td>
+						<img src="img/icon-info.png" style="width: 100%;"/>
+					</td>
+				</tr>
+			</table>
+
+		</div>
+	</body>
+	<script>
+		$(function($) {
+		    var h=$(window).height();
+			h = h - 100;
+		    $("#mMain").css("height",h);
+		});
+	</script>
+</html>
