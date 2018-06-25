@@ -6,9 +6,12 @@
 		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no"  />
 		<link rel="stylesheet" href="css/attachScenic.css" />
 		<link rel="stylesheet" href="css/attachHistroy.css" />
+		<link rel="stylesheet" type="text/css" href="css/navigate.css"/>
 		<script type="text/javascript" src="js/jquery-1.11.3.min.js" ></script>
 		<script type="text/javascript" src="js/CommonSession.js" ></script>
 		<script type="text/javascript" src="js/attachHistroy.js" ></script>
+		<script type="text/javascript" src="js/navigationbar.js" ></script>
+
 	</head>
 	<style type="text/css">
 		select
@@ -24,12 +27,12 @@
 			<span id="Attach" onclick="changeTab1()">当前挂靠</span>
 			<span id="AttachHistroy" class="selected" onclick="changeTab2()">挂靠记录</span>
 		</div>
-		<input type="text" value="输入景区名称进行搜索" class="search"/>
+		<input type="text" placeholder="输入景区名称进行搜索" class="search"/>
 		<div class="bar1">			
 		</div>
 		<div class="list" id="list">
 			<div class="histroyListItem">
-				<!--<div class="HistroyscenicImg">
+				<!-- <div class="HistroyscenicImg">
 					<img class="histroyScenicImg" id="HistroyScenicImg" src="img/9-5钟楼.png"/>
 				</div>
 				<div class="histroyInfo">
@@ -44,7 +47,7 @@
 						<span class="cancelTime">取消时间</span>
 						<span id="CancelTime">2017.06.15</span>
 					</div>
-				</div>-->
+				</div> -->
 			</div>
 		</div>
 		
@@ -66,5 +69,10 @@
 				</div>
 			</div>
 		</div>-->
+		<script>
+			$(function($) {
+				addNavigate(4);
+			});
+		</script>
 	</body>
 </html>

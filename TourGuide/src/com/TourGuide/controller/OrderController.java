@@ -1,5 +1,7 @@
 package com.TourGuide.controller;
 
+import static org.hamcrest.CoreMatchers.nullValue;
+
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
@@ -42,9 +44,7 @@ public class OrderController {
 			@RequestParam("orderID") String orderID) throws IOException{
 		
 		CommonResp.SetUtf(resp);
-		
 		boolean bool = orderService.wechatPayOrder(orderID);
-		
 		PrintWriter writer = resp.getWriter();
 		writer.write(new Gson().toJson(bool));
 		writer.flush();
@@ -52,7 +52,7 @@ public class OrderController {
 	
 	
 	/**
-	 * 根据用户的手机号，查询用户的所有订单
+	 * 根据用户的手机号，查询用户的所有订单 
 	 * @param resp
 	 * @param visitorPhone  用户手机号
 	 * @throws IOException
@@ -70,6 +70,49 @@ public class OrderController {
 		writer.write(new Gson().toJson(listResult));
 		writer.flush();
 	}
+	
+    /*
+     * 根据游客手机号查找当前待游览订单
+     * */
+	@RequestMapping(value = "/getdaiyoulanorder.do")
+	@ResponseBody
+	public Object getdaiyoulanorder(HttpServletResponse resp,
+			@RequestParam("visitorPhone") String visitorphone) throws IOException{
+		
+		CommonResp.SetUtf(resp);
+		int i=0;
+		
+		Map<String , Object> listResult = orderService.getdaiyoulanorder(visitorphone);
+		
+		if(listResult != null){
+			listResult.put("vtime", listResult.get("vtime").toString());
+			return listResult;
+		}else
+		{
+			return i;
+		}
+	}
+	
+	/*
+	 * 根据导游手机号查找当前待游览订单
+	 * */
+	@RequestMapping(value = "/getdaiyoulanOrderbyGuidePhone.do")
+	@ResponseBody
+	public Object getdaiyoulanOrderbyGuidePhone(HttpServletResponse resp,
+			@RequestParam("guidePhone") String guidephone) throws IOException{
+		CommonResp.SetUtf(resp);
+		int i=0;
+		Map<String, Object> listResult = orderService.getdaiyoulanOrderbyGuidePhone(guidephone);
+		
+		if(listResult != null){
+			listResult.put("vtime", listResult.get("vtime").toString());
+			return listResult;
+		}else
+		{
+			return i;
+		}
+	}
+	
 	
 	
 	/**

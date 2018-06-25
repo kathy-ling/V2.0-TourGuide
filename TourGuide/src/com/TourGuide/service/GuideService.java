@@ -38,6 +38,14 @@ public class GuideService {
 				language, selfIntro, image, age, workAge, scenic);
 	}
 	
+	/*
+	 * 初次申请导游
+	 * */
+	public int putInfo(String openId,String phone ,String name,String imgPath, String sex,String language,
+			String selfIntro, String age,String workAge)  throws SQLException{
+		return guideDao.putInfo(openId,phone,name,imgPath,sex,language,selfIntro,age,workAge);
+	}
+	
 	
 	/**
 	 * 查询最受欢迎的讲解员
@@ -191,7 +199,7 @@ public class GuideService {
 	 * @return  
 	 * 姓名、性别、年龄、从业时间、联系电话、讲解语言、景区名称、自我介绍、个人照片、申请日期、通过日期
 	 */
-	public List<Map<String, Object>> getGuideApplyInfoByPhone(String phone){
+	public Map<String, Object> getGuideApplyInfoByPhone(String phone){
 		return guideDao.getGuideApplyInfoByPhone(phone);
 	}
 	

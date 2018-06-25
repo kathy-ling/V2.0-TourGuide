@@ -1,5 +1,7 @@
 package com.TourGuide.dao;
 
+import static org.hamcrest.CoreMatchers.nullValue;
+
 import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Date;
@@ -12,6 +14,7 @@ import org.springframework.stereotype.Repository;
 
 import com.TourGuide.common.DateConvert;
 import com.TourGuide.common.MyDateFormat;
+import com.TourGuide.common.refund;
 
 @Repository
 public class CancleOrderDao {
@@ -20,10 +23,13 @@ public class CancleOrderDao {
 	private JdbcTemplate jdbcTemplate;
 	
 	
-	/**
-	 * 游客取消预约订单，预约单和发布预约单
+	public refund refundOrder;
+	
+	
+	/** 
+	 * 游客取消预约订单，预约单和发布预约单 
 	 * @param orderId
-	 * @return 1--取消成功,-1--已经开始参观，不能取消,2--扣费1%,3--扣费5%
+	 * @return 1--取消成功,-1--已经开始参观，不能取消,2--扣费1%,3--扣费5%,4--订单不存在,5--退款出错;6--订单已退款
 	 */
 	public int cancleBookOrder(String orderId){
 		
@@ -32,11 +38,14 @@ public class CancleOrderDao {
 		int guideFee = 0;
 		String guidePhone = null;
 		String visitTime = null;
+		String orderState = null;
+		
+		String shouxufei=null;
 		
 		List<Map<String , Object>> list = new ArrayList<>();
 		String cancleTime = MyDateFormat.form(new Date());
 		
-		String sqlString = "select visitTime,guidePhone,hadPay,guideFee "
+		String sqlString = "select visitTime,guidePhone,hadPay,guideFee,orderState "
 				+ "from t_bookorder where bookOrderID='"+orderId+"'";
 		list = jdbcTemplate.queryForList(sqlString);
 		
@@ -46,7 +55,12 @@ public class CancleOrderDao {
 			guidePhone = (String) list.get(0).get("guidePhone");
 			Timestamp timestamp = (Timestamp) list.get(0).get("visitTime");
 			visitTime = MyDateFormat.form(timestamp);
-		}				
+			orderState = (String)list.get(0).get("orderState");
+		}
+		else{
+			ret = 4;
+			return ret;
+		}
 		
 		if(guidePhone == null){
 			//导游未接单，直接取消。（增加取消记录，修改订单状态）
@@ -61,11 +75,16 @@ public class CancleOrderDao {
 				ret = 1;
 			}			
 		}
+		if(orderState.equals( "已退款") || orderState == "已退款"){
+			ret = 6;
+			return ret;		
+		}
+		
 		if(guidePhone != null && hadPay == 1){
 			//导游已经接单，游客已经付款。（增加取消记录，修改订单状态，删除导游预约信息）
 //			1)	取消订单时间 >= 参观时间，不能取消
-//			2)	取消时间 < 参观时间-30min，扣费1%
-//			3)	参观时间-30min  < 取消时间 < 参观时间，扣费5%
+//			2)	取消时间 <=参观时间-30min，扣费1%
+//			3)	参观时间-30min <=取消时间 <=参观时间，扣费5%
 			int i = 0;
 			String sqlInsert = "insert into t_cancleRecord (orderId,orderType,cancleTime,"
 					+ "cancleReason,cancleFee) values (?,?,?,?,?)";
@@ -74,40 +93,74 @@ public class CancleOrderDao {
 				return -1;
 			}
 			if(DateConvert.DateCompare(cancleTime,DateConvert.addMinuteToTime(visitTime, -30))){
+				//String refundCause = refundOrder(orderId, guideFee*99);
 				
-				i = jdbcTemplate.update(sqlInsert, new Object[]{orderId,"预约单",cancleTime,"reason",guideFee*0.01});
+				String refundCause = refundOrder.refundOrder(orderId, guideFee);
 				
-				String sqlUpdate = "update t_bookorder set orderState='已取消',cancleFee="+guideFee*0.01+" where bookOrderID='"+orderId+"'";
-				int j = jdbcTemplate.update(sqlUpdate);
-				
-				String sqlDelete = "delete from t_guidebeordered where orderId='"+orderId+"'";
-				int k = jdbcTemplate.update(sqlDelete);
-				
-				if(i!=0 && j!=0 && k!=0){
-					ret = 2;
+				if(refundCause == "退款出错"){
+					ret = 5 ;
 				}
+				if(refundCause == "订单不存在"){
+					ret = 4 ;
+				}
+				if(refundCause == "订单已全额退款"){
+					ret = 6 ;
+				}
+				if(refundCause == "退款成功"){
+					i = jdbcTemplate.update(sqlInsert, new Object[]{orderId,"预约单",cancleTime,"reason",guideFee*0.01});
+					
+					shouxufei = "1";
+					String sqlUpdate = "update t_bookorder set orderState='已退款',cancleFee="+guideFee*0.01+" where bookOrderID='"+orderId+"'";
+					int j = jdbcTemplate.update(sqlUpdate);
+					
+					String sqlDelete = "delete from t_guidebeordered where orderId='"+orderId+"'";
+					int k = jdbcTemplate.update(sqlDelete);
+					
+					if(i!=0 && j!=0 && k!=0){
+						ret = 2;
+					}
+				}
+				
 			}
 			if(DateConvert.DateCompare(cancleTime,visitTime) && 
 					DateConvert.DateCompare(DateConvert.addMinuteToTime(visitTime, -30),cancleTime)){
-				i = jdbcTemplate.update(sqlInsert, new Object[]{orderId,"预约单",cancleTime,"reason",guideFee*0.05});
 				
-				String sqlUpdate = "update t_bookorder set orderState='已取消',cancleFee="+guideFee*0.05+" where bookOrderID='"+orderId+"'";
-				int j = jdbcTemplate.update(sqlUpdate);
+				String refundCause = refundOrder.refundOrder(orderId, guideFee);
 				
-				String sqlDelete = "delete from t_guidebeordered where orderId='"+orderId+"'";
-				int k = jdbcTemplate.update(sqlDelete);
-				
-				if(i!=0 && j!=0 && k!=0){
-					ret = 3;
+				if(refundCause == "退款出错"){
+					ret = 5 ;
 				}
+				if(refundCause == "订单不存在"){
+					ret = 4 ;
+				}
+				if(refundCause == "订单已全额退款"){
+					ret = 6 ;
+				}
+				if(refundCause == "退款成功"){
+					i = jdbcTemplate.update(sqlInsert, new Object[]{orderId,"预约单",cancleTime,"reason",guideFee*0.05});
+					shouxufei="5";
+					String sqlUpdate = "update t_bookorder set orderState='已退款',cancleFee="+guideFee*0.05+" where bookOrderID='"+orderId+"'";
+					int j = jdbcTemplate.update(sqlUpdate);
+					
+					String sqlDelete = "delete from t_guidebeordered where orderId='"+orderId+"'";
+					int k = jdbcTemplate.update(sqlDelete);
+					
+					if(i!=0 && j!=0 && k!=0){
+						ret = 3;
+					}				
+				}				
 			}						
 		}
+		
+		System.out.print("ret == "+ ret + "\n   shouxuef == "+shouxufei+"\n");
 		return ret;
 	}
 	
-	
+
+
+
 	/**
-	 * 游客取消拼团订单
+	 * 游客取消拼团订
 	 * @param orderId
 	 * @return
 	 * -1--已经开始参观，不能取消, 1--取消成功,2--扣费1%,3--扣费5%,4--扣费2%

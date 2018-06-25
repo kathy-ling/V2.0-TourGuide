@@ -58,21 +58,6 @@ public class OAuthServlet extends HttpServlet{
 			
 			response.sendRedirect("/TourGuide/web/index.html?openId="+openId + "&vistPhone=" + visitorInfo.getPhone());
 			
-//			request.setAttribute("snsUserInfo", snsUserInfo);
-//			
-//			if(null == visitorInfo || visitorInfo.getOpenID()==null){
-//				request.getRequestDispatcher("redirect.jsp").forward(request, response);
-//			}else {
-//				String phone = visitorInfo.getPhone();
-//				response.sendRedirect("/TourGuide/web/index.html?phone="+phone);
-//				// 跳转到index.html
-////				PrintWriter w = response.getWriter();
-////				w.print("<!DOCTYPE html><html><head><meta charset='UTF-8'></head><body>"
-////				+"<script type='text/javascript'>window.location.href='http://1f656026j8.imwork.net/TourGuide/web/index.html';"
-////				+"</script></body></html>");
-////				w.close();
-//			}
-
 		}
 					
 	}

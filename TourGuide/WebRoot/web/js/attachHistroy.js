@@ -1,11 +1,13 @@
 var visitPhone = getPhone();
+//var visitPhone = "15029319152";
+
 $(function(){
 	//加载挂靠历史记录
 	getHistoryAffiliation();
 });
 function changeTab1()
 {
-	window.location.href = "attachScenic.html";
+	window.location.href = "attachScenic.html?date="+Math.random();
 }
 function changeTab2()
 {
@@ -30,7 +32,7 @@ function getHistoryAffiliation() {
 			
 			$("#list").empty();
 			
-			alert(JSON.stringify(data));
+			// alert(JSON.stringify(data));
 			
 			$.each(data, function(i, n) {
 				var list = document.getElementById("list");

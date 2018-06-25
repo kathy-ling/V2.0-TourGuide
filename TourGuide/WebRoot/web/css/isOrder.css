@@ -1,6 +1,6 @@
 html,body
 {
-	height: 100%;
+	/*height: 100%;*/
 	width: 100%;
 	padding: 0;
 	margin: 0;
@@ -46,36 +46,49 @@ html,body
 	display: inline-block;
 	position: absolute;
 	left: 33%;
-	bottom:6%;
+	/*bottom:6%;*/
+	margin-top: 25px;
 }
 #GuideSex
 {
 	display: inline-block;
 	position: absolute;
 	left: 48%;
-	bottom:6%;
-	color: red;
-	border: 1px solid red;
+	/*bottom:6%;*/
+	margin-top: 25px;
 	padding-left: 8px;
 	padding-right: 8px;
 	font-size: 0.9em;
+}
+.guideFemalSex
+{
+	color: red;
+	border: 1px solid red;
+}
+.guideMaleSex
+{
+	color: blue;
+	border: 1px solid blue;
 }
 #GuideScenic
 {
 	position: absolute;
 	right: 2%;
-	bottom: 6%;
-	margin-top: 10%;
+	/*bottom: 5%;*/
+/*	margin-top: -50px;*/
+	margin-top: 7%;
 	font-size: 0.8em;
 	margin-right: 3%;
 }
 .detailInfo
 {
-	height: 180px;
+	height: 160px;
 	position: relative;
+	margin-top:-10px;
 }
 .detailInfo1
 {
+	margin-top: 30px;
 	height: 180px;
 	position: relative;
 }
@@ -84,54 +97,58 @@ html,body
 	width: 30%;
 	height: 50%;
 	position: absolute;
-	left: 20px;
+	left: 30px;
 	display: inline-block;
 	text-align: center;
 	vertical-align: top;
-	margin-top: 20px;
+	margin-top: 100px;
+}
+.detailInfo{
+	margin-top: 1px;
 }
 #GuideFee
 {
-	color: #0050EF;
+	color: #268EFA;
 	font-size: 2em;
 	margin-top: 2%;
+	font-weight:500;
 }
 .rightDiv
 {
-	width: 50%;
+	width: 45%;
 	height: 100%;
 	display: inline-block;
-	margin-left: 6%;
-	margin-top: 8px;
-	position: absolute;
+	margin-left: 50%;
+	margin-top: 20%;
+	/*position: absolute;*/
 	right: 0;
 }
 .guideLevel,.guideAge,.guideLanguage,.guideNum
 {
-	width: 40%;
-	height: 45%;
-	font-size: 0.7em;
+	width: 45%;
+	height: 35%;
+	font-size: 0.5em;
 	text-align: center;
 	display: inline-block;
-	margin-top: 6px;
+	/*margin-top: 6px;*/
 }
 #GuideLevel,#GuideAge,#GuideLanguage,#GuideNum
 {
-	color: #0050EF;
-	font-size:2em;
-	margin-top: -4%;
+	color: #268EFA;
+	font-size:2.8em;
+	margin-top: -7%;
 }
 .confirmInfo
 {
-	background-color: #EEEEEE;
+	background-color: #F1F5FB;
 	height: 65%;
 	width: 100%;
-	margin-top: 34%;
+	margin-top: 15%;
 	padding-top: 6%;
 }
 .confirmInfo img
 {
-	width: 8%;
+	width: 30px;
 	margin-left: 4%;
 	margin-top: 1%;
 }
@@ -148,11 +165,11 @@ html,body
 }
 .confirmInfo select
 {
-	width: 56%;
-	height: 36px;
-	padding-left: 16%;
+	width:30%;
+	height: 30px;
+	padding-left: 5%;
 	border-radius: 30px;
-	margin-top: -34px;
+	margin-top: -30px;
 	margin-left:28%;
 	border: none;
 	display: block;
@@ -182,14 +199,15 @@ html,body
 }
 #VisitNum ,#ContactName,#ContactPhone
 {
-	display: inline-block;
+	/*display: inline-block;*/
 	position: absolute;
 	margin-left: 8%;
 	margin-top: 4%;
-	text-align: center;
+	/*text-align: center;*/
 	border: none;
-	background-color: #EEEEEE;
+	background-color: #F1F5FB;
 	width: 30%;
+
 }
 #Minus
 {
@@ -198,7 +216,8 @@ html,body
 	height: 26px;
 	width: 26px;
 	margin-left: 54%;
-	margin-top: 3%;
+	margin-top: .6rem;
+	border:none;
 }
 #Plus
 {
@@ -206,17 +225,21 @@ html,body
 	background-size:100%;
 	height: 26px;
 	width: 26px;
+	border:none;
+	padding-top: .6rem;
 }
 .confirmButton
 {
-	background: url(../img/6-5确认订单.png) no-repeat;
-	background-size:100% ;
+	
+	background-size:contain ;
 	border: none;
 	margin-top: 2%;
-	height: 14%;
-	width: 75%;
+	height: 10%;
+	width: 90%;
 	color: white;
 	font-size: 1.2em;
-	margin-left: 15%;
+	margin-top: 5%;
+	margin-left: 5%;
+	border-radius: 40px;
+	background-color: #268EFA;
 }
-*/

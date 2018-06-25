@@ -7,10 +7,8 @@ import java.sql.SQLException;
 
 import javax.sql.DataSource;
 
-import org.apache.catalina.webresources.Cache;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.jdbc.core.RowCallbackHandler;
 import org.springframework.stereotype.Repository;
 
 import com.TourGuide.model.IntroFeeAndMaxNum;

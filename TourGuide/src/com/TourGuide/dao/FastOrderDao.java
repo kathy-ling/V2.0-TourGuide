@@ -59,8 +59,8 @@ public class FastOrderDao {
 		String time = MyDateFormat.form(new Date());
 		
 		String sqlInsert = "insert into t_consistOrder (consistOrderID,scenicID,"
-				+ "produceTime,visitorPhone,visitNum,guideFee,totalGuideFee,"
-				+ "isConsisted,hadPay,orderState,isFastPin) values (?,?,?,?,?,?,?,?,?,?,?)";
+				+ "produceTime,visitTime,visitorPhone,visitNum,guideFee,totalGuideFee,"
+				+ "isConsisted,hadPay,orderState,isFastPin) values (?,?,?,DATE_ADD(NOW(),INTERVAL 1 HOUR),?,?,?,?,?,?,?,?)";
 		int i = jdbcTemplate.update(sqlInsert, new Object[]{consistOrderID, scenicID, 
 				time, visitorPhone, visitNum, guideFee, totalGuideFee,
 				isConsisted, hadPay, orderState,1});

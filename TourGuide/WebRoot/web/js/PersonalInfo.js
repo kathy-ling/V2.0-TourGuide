@@ -1,53 +1,19 @@
 var Phone = getPhone();
+//Phone = "18829027144";
+
 $(function($){
 	
 	setperinfo(Phone);
 	$("#signINbtn").click(function(){
 		signIN(Phone);
 	});
+	
+	$("#openId").val(openId);
+//	$("#openId").val("o_tM3wI3bVTCR_hLp6PTGHtKuumY");
 });
-//签到
-function signIN(Phone){
-	var URL = HOST+"guideCheckIn.do?phone="+Phone;
-	$.ajax({
-		type:"get",
-		url:URL,
-		async:true,
-		error:function(data){
-			alert("requertError签到失败");
-		},
-		success:function(data){
-			if(data=true)
-			{
-				alert("签到成功");
-			}else{
-				alert("签到失败");
-			}
-		}
-	});
-}
-//是否签到
-function ISsignIN(Phone){
-	var URL = HOST+"whetherCheckIn.do?phone="+Phone;
-	$.ajax({
-		type:"get",
-		url:URL,
-		async:true,
-		error:function(data){
-			alert("requesterror获取签到状态失败");
-		},
-		success:function(data){
-			if(data=true)
-			{
-				
-			}else{
-				
-			}
-		}
-	});
-}
 
-function setperinfo(){
+
+function setperinfo(Phone){
 	var url = HOST+"/getVisitorInfoWithPhone.do";
 	$.ajax({
 		type:"post",
@@ -63,12 +29,96 @@ function setperinfo(){
 		{
 			//alert(JSON.stringify(data)!="{}");
 			if(JSON.stringify(data)!="{}"){
-				
+		
 			//alert("显示个人信息success!");
 			document.getElementById("person_info_tel").value = data.phone;
 			document.getElementById("person_info_name").value = data.name;
-			$("#GuideHeadImg").attr("src",data.image);
+			$("#GuideHeadImg").attr("src",HOST+'/'+data.image);
+			
 			}
+		}
+	});
+}
+
+function selectPersonImg()
+{
+	document.getElementById("btn_file").click();
+}
+function selectImage(file)
+{
+//	$("#visithead").hide();
+	
+	if(!file.files || !file.files[0]) {
+		return;
+	}
+	var reader = new FileReader();
+	reader.onload = function(evt) {
+		document.getElementById("GuideHeadImg").src = evt.target.result;
+		image0 = evt.target.result;
+		
+	}
+	reader.readAsDataURL(file.files[0]);
+	
+	image0 = $("#btn_file").val();
+	
+//	changePerHeadImg();
+}
+//用户根据openId修改自己的头像
+function changePerHeadImg()
+{
+	var URL = HOST+"/putImg.do";
+
+	$.ajaxFileUpload({
+			url : URL,
+			fileElementId:'btn_file',
+			dataType : "jsonp",
+			success: function(data,status,e){
+				alert("成功"+e);
+				if(data == true)
+				{
+					var Url = HOST+"/changeImg.do";
+					$.ajax({
+						type:"get",
+						url:Url,
+						async:false,
+						data:{openId:openId},
+						datatype : "JSON",
+						error:function(data){
+							alert("request error 修改用户头像失败！");
+						},
+						success:function(data){
+							
+						}
+					});
+				}else
+				{
+					alert("图片上传失败");
+				}				
+			 },
+			error: function(data,status,e)
+			{
+				alert(e);
+		  		alert("图片上传异常");
+			}
+	});	
+}
+//根据openID，修改处头像之外的其他信息
+function editInfo(){
+	var name = document.getElementById("person_info_name").value;
+//	var name = document.getElementById("person_info_tel").value;
+	
+	var Url = HOST + "/changeInfo.do";	
+	$.ajax({
+		type:"get",
+		url:Url,
+		async:false,
+		data:{openId:openId,name:name},
+		datatype : "JSON",
+		error:function(data){
+			alert("修改用户信息失败！");
+		},
+		success:function(data){
+			alert("修改用户信息成功！");
 		}
 	});
 }

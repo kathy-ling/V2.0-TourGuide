@@ -4,20 +4,38 @@
 		<meta charset="UTF-8">
 		<title>拼团首页</title>
 		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no"  />
-		<link rel="stylesheet" href="css/pinIndex.css" />
-		
+		<link rel="stylesheet" href="css/pinIndex.css" />		
+		<script type="text/javascript" src="js/CommonSession.js" ></script>
+		<script>
+			function fastPin()
+			{
+				if(vistPhone == "undefined" || vistPhone == openId){
+					alert("您还未注册，请注册！");
+					window.location.href = "register.html";
+				}else{
+					window.location.href='fastPinConfirm.html';
+				}			
+			}
+		</script>
 	</head>
 	<body>
-		<div class="content">
-			<img src="img/拼团大图标.png"/>
-			<div class="text">
-				<p class="text1">在这里，你可以花更少的价格与其他游客一起体验</p>
-				<p class="text2">同样优质的讲解服务</p>
+		<div style="width: 100%;height: 100%;background: url(img/拼团首页大底图.png) no-repeat;
+	background-size:cover;margin-top: -100px;padding-bottom:100px;">
+			<div class="content" style="width: 100%;"><!-- style="padding-bottom:317px" -->
+				<img src="img/拼团大图标.png" style="width: 35%;margin-left:32.5%;margin-top: 70%"/>
 			</div>
-			<div class="buttonSelect">
-				<button id="Select" onclick="window.location.href='pindan.html'">开始选团</button>
-				<button id="Pin" onclick="window.location.href='fastPinConfirm.html'">快捷拼团</button>
+			<div style="position: fixed;bottom:0;width: 100%;text-align: center;">
+				<div class="text" style="font-size:.9em;">
+					<p class="text1">在这里，你可以花更少的价格与其他游客一起体验</p>
+					<p class="text2">同样优质的讲解服务</p>
+				</div>
+				<div class="buttonSelect" style="transform: translateY(-40px);">
+					<button id="Select" onclick="window.location.href='pindan.html'">开始选团</button>
+					<button id="Pin" onclick="fastPin()">快捷拼团</button>
+				</div>
 			</div>
 		</div>
+		
 	</body>
 </html>
+

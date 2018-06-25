@@ -1,7 +1,8 @@
 $(document).ready(function()
 {
 	var ScenicNo = GetUrlem("scenicNo");
-	alert(ScenicNo);
+//	var ScenicNo = "19743";
+	
 	refreshPage(ScenicNo);	
 	
 });
@@ -21,8 +22,10 @@ function refreshPage(ScenicNo){
 //从服务器端获取景区详细信息,名称、图片、历史参观人数、景区介绍
 function setscenicInfo(ScenicNo){
 	var urlScenicInfo = HOST+"/getDetailScenicByScenicID.do"
+
+
+	$.ajax({// alert(urlScenicInfo);
 	
-	$.ajax({
 		type:"post",
 		url:urlScenicInfo,
 		async:true,
@@ -36,9 +39,11 @@ function setscenicInfo(ScenicNo){
 		{
 			//alert("景区详细信息request success!");
 			$.each(data, function(i,item) {
+
 				$("#ScenicName1").html(item.scenicName);
 				//设置显示图片
-				$("#ScenicImg").attr("src", item.scenicImagePath);				
+				$("#ScenicImg").attr("src", item.scenicImagePath);	
+							
 				//设置显示简介
 				$("#ScenicIntro").html(item.scenicIntro);
 				//设置显示历史参观人数

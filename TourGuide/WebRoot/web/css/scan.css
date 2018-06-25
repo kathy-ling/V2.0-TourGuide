@@ -7,19 +7,26 @@ html,body
 }
 .topIcon
 {
-	height:10%;
+	height:8%;
 	width: 100%;
 	border-bottom: 1px solid gainsboro;
 }
 .topIcon p
 {
 	float: left;
-	margin-top: 25px;
-	margin-left: 3%;
+	margin-top: 15px;
+	margin-left: 1%;
 }
 .topIcon img
 {
 	float: left;
+	width: 30px;
+	margin-top: 10px;
+	margin-left: 10px;
+}
+.cc{
+	color: #818181;
+	font-size: .8em;
 }
 .middleDiv
 {
@@ -59,33 +66,34 @@ html,body
 	height: 20%;
 	width: 100%;
 	text-align: center;
-	margin-top: 65px;
+	margin-top: 40px;
 	font-size: 1.3em;
 	font-family: "黑体";
 }
 .hh
 {
-	font-size: 1.4em;
+	font-size: 1.7em;
 }
 #haveNum,#allNum,#todayFee
 {
-	font-size: 1.4em;
+	font-size: 1.8em;
+	font-weight: bold;
 }
 .rightFee
 {
 	height: 20%;
 	width: 100%;
 	text-align: center;
-	margin-top: 2px;
+	margin-top: 20px;
 	font-size: 1.3em;
 	font-family: "黑体";
 }
 #join
 {
-	height: 8%;
+	height: 7%;
 	width: 80%;
 	padding-left: 50px;
-	margin-top: 10%;
+	margin-top: 20%;
 	margin-left: 10%;
 	margin-right: 10%;
 	background: url(../img/开始扫描底图.png) no-repeat;
@@ -96,7 +104,7 @@ html,body
 }
 #cancel
 {
-	height: 8%;
+	height: 7%;
 	width: 80%;
 	padding-left: 50px;
 	margin-top: 5%;

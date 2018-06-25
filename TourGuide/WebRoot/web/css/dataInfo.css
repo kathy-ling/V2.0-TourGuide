@@ -1,6 +1,6 @@
 body
 {
-	overflow: hidden;
+	/*overflow: hidden;*/
 	position: fixed;
 }
 table
@@ -20,28 +20,28 @@ tr
 {
 	background-color: #2489fb;
 	border: none;
-	border: 1px solid #4aa1fb;
+	border: 1px solid #1F79D7 	;
 }
 .middleInfo
 {
-	height: 26%; 
+	height: 30%; 
 	/*border: 1px solid red;*/
 }
 #GuideName
 {
-	margin-top: -50px;
+	margin-top: -55px;
 	position: absolute;
 	color: white;
-	right: 0;
-	margin-right: 20px;
+	left: 0;
+	margin-left: 20px;
 	font-size: 1.1em;
 }
 .percentDiv
 {
-	margin-top: -30px;
+	margin-top: -35px;
 	position: absolute;
-	right: 0;
-	margin-right: 20px;
+	left: 0;
+	margin-left: 20px;
 	color: white;
 	display: inline;
 }
@@ -51,10 +51,11 @@ tr
 }
 .background
 {
-	height: 44%;
+	height: 43%;
 	/*border: 1px solid red;*/
 	background-color: #2489fb;
 	margin-top: -1px;
+	font-size: .9em;
 }
 
 .GradeNumMoney,.NumMoney
@@ -75,8 +76,9 @@ tr
 	margin: 0;
 	color: white;
 	text-align: center;
-	margin-top: 14px;
-	margin-left: 16px;
+	margin-top: 5px;
+	margin-left: 5px;
+	font-size: .9em;
 }
 #Grade,#OrderNum,#TotalMoney,#totalVisNum,#monthOrderNum,#monthMoney
 {
@@ -85,16 +87,19 @@ tr
 	color: white;
 	text-align: center;
 	margin-left: 4%;
+	font-size: 1.3em;
 }
 .contrastIcon
 {
-	width: 50px;
+	width: 40px;
+
 }
 .contrastSpan
 {
 	color: white;
-	margin-top: 16px;
+	margin-top: 8px;
 	position: absolute;
+	font-size: 18px;
 }
 .left
 {

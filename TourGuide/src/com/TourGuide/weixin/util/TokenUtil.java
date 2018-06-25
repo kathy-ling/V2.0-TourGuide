@@ -29,8 +29,8 @@ public class TokenUtil {
 //	public final static String appid = "wxd3bda909c7fb1467";
 //	public final static String secret = "11d33e83aab183855f77a779a42d894d";
 	
-	public static final String appid = "wx6e58a089f2d129f4";
-	public static final String secret = "97c82f3f6361f239362c34ed096f9c1d";
+	public static final String appid = "wx171cb025a40b648f";
+	public static final String secret = "8aa473942124901e6819bf30789d0e7e";
 	
 	// 凭证获取（GET）,token_url获取凭证接口的请求地址
 	public final static String token_url = "https://api.weixin.qq.com/cgi-bin/token?"

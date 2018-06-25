@@ -1,18 +1,25 @@
 
 var type = GetUrlem("type");
 var orderId = GetUrlem("orderId");
+//var orderId = "0c8ae8b8eda54facbd804fa2a19ceb7d";
+var other;
+var totalMoney;
+var longitude;
+var latitude;
 
+var vName;
 
 $(function($){
 	setData();
 });
 
 function setData(){
-
+	
 	$.ajax({
 		type:"post",
 		url:HOST+"/getDetailOrderInfo.do",
 		async:true,
+//		data:{orderID:"0c8ae8b8eda54facbd804fa2a19ceb7d"},
 		data:{orderID:orderId},
 		datatype:"JSON",
 		error:function()
@@ -21,14 +28,15 @@ function setData(){
 		},
 		success:function(data)
 		{ 
-			if(JSON.stringify(data)!="[]"){				
-				
+			if(JSON.stringify(data)!="[]"){	
 				setNormalData(data[0]);
-				
 				if(data[0].guidePhone!=undefined)
 				{
 					setGuidegData(data[0].guidePhone);
-				}				
+				}else{
+					$("#guideName").html("待分配");
+					$(".hide1").css('display','none');
+				}
 			}				
 		}
 	});
@@ -38,19 +46,6 @@ function setData(){
 function setNormalData(data){
 	
 	$("#scenicName").html(data.scenicName);
-	
-	if(data.orderState=="待评价"){
-		$("#orderState").attr("src","img/icon-dpj.png");			
-	}
-	if(data.orderState=="已完成"){
-		$("#orderState").attr("src","img/icon-ywc.png");
-	}
-	if(data.orderState=="待付款"){
-		$("#orderState").attr("src","img/icon-dfk.png");
-	}
-	if(data.orderState=="待游览"){	
-		$("#orderState").attr("src","img/icon-dyl.png");
-	}
 	
 	var str = data.visitTime;
 	var tmp = str.split(':');
@@ -78,6 +73,27 @@ function setNormalData(data){
 		
 	$("#money").html(data.money);
 	
+	//根据游客手机号获取游客姓名
+	var url = HOST+"/getVisitorInfoWithPhone.do";
+	$.ajax({
+		type:"post",
+		url:url,
+		async:false,
+		data:{phone:data.visitorPhone},
+		datatype:"JSON",
+		error:function()
+		{
+			alert("显示个人信息Request error!");
+		},
+		success:function(data)
+		{
+//			alert(JSON.stringify(data)!="{}");
+			if(JSON.stringify(data)!="{}"){				
+				vName = data.name;
+			}
+		}
+	});
+	
 	if(data.orderState=="待付款"){
 		$("#payTime").html("未付款");
 	}else{
@@ -85,8 +101,76 @@ function setNormalData(data){
 		var payTime = tmp[0];
 		$("#payTime").html(payTime);
 	}	
+	
+	//经纬度
+	longitude = data.longitude;
+	latitude = data.latitude;
+	
+	if(data.orderState=="待评价"){
+		$("#orderState").attr("src","img/icon-dpj.png");
+		$("#bottomInfo").css('display','none');
+		var str = '<div><button class="button" visitNum="'+data.visitNum+'" guidePhone="'+data.guidePhone+'" time="'+time+'" scenicName="'+data.scenicName+'" contactPhone="'+data.visitorPhone+'" contactName="'+vName+'" onclick="goPing($(this))">去评价</button></div>';
+		$("#to").append(str);
+	}
+	if(data.orderState=="已完成"){
+		$("#orderState").attr("src","img/icon-ywc.png");
+		$("#bottomInfo").css('display','none');
+	}
+	if(data.orderState=="待付款"){
+		other =  data.otherCommand;
+		totalMoney = data.totalMoney;
+		orderId = data.orderId;
+		$("#orderState").attr("src","img/icon-dfk.png");
+		$("#bottomInfo").css('display','none');
+		
+		var str = '<div><button class="button" visitNum="'+data.visitNum+'" guidePhone="'+data.guidePhone+'" time="'+time+'" scenicName="'+data.scenicName+'" contactPhone="'+data.visitorPhone+'" contactName="'+vName+'" str="'+str+'" onclick="goPay($(this))">去付款</button></div>';
+		$("#to").append(str);
+	}
+	if(data.orderState=="待游览"){	
+		$("#orderState").attr("src","img/icon-dyl.png");
+	}
+	
+	
+
 }
 
+//去付款
+function goPay(This)
+{
+	var guidePhone = This.attr("guidePhone");
+	var time = This.attr("time");
+	var scenicName = This.attr("scenicName");
+	var contactPhone = This.attr("contactPhone");
+	var contactName = This.attr("contactName");
+	var visitNum = This.attr("visitNum");
+	var str = This.attr("str");
+	
+	if(type == "拼团单"){
+		window.location.href = "pinConfirm.html?scenicName="+scenicName+
+		"&visitNum="+visitNum+"&orderId="+orderId+"&str="+str;
+	}else if(type == "预约单"){
+		window.location.href = "confirmOrder.html?guidePhone="+guidePhone+
+	"&time="+time+"&scenicName="+scenicName+"&contactPhone="+contactPhone+
+	"&contactName="+contactName+"&visitNum="+visitNum+"&type="+type+"&str="+str;
+	}else if(type == "预约发布单"){
+		
+		window.location.href="releaseOrderConfirm.html?scenicName="+scenicName
+				+"&orderTime="+time
+				+"&orderNum="+visitNum
+				+"&contactName="+contactName
+				+"&contactPhone="+contactPhone
+				+"&otherCommand="+other
+				+"&guideFee="+totalMoney
+				+"&orderID="+orderId;
+	}
+	
+}
+
+//去评价
+function goPing(This)
+{
+	window.location.href = "comment.html?orderId="+orderId;
+}
 
 function getTime1ByIOS(time1)
 {
@@ -124,6 +208,18 @@ function produceQRCode()
 	$("#popupDialog").popup('open');
 }
 
+// 点击【生成二维码】显示弹框
+function xs()
+{
+	var mychar = document.getElementById('mymodal').style.display ="block";  
+}
+
+// 点击八叉和取消隐藏div弹框
+function no()
+{
+	var mychar = document.getElementById('mymodal').style.display ="none";  
+}
+
 function convertCanvasToImage(canvas) {
     //新Image对象，可以理解为DOM
     var image = new Image();
@@ -135,15 +231,27 @@ function convertCanvasToImage(canvas) {
 
 //点击【取消订单】
 function cancleOrder(){
-	var str = "取消订单，将会扣除最高5%的费用作为手续费，您确定要取消么？"
-	//弹出一个询问框，有确定和取消按钮 
-	if(confirm(str)) {
-		if(type == "预约单"){
-			cancleBookOrder();
-		}else if(type == "拼团单"){
-			cancleConsistOrder();
-		}      
-   }  
+	// 点击确定之后 隐藏弹出框
+	var mydd = document.getElementById('mymodaldd').style.display ="none";  
+
+	// 判断订单类型
+	if(type == "预约单"){
+		cancleBookOrder();
+	}else if(type == "拼团单"){
+		cancleConsistOrder();
+	}      
+}
+
+// 点击取消订单显示弹框
+function xsdd()
+{
+	var mydd = document.getElementById('mymodaldd').style.display ="block";  
+}
+
+// 点击八叉和取消隐藏div弹框
+function nodd()
+{
+	var mydd = document.getElementById('mymodaldd').style.display ="none";  
 }
 
 function cancleBookOrder(){
@@ -164,17 +272,17 @@ function cancleBookOrder(){
 			}
 			if(data == 1){
 				alert("取消成功");
-				window.location.href = "orderFormInfo.html?orderId=" + orderId;
+				window.location.href = "orderFormInfoUI.html?orderId=" + orderId;
 			}
 			if(data == 2){
 				alert("取消成功,扣费 " + fee*0.01 + " 元");
 				alert("剩余的金额将在三到五个工作日内返还到您的账户！");
-				window.location.href = "orderFormInfo.html?orderId=" + orderId;
+				window.location.href = "orderFormInfoUI.html?orderId=" + orderId;
 			}
 			if(data == 3){
 				alert("取消成功,扣费 " + fee*0.05 + " 元");
 				alert("剩余的金额将在三到五个工作日内返还到您的账户！");
-				window.location.href = "orderFormInfo.html?orderId=" + orderId;
+				window.location.href = "orderFormInfoUI.html?orderId=" + orderId;
 			}
 		}
 	});	
@@ -220,6 +328,26 @@ function cancleConsistOrder(){
 	});	
 }
 
+//获取位置
+function getLocation()
+{
+	if(longitude==null || latitude==null || longitude=="null" || latitude=="null"){
+		alert("暂无位置信息，请稍候查看！");	
+		return;
+	}else{
+		var map = new BMap.Map("map");   //实例化地图控件
+		var point = new BMap.Point(longitude,latitude);
+		map.centerAndZoom(point,16);
+		var mkLoc = new BMap.Marker(point);
+	//	mkLoc.enableDragging();
+		map.addOverlay(mkLoc);
+		map.panTo(mkLoc);
+	
+		var label = new BMap.Label("集合位置",{offset:new BMap.Size(20,-10)});
+		mkLoc.setLabel(label);
+		//A.href = "http://api.map.baidu.com/direction?origin=latlng:"+latitudeMy+","+longitudeMy+"|name:我的位置&destination=latlng:"+latitudeData+","+longitudeData+"|name:集合位置&mode=driving&region=西安&output=html&src=yourCompanyName|yourAppName";
+	}	
+}
 
 //获取当前日期时间“yyyy-MM-dd HH:MM:SS”
 function getNowFormatDate() {
@@ -253,4 +381,6 @@ function getTimeDiff(time1, time2){
 	}
 	return parseInt(t.toFixed(1));
 }
+
+
 

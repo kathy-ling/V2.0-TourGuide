@@ -33,39 +33,43 @@ body
 }
 .ageDiv
 {
-	margin-top: 3%;
+	margin-top: 11px;
 	/*border: 1px solid red;*/
 }
 .starLevelDiv
 {
-	margin-top: 6%;
+	margin-top: 5px;
 }
 #starLevel
 {
 	/*margin-top: -9%;*/
-	margin-left: 25%;
+	margin-left: 22%;
+}
+#starLevel img{
+	margin-left: 3.7%;
 }
 #SelectTime
 {
 	background: url(../img/4-1请选择时间底图.png) no-repeat;
 	background-size:100% ;
 	position: relative;
-	top: -8px;
+	/*top: -7px;*/
+	width: 240px;
 }
 #age
 {
-	display: inline-block;
+	/*display: inline-block;*/
 	position: relative;
 	top: -8px;
-	margin-left: 7%;
-	margin-top: 1%;
+	margin-left: 26.5%;
+	margin-top: -7%;
 }
 .money
 {
-	margin-left: 29%;
+	margin-left: 25.5%;
 }
 .grade
 {
-	margin-left: 30%;
-	margin-top: -12%;
+	margin-left: 26%;
+	margin-top: -11%;
 }

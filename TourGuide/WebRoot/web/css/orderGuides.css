@@ -1,4 +1,4 @@
-html,body
+﻿html,body
 {
 	height: 100%;
 	width: 100%;
@@ -25,23 +25,24 @@ body
 	display: inline-block;
 	width: 100px;
 	margin-top: 10px;
-	font-size: 1.2em;
+	font-size: 1.1em;
 	height: 28px;
-	margin-left: 24px;
+	/*margin-left: 15px;*/
 }
 #ReleaseTab
 {
 	display: inline-block;
 	width: 100px;
 	margin-top: 10px;
-	font-size: 1.2em;
+	font-size: 1.1em;
 	height: 28px;
-	margin-left: 60px;
+	margin-left: 35px;
 }
 .orderContent
 {
-	height: 100%;
-	width: 100%;	
+	height: 100% - 50px;
+	width: 100%;
+		
 }
 .selected
 {
@@ -50,7 +51,7 @@ body
 }
 .selectScenic
 {
-	padding-top: 20px;
+	padding-top: 10px;
 	border: none;
 }
 .selectScenic select
@@ -58,10 +59,10 @@ body
 	background-color: #154dc0;
 	border-radius:30px;
 	color: white;
-	padding-left: 22%;
-	width:68%;
-	height: 40px;
-	margin-left: 4%;
+	text-align: center;
+	width:65%;
+	height: 30px;
+	margin-left: 16.5%;
 	border: none;
 	font-size: 11pt;
 }
@@ -95,9 +96,9 @@ body
 	border-radius:30px;
 	font-size: 11pt;
 	border: none;
-	width:68% ;
-	height: 40px;
-	margin-left: 4%;
+	width:65% ;
+	height: 30px;
+	margin-left: 16.5%;
 	color: white;
 	text-align: center;
 }
@@ -111,20 +112,6 @@ body
 {
 	margin-top: 5%;
 	width: 100%;
-}
-.swiper-slide-active
-{
-	position: absolute;
-	margin-left: 15%;
-}
-.swiper-slide-prev
-{
-	position: absolute;
-	margin-left: -60%;
-}
-.swiper-slide-next
-{
-	margin-left: -25%;
 }
 .left
 {
@@ -140,59 +127,41 @@ body
 }
 .guide
 {
-	height: 120%;
-	width: 70%;
+	height: 100%;
 	background: url(../img/5-6导游信息大底图.png) no-repeat;
-	background-size: 100%;
+	background-size: cover;
+	padding-bottom: 10px;
 }
-.guideImg1
-{
-	width: 100%;
-	height: 33%;
-	/*background: url(../img/5-7导游图.png) no-repeat;
-	background-size: 100%;*/
+.swiper-wrapper{
+	margin-left: -15%;
 }
-.guideImg2
-{
-	width: 100%;
-	height: 33%;
-	/*background: url(../img/5-8导游图.png) no-repeat;
-	background-size: 100%;*/
-}
-.guideImg3
-{
-	width: 100%;
-	height: 33%;
-	/*background: url(../img/5-9导游图.png) no-repeat;
-	background-size: 100%;*/
-}
+
 .guideInfo
 {
 	/*margin-top: -30%;*/
-	margin-top: 6px;
+	margin-top: -4px;
 	text-align: center;
-	/*border: 1px solid red;*/
 }
 .guideInfo img
 {
-	width: 12%;
+	width: 30px;
 	margin-top: 4%;
 	margin-left: 1%;
 }
 .guideFee
 {
 	display: inline-block;
-	width: 26%;
+	width: 25%;
 }
 .guideGrade
 {
 	display: inline-block;
-	width: 37%;
+	width: 35%;
 }
 .guideNum
 {
 	display: inline-block;
-	width: 30%;
+	width: 25%;
 }
 #GuideFee,#GuideGrade,#GuideNum
 {
@@ -202,14 +171,55 @@ body
 .order
 {
 	background: url(../img/5-11立即预约.png) no-repeat;
-	background-size:100% ;
+	/*background-size:100% ;*/
 	border: none;
-	width: 28%;
+	width: 60px;
+	height: 60px;
 	color: white;
 	/*height: 30%;*/
-	padding:8px;
+	padding:5px;
 	vertical-align: middle;
-	margin-top: -4%;
-	font-size: 1.1em;
-	
+	margin-top: -16px;
+	font-size: 1em;
+	border-radius: 5px;
 }
+
+
+body {
+    font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+    color:#000;
+    margin: 0;
+    padding: 0;
+}
+.swiper-container {
+    width: 140%;
+    height:90%;
+   /* margin: 20px auto;*/
+  
+
+}
+.swiper-slide {
+    text-align: center;
+    font-size: 18px;
+    width: 60%;
+    /* Center slide text vertically */
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+}
+.swiper-slide:nth-child(2n) {
+    width: 40%;
+}
+.swiper-slide:nth-child(3n) {
+    width: 20%;
+}
+.detailInfo{
+	font-size: 0.8em;
+	font-family: '微软雅黑';
+}   

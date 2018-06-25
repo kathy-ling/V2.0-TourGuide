@@ -10,8 +10,13 @@
  */
 
 .ui-page-theme-a .ui-header {
-	background-color: #8BC34A;
+	/*background-color: #8BC34A;*/
 	color: #ffffff;
+}
+
+.bg_img{
+	background-image: url(../img/resignbg.png) no-repeat;
+
 }
 
 .ui-page-theme-a .ui-footer {

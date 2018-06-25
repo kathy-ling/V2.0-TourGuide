@@ -115,7 +115,7 @@ public class BookOrderController {
 		boolean bool = bookOrderService.ReleaseBookOrder(bookOrderID, scenicID, produceTime,
 				visitTime, Integer.parseInt(visitNum), language, guideSex, 
 				visitorPhone, visitorName, Integer.parseInt(priceRange), Integer.parseInt(purchaseTicket), 
-				otherCommand, releaseByVisitor, orderState, totalTicket, 
+				otherCommand, releaseByVisitor, "待付款", totalTicket, 
 				Integer.parseInt(fullPriceNum), Integer.parseInt(discoutPriceNum), Integer.parseInt(halfPriceNum),
 				fullPrice, halfPrice, discoutPrice,contact);
 		
@@ -165,20 +165,6 @@ public class BookOrderController {
 		List<Map<String, Object>> scenicSpotInfo = scenicSpotService.getScenicByName(scenicName);
 		String scenicID = (String) scenicSpotInfo.get(0).get("scenicNo");
 		
-		//查询该景区的门票信息
-//		ScenicTickets scenicTickets = scenicTicketService.geTicketsByScenicNo(scenicID);
-		
-//		//计算门票总额
-//		int totalTicket = scenicTickets.getHalfPrice() * Integer.parseInt(halfPrice) +
-//				scenicTickets.getDiscoutPrice() * Integer.parseInt(discoutPrice) +
-//				scenicTickets.getFullPrice() * Integer.parseInt(fullPrice);
-		
-//		//得到该讲解员的讲解费
-//		List<Map<String , Object>> guideInfo = guideService.getDetailGuideInfoByPhone(guidePhone);
-//		int guideFee = (int)guideInfo.get(0).get("guideFee");
-//		
-//		int totalMoney = totalTicket + guideFee;
-		
 		int ret = bookOrderService.BookOrderWithGuide(orderID, produceTime, guidePhone, 
 				visitorPhone, visitTime, scenicID, Integer.parseInt(visitNum),
 				Integer.parseInt(guideFee), contactPhone, language, visitorName);
@@ -204,11 +190,11 @@ public class BookOrderController {
 			@RequestParam("guidePhone") String guidePhone) throws IOException{
 	
 		CommonResp.SetUtf(resp);
-		
-		String timeNow = new SimpleDateFormat("yyyy-MM-dd").format(new Date());
-		
+		SimpleDateFormat timeNow = new SimpleDateFormat("yyyy-MM-dd HH:mm:SS");
 		List<Map<String , Object>> list = bookOrderService.getReleasedOrders(guidePhone);
-		
+		for (int i = 0; i < list.size(); i++) {
+			list.get(i).put("visitTime",timeNow.format((Date)list.get(i).get("visitTime")));
+		}
 		return list;
 	}
 	

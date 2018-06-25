@@ -1,4 +1,5 @@
 var guidePhone = GetUrlem("guidePhone");
+//var guidePhone = "18629086366";
 var scenicName;
 var guideFee;
 $(function() {
@@ -48,10 +49,15 @@ function setGuideInfo(phone){
 				$("#GuideAge").html(item.age);
 				$("#GuideFee").html(item.guideFee);
 				$("#GuideLanguage").html(item.language);
-				$("#scenicName").html(item.scenicName);
+				$("#GuideScenic").html(item.scenicName);
 				$("#GuideNum").html(item.historyTimes);
 				scenicName = item.scenicName;
 				guideFee = item.guideFee;
+				if(item.sex == "男"){
+					$("#GuideSex").attr("class","guideMaleSex");
+				}else{
+					$("#GuideSex").attr("class","guideFemalSex");
+				}
 			});
 		}
 	});

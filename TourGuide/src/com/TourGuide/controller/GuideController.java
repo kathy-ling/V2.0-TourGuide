@@ -22,10 +22,12 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.TourGuide.common.CommonResp;
+import com.TourGuide.model.GuideInfo;
 import com.TourGuide.model.ScenicsSpotInfo;
 import com.TourGuide.service.GuideService;
 import com.TourGuide.service.ScenicSpotService;
 import com.google.gson.Gson;
+import com.thoughtworks.xstream.alias.ClassMapper.Null;
 
 @Controller
 public class GuideController {
@@ -97,16 +99,29 @@ public class GuideController {
 		writer.flush();
 	}
 	
-	
+	/*
+	 * 申请导游
+	 * 上传图片
+	 * 
+	 * */
 	@RequestMapping(value="/upLoadImg.do")
 	@ResponseBody
-	public Object UploadImage(HttpServletResponse resp,
+	public int UploadImage(HttpServletResponse resp,
 			HttpServletRequest request,
-			@RequestParam MultipartFile btn_file) throws IOException {
+			@RequestParam MultipartFile btn_file,
+			@RequestParam(value="openId")String openId,
+			@RequestParam(value="phone")String phone,
+			@RequestParam(value="name")String name,
+			@RequestParam(value="sex")String sex,
+			@RequestParam(value="language")String language,
+			@RequestParam(value="selfIntro")String selfIntro,
+			@RequestParam(value="age")String age,
+			@RequestParam(value="workAge")String workAge) throws IOException, SQLException {
 		
 		CommonResp.SetUtf(resp);
-		boolean ret = false;
-		
+		int ret = 0;
+		String scenic="";
+
 		String realPath=request.getSession().getServletContext().getRealPath("image/visitor");
 		File pathFile = new File(realPath);
 		String fileName = null;
@@ -116,12 +131,6 @@ public class GuideController {
 			System.out.println("目录不存在，创建目录");
 			pathFile.mkdirs();
 		}
-		
-		System.out.println("文件类型："+btn_file.getContentType());
-		System.out.println("文件名称："+btn_file.getOriginalFilename());
-		System.out.println("文件大小:"+btn_file.getSize());
-		System.out.println(".................................................");
-			//将文件copy上传到服务器
 		
 		String imgString = btn_file.getOriginalFilename();
 		String[] tmp = imgString.split("\\.");
@@ -133,19 +142,28 @@ public class GuideController {
 			File fileImageFile=new File(realPath + "/" + fileName);
 			btn_file.transferTo(fileImageFile);
 			System.out.println("图片上传成功");
-			ret = true;
+			//int res = GuideService.getGuideAuthentication(phone, name, sex,language, selfIntro, image, age, workAge, scenic);
+			ret = guideService.putInfo(openId, phone, name, imgPath, sex, language, selfIntro, age, workAge);
+
 		} catch (IllegalStateException | IOException e) {
 				
 			e.printStackTrace();
-		}	
+		}
 		
-		System.out.println(ret);
 		return ret;
-		/*PrintWriter writer = resp.getWriter();
-		writer.write(new Gson().toJson("ret"));
-		writer.close();
-		writer.flush();*/
 	}  	
+	
+	@RequestMapping(value="/upguideinfo.do")
+	@ResponseBody
+	public void Upguideinfo(HttpServletResponse resp,
+			HttpServletRequest request,
+			@RequestParam MultipartFile btn_file,@RequestParam(value="openId")String openId) throws IOException, SQLException {
+		
+		CommonResp.SetUtf(resp);
+		
+		System.out.println(openId);
+	}
+	
 	
 	/**
 	 * 查询最受欢迎的讲解员
@@ -283,12 +301,16 @@ public class GuideController {
 			@RequestParam("guidePhone") String guidePhone) throws IOException{
 		
 		CommonResp.SetUtf(resp);
-		
+		int i=0;
 		List<Map<String , Object>> listResult = new ArrayList<>();
 		
 		listResult = guideService.getDetailGuideInfoByPhone(guidePhone);
 		
-		return listResult;
+		if(listResult==null){
+			return i;
+		}else {
+			return listResult;
+		}
 	}
 	
 	
@@ -406,7 +428,7 @@ public class GuideController {
 		
 		CommonResp.SetUtf(resp);
 		
-		List<Map<String , Object>> listResult = new ArrayList<>();
+		Map<String , Object> listResult = new HashMap<String , Object>();
 		
 		listResult = guideService.getGuideApplyInfoByPhone(guidePhone);
 		

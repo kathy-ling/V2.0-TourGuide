@@ -10,6 +10,13 @@ var Time=GetUrlem("visitTime");
 var scenicName=GetUrlem("scenicName"); 
 var guideFee1;
 var totalguideFee;
+
+var visitTime=GetUrlem("time");
+var orderId=GetUrlem("OrderID");
+//alert(visitNum);
+//alert(visitorPhone);
+//alert(scenicName);
+
 function getNowFormatDate() {
     var date = new Date();
     var seperator1 = "/";
@@ -48,7 +55,13 @@ function getTimeDiff(time1, time2){
 $(function($){
 	
 	var now=getNowFormatDate();
-	var str=visitDate+" "+Time+":"+5;
+	var str;
+	if(visitTime==null)
+	{
+		str=visitDate+" "+Time+":"+5;
+	}else{
+		str=visitTime;
+	}
 	var tmp = str.split(':');
 	var tmp1 = tmp[0]+":"+tmp[1];
 	var tmp2 = tmp1.split("-");
@@ -65,21 +78,28 @@ $(function($){
 	$("#pintuanNum").html("拼团人数:"+visitNum+"/20");
 	$("#scenicName").html(scenicName);
 	$("#pintuanNum1").html(visitNum);
-	$("#visitTime").html(visitDate.substring(5,10)+" "+Time);
+	if(visitTime==null)
+	{
+		$("#visitTime").html(visitDate.substring(5,10)+" "+Time);
+	}else{
+		
+		$("#visitTime").html(visitTime.substring(5,10)+" "+visitTime.substring(10,16));
+	}
+	
 	$("#visitname").html(visitname);
 	$("#phone").html(visitorPhone);
 });
 
 function getFee()
 {
-	
+	var d = new Date();
+	var str = d.getFullYear()+"-0"+(d.getMonth()+1)+"-"+d.getDate();
 	var url = HOST+"/getIntroFee.do";
-	var fee;
-	$.ajax({
+		$.ajax({
 		type:"get",
 		url:url,
 		async:true,
-		data:{scenicName:scenicName,date:visitDate},
+		data:{scenicName:scenicName,date:str},
 		success:function(data)
 		{
 			if (data*visitNum=="") {
@@ -89,10 +109,11 @@ function getFee()
 			}
 			guideFee1=data;
 			$("#guideFee").html(data);
-			alert(totalguideFee);
 			$("#totalGuideFee").html(totalguideFee);
 		},
-	});
+		});
+	
+	
 }
 
 function wechatPay(){
@@ -128,9 +149,9 @@ function releaseConsistOrder(postData){
 			if(data != null) {
 				
 				var orderID = data;
-				alert(orderID );
+				/*alert(orderID );
 				alert(totalguideFee);
-				alert(openId);
+				alert(openId);*/
 				callpay(openId, totalguideFee, orderID);
 			} else {
 				alert("支付订单失败！");

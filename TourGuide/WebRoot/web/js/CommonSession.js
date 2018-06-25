@@ -1,9 +1,10 @@
 //window["HOST"]="http://localhost:8080/TourGuide";
-//window["HOST"]="http://cps.xaut.edu.cn/TourGuide";
-window["HOST"]="http://zhoudaoly.com/TourGuide";
+window["HOST"]="http://cps.xaut.edu.cn/TourGuide";
+//window["HOST"]="http://zhoudaoly.com/TourGuide";
 
 window["vistPhone"] = getPhone();
 window["openId"] = getOpenId();
+
 if (vistPhone!=openId) {
 	
 	var Url = HOST + "/isBlackened.do";
@@ -33,6 +34,15 @@ function changeImage(img){
 	img.onerror = null; 
 }
 
+// 筛选
+function sceen()
+{
+	var val = document.getElementById('chooseScenicName');
+	if (val == null) {
+		alert('请选择景区');
+	}
+}
+
 function isRegist()
 {
 	if(vistPhone == "undefined" || vistPhone == openId)
@@ -56,12 +66,10 @@ function getOpenId(){
 
 function getPhone(){
 	 var Phone=getSession(sessionStorage.vistPhone);
-//	 alert("Phone=getSession(sessionStorage.vistPhone)"+Phone);
 	 if(Phone!=null){
 		return Phone;
 	 }else{		
 		Phone = GetUrlem("vistPhone");
-//		alert(Phone+ "GetUrlem(vistPhone);");
 		sessionStorage.vistPhone  = Phone;
 		return Phone;			
 	 }	 

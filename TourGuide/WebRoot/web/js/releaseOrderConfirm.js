@@ -7,8 +7,6 @@ var otherCommand = GetUrlem("otherCommand");
 var guideFee = GetUrlem("guideFee");
 var orderID = GetUrlem("orderID");
 
-//alert(orderID);
-
 $(function(){
 	//设置发布订单信息
 	setOrderConfirmInfo();

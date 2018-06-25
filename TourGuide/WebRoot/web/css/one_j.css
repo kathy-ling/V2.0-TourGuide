@@ -1,0 +1,57 @@
+.panel-body table{
+	width: 100%;font-size: 18px;
+}
+.panel-body tr{
+	border-bottom: 1px solid #CCCCCC;height: 40px;
+}
+
+.tgrayfont{
+	color: rgb(102,102,102);width: 30%;
+}
+.bg_img{
+	background-image: url(../img/resignbg.png);background-size: 100% auto; background-repeat: no-repeat ; height: 200px;width: 100%;
+}
+.user_head{
+	width: 120px;height: 120px;border-radius:50%;text-align: center;position: relative;margin: auto;top: 15px;
+}
+.user_headimg{
+	background-color: white;width: 90%;height: 90%;border-radius:50%;text-align: center;opacity: 0.6;filter:alpha(opacity=60);-moz-opacity:0.6;
+}
+.once_xx{
+	border: 1px solid white;height: 25px;width: 100px;border-radius: 15px;margin: auto;text-align: center;line-height: 25px;
+}
+.all_dd{
+	border: 1px solid white;height: 25px;width: 100px;border-radius: 15px;margin: auto;text-align: center;line-height: 25px;
+}
+.user_name{
+	width: 30%;height: 100%;float: left;text-align: center;margin-top: 5px;
+}
+.two_dh{
+	width: 84%;height: 30px;margin: auto;margin-top: 0px;
+}
+#liulanxian{
+	position: relative;background-color: white;height: 3px;width: 40%;margin: auto;margin-top: 1px;
+}
+#imgheight{
+	width: 81%;height:81%;border-radius:50%;position: absolute;top:4.5%;left: 5%;
+}
+#liulanpage{
+	height: 50px;
+}
+#sorry_null,#sorry_null1{
+    width: 100%;
+    text-align: center;
+}
+#sorry_img p,#sorry_img1 p{
+	height: 60px;
+	position: absolute;
+}
+
+#jg_alert{
+	width: 100%;
+	text-align: center;
+}
+#jg_img p{
+	height: 60px;
+	position: absolute;
+}

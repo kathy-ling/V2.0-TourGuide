@@ -5,8 +5,9 @@ var visitNum = GetUrlem("visitNum");
 var scenicName = GetUrlem("scenicName");
 var contactPhone = GetUrlem("contactPhone");
 var contactName = GetUrlem("contactName");
+var str = GetUrlem("str");
 
-
+var time = GetUrlem("time");
 $(function(){
 	
 	setGuideInfo(); //设置讲解员信息
@@ -17,9 +18,15 @@ $(function(){
 
 function setOrderInfo() {
 	//设置预约信息
-	$("#OrderTime").html(visitDate + " " + visitTime);
+	
+	if(time == null){
+		$("#OrderTime").html(visitDate + " " + visitTime);
+	}else{
+		$("#OrderTime").html(time);
+	}
+		
 	$("#OrderNum").html(visitNum);
-	$("#ScenicName").html(scenicName);
+	$("#GuideScenic1").html(scenicName);
 	$("#ContactPhoneConfirm").html(contactPhone);
 	$("#ContactNameConfirm").html(contactName);
 }
@@ -29,7 +36,6 @@ function setGuideInfo()
 {
 	$("#GuidePhone").html(guidePhone);
 	var Url = HOST + "/getDetailGuideInfoByPhone.do";
-	
 	$.ajax({
 		type: "post",
 		url: Url,
@@ -45,7 +51,7 @@ function setGuideInfo()
 			$.each(data, function(i, item) {
 				$("#GuideName1").html(item.name);	
 				$("#GuideHead").attr("src",HOST+item.image);
-				$("#GuideSex").html(item.sex);	
+				$("#GuideSex1").html(item.sex);	
 				$("#GuideLevel").html(item.guideLevel);
 				$("#GuideNum").html(item.historyNum);
 				$("#GuideFee").html(item.guideFee);
@@ -55,6 +61,12 @@ function setGuideInfo()
 				$("#ScenicName").html(item.scenicName);
 
 				$("#GuideFee1").html(item.guideFee);
+				
+				if(item.sex == "男"){
+					$("#GuideSex1").attr("class","sexMale");
+				}else{
+					$("#GuideSex1").attr("class","sexFemal");
+				}
 			});
 		}
 	});
@@ -90,13 +102,14 @@ function BookOrderWithGuide(postData){
 
 //点击【去结算】，付款之后，该讲解员才可以被预约
 function wechatPay(){
-	
+	if(str==null){
+		str = visitDate+" "+visitTime;
+	}
 	var guideFee = $("#GuideFee1").html();
 	var language = $("#GuideLanguage").html();
-	
 	var postData = {
 		'scenicName': scenicName,
-		'visitTime': visitDate+" "+visitTime,
+		'visitTime': str,
 		'visitNum': visitNum,
 		'visitorPhone': vistPhone,
 		'guidePhone': guidePhone,

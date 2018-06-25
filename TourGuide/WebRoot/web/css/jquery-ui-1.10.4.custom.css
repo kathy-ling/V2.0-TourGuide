@@ -232,7 +232,9 @@ button.ui-button-icons-only {
 	line-height: normal;
 }
 .ui-button-text-only .ui-button-text {
-	padding: .4em 1em;
+	padding: .6em .5em;
+	width: 60px;
+	margin-top: -4px;
 }
 .ui-button-icon-only .ui-button-text,
 .ui-button-icons-only .ui-button-text {
@@ -287,7 +289,7 @@ input.ui-button {
 }
 .ui-buttonset .ui-button {
 	margin-left: 0;
-	margin-right: -.3em;
+	/*margin-right: -.3em;*/
 }
 
 /* workarounds */
@@ -819,8 +821,7 @@ body .ui-tooltip {
 .ui-state-default,
 .ui-widget-content .ui-state-default,
 .ui-widget-header .ui-state-default {
-	border: 1px solid #c5c5c5;
-	background: #f6f6f6;
+	background: white;
 	font-weight: normal;
 	color: #454545;
 }
@@ -855,7 +856,7 @@ body .ui-tooltip {
 .ui-state-active,
 .ui-widget-content .ui-state-active,
 .ui-widget-header .ui-state-active {
-	border: 1px solid #003eff;
+	/*border: 1px solid #003eff;*/
 	background: #007fff;
 	font-weight: normal;
 	color: #ffffff;

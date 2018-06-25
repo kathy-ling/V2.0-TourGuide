@@ -28,7 +28,6 @@ public class AffiliationController {
 	@Autowired
 	private AffiliationService affiliationService;
 	
-	
 	/**
 	 * 导游选中景区后，申请挂靠
 	 * @param resp
@@ -117,7 +116,6 @@ public class AffiliationController {
 			@RequestParam("guidePhone") String guidePhone) throws IOException{
 		
 		CommonResp.SetUtf(resp);
-		
 		Map<String , Object> map = new HashMap<String, Object>();
 		
 		map = affiliationService.getCurrentAffiliation(guidePhone);

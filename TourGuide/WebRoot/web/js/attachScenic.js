@@ -1,4 +1,5 @@
 var visitPhone = getPhone();
+// var visitPhone = "15029319152";
 
 $(function(){
 	//填充当前挂靠景点
@@ -14,7 +15,7 @@ function changeTab1()
 }
 function changeTab2()
 {
-	window.location.href = "attachHistroy.html";
+	window.location.href = "attachHistroy.html?date="+Math.random();
 }
 
 //填充景点列表
@@ -35,17 +36,19 @@ function setapotlist() {
 				
 				var listItem = document.createElement("div");
 				listItem.className = "listItem";
-				
+		
 				var str = '<div class="scenicImg">'+
 					'<img class="ScenicImg" src='+HOST+n.scenicImagePath+'></div>'+
 					'<div class="detailInfo"><div class="name">'+
 					'<span>'+n.scenicName+'</span></div>'+
+					'<div class="all_con"><div class="th_con">导游费:<span></span></div>'+
+					'<div class="th_con">导游人数:<span></span></div>'+
+					'<div class="th_con">客流量:<span>人/年</span></div></div>'+
 					'<div class="applyAttachDiv">'+
-					'<button class="applyAttach" scenicID="'+n.scenicID+'" onclick="applyit($(this))">申请<br/>挂靠'+
-					'</button></div>';
-						
+					'<button class="applyAttach" scenicID="'+n.scenicNo+'" onclick="applyit($(this))">申请<br/>挂靠'+
+					'</button></div>';	
 				listItem.innerHTML = str;
-				list.appendChild(listItem);
+				list.appendChild(listItem);				
 			});					
 		}
 			
@@ -61,7 +64,7 @@ function setCurrentSpot() {
 		url: Url,
 		async: true,
 		data: {
-			guidePhone:"15029319152"
+			guidePhone:visitPhone
 		}, 
 		datatype: "JSON",
 		error: function() {
@@ -75,20 +78,25 @@ function setCurrentSpot() {
 				list.className = "list";
 				var listItem = document.createElement("div");
 				listItem.className = "listCurrent";
-					
+				if(data.passDate==1){
+					buttonString = '<button class="cancelAttach" disabled="true" scenicID="'+data.scenicID+'" onclick="cancle($(this))">等待<br/>审核';
+				}else{
+					buttonString = '<button class="cancelAttach" scenicID="'+data.scenicID+'" onclick="cancle($(this))">取消<br/>挂靠'
+				}
 				var str = '<div class="scenicImg">'+
 						'<img class="ScenicImg" src='+HOST+data.scenicImagePath+'></div>'+
 						'<div class="detailInfo"><div class="name">'+
 						'<span>'+data.scenicName+'</span></div>'+
-						'<div class="applyAttachDiv">'+
-						'<button class="cancelAttach" scenicID="'+data.scenicID+'" onclick="cancle($(this))">取消<br/>挂靠'+
-						'</button></div>';
+						'<div class="all_con"><div class="th_con">导游费:<span></span></div>'+
+					'<div class="th_con">导游人数:<span></span></div>'+
+					'<div class="th_con">容流量:<span>人/年</span></div></div>'+
+					'<div class="applyAttachDiv">'+buttonString+'</button></div>';	
 							
 				listItem.innerHTML = str;
 				list.appendChild(listItem);
 			}
 			else{
-//				$("#lable1").html("您还未挂靠景点!");
+				$("#currentList").hide();
 				
 			}
 			
@@ -120,7 +128,7 @@ function isAuthorized(){
 }
 //申请挂靠景点
 function applyit(This){
-	var scenicId = This.attr("scenicNo");
+	var scenicId = This.attr("scenicID");
 	var URL = HOST+'/applyForAffiliation.do';
 	
 	if(authorized == false){
@@ -156,7 +164,7 @@ function applyit(This){
 				$("#lable1").hide();
 				$("#lable2").show();
 				$("#lable2").html("我的挂靠申请"); 
-				window.location.href = "applyForAffiliation.html";
+				location.reload();
 			}
 			if(parseInt(data) == parseInt(0)){
 				alert("申请失败。发生未知错误!");
@@ -169,7 +177,7 @@ function cancle(This){
 	var scenicId = This.attr("scenicID");
 	
 	var URL = HOST+'/cancleAffiliation.do';
-
+	
 	$.ajax({
 		type:"get",
 		url:URL,
@@ -179,6 +187,7 @@ function cancle(This){
 		}, //vistPhone
 		datatype: "JSON",
 		error:function(data){
+			alert("请求error");
 			console.log(JSON.stringify(data));
 		},
 		success:function(data){		

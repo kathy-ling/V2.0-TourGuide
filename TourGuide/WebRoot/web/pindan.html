@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
 
 	<head>
@@ -116,6 +116,9 @@
 		.ordermnn span {
 			font-size: 30px;
 		}
+		#chooseScenicName1 option{
+			text-align: center;
+		}
 	</style>
 
 	<body>
@@ -123,11 +126,11 @@
 
 			<div  id="header"   class="header selector" style="z-index: 10;">
 				<div style="width: 50%;height: 44px;float: left;background-color:rgb(28,103,252);text-align: center;">
-					<label class="selector" style="margin: auto;margin-top: 16px;font-size: 16px;color: white;" onclick="kepinyemian()">可拼订单</label>
+					<label class="selector" style="margin: auto;margin-top: 11px;font-size: 20px;color: white;-webkit-font-smoothing：antialiased;text-shadow: none;" onclick="kepinyemian()">可拼订单</label>
 					<div id="kepinxian" style="position: relative;background-color: white;height: 5px;width: 60%;margin: auto;margin-top: 3px;"></div>
 				</div>
 				<div style="width: 50%;height: 44px;float: left;background-color:rgb(28,103,252);text-align: center;">
-					<label class="selector" style="margin: auto;margin-top: 16px;font-size: 16px;color: white;" onclick="faqiyemian()">发起拼单</label>
+					<label class="selector" style="margin: auto;margin-top: 11px;font-size: 20px;color: white;-webkit-font-smoothing：antialiased;text-shadow: none;" onclick="faqiyemian()">发起拼单</label>
 					<div id="faqixian" style="position: relative;background-color: white;height: 5px;width: 60%;margin: auto;margin-top: 3px;"></div>
 				</div>
 			</div>
@@ -135,18 +138,19 @@
 			<div class="selector" data-role="main" style="width: 100%;">
 				
 				<div id="kepinpage" style="background-color: white;width: 100%;">
-					<div style="width: 100%;text-align: center;">
-						<div id="chooseScenicNameDiv1" style="width: 90%;background-color: #efece6;height: 40px;margin: auto;border-radius: 20px;margin-top: 10px;">
-							<select id="chooseScenicName1" name="scenicName" data-role="none" style="font-size: 20px;background-color: inherit;border: none;margin-top: 10px;;text-align: center;width: 90%;" onchange="chooseOrder(0)">
+					<div style="width: 100%;">
+						<div id="chooseScenicNameDiv1" style="width: 90%;background-color: #efece6;height: 35px;margin: auto;border-radius: 20px;margin-top: 10px;">
+							<img src="img/fdj.png" alt="" style="width: 20px;height: auto;margin-left: 20px;margin-top: -5px;">
+							<select id="chooseScenicName1" name="scenicName" data-role="none" style="width:80%;font-size: 18px;background-color: inherit;border: none;margin-top: 5px;" onchange="chooseOrder(0)">
 								<option>请选择景区</option>
 							</select>
 						</div>
 					</div>
 					<div class="selector" style="width: 96%;height:40px;margin: auto;margin-top: 10px;">
-						<div style="width: 48%;height: 30px;float: left;background-color: rgb(38,142,250);border-radius: 20px;text-align: center;line-height: 30px;font-size: 16px;color: white;">
+						<div style="width: 48%;height: 30px;float: left;background-color: rgb(38,142,250);border-radius: 20px;text-align: center;line-height: 30px;font-size: 16px;color: white;-webkit-font-smoothing：antialiased;text-shadow: none;">
 							筛选订单
 						</div>
-						<div style="width: 48%;height: 30px;float: right;background-color: white;border-radius: 20px;text-align: center;line-height: 30px;font-size: 16px;border: 1px solid #CCCCCC;" onclick="fastPin()">
+						<div style="width: 48%;height: 30px;float: right;background-color: white;border-radius: 20px;text-align: center;line-height: 30px;font-size: 16px;border: 1px solid #CCCCCC;-webkit-font-smoothing：antialiased;text-shadow: none;" onclick="fastPin()">
 							快捷拼单
 						</div>
 					</div>
@@ -155,7 +159,7 @@
 							<div style="width: 29%;float: left;">
 								<table style="width: 100%;">
 									<tr>
-										<td><img src="img/icon-rili.png" style="height: 30px;margin-left: 5px;"></td>
+										<td><img src="img/icon-rili.png" style="height: 25px;margin-left: 5px;"></td>
 										<td class="selector" style="font-size: 16px;">日期</td>
 									</tr>
 								</table>
@@ -178,14 +182,14 @@
 							</div>
 						</div>
 						<div style="width: 100%;margin-top: 2px;">
-							<span style="font-size: 12px;margin-left: 30%;">提供三日内的预约</span>
+							<span style="font-size: 12px;margin-left: 36%;">提供三日内的预约</span>
 						</div>
 						<div style="width: 100%;margin-top: 14px;">
-							<div style="float: left;margin-left: 5%;">
-								<span>人数</span>
+							<div style="float: left;margin-left: 2%;">
+								<span style="font-size: 16px;">参观人数</span>
 							</div>
 							<div style="float: left;width: 50%;margin-top: -8px;margin-left: 10px;">
-								<input type="number" id="chooseVisitNum" class="input__field  input__field--hoshi" style="font-size: 16px;width: 100%;" placeholder="请输入人数" onchange="chooseOrder(0)"/>
+								<input type="number" id="chooseVisitNum" class="input__field  input__field--hoshi" style="font-size: 18px;width: 100%;background-color: #F3F5FB;padding-left: 30%;" placeholder="0" onchange="chooseOrder(0)"/>
 							</div>
 							<div style="float: right;margin-right: 10%;">
 								<img src="img/icon-plus.png" style="height: 22px;" onclick="cvnplus()" />
@@ -200,31 +204,36 @@
 
 
 					</div>
-					<div style="width: 100%;height: 70px;background-color: rgb(242,245,251);"></div>
+					<div style="width: 100%;height: 100%;background-color: rgb(242,245,251);"></div>
 
 				</div>
 
 				<div id="faqipage" style="background-color:  rgb(242,245,251);">
-					<div id="chooseScenicNameDiv" style="width: 100%;text-align: center;height: 55px;background-color: white;">
+					<div id="chooseScenicNameDiv" style="width: 100%;height: 45px;background-color: white;">
 
-						<div id="chooseScenicNameDiv" style="width: 90%;background-color: #efece6;height: 40px;margin: auto;border-radius: 20px;margin-top: 10px;">
-							<select id="chooseScenicName" name="scenicName" data-role="none" style="font-size: 20px;background-color: inherit;border: none;margin-top: 10px;text-align: center;width: 90%;" onchange="getTodayFee()">
+						<div id="chooseScenicNameDiv" style="width: 90%;background-color: #efece6;height: 35px;margin: auto;border-radius: 20px;margin-top: 10px;">
+						<img src="img/fdj.png" alt="" style="width: 20px;height: auto;margin-left: 20px;margin-top: -5px;">
+							<select id="chooseScenicName" name="scenicName" data-role="none" style="width:80%;font-size: 18px;background-color: inherit;border: none;margin-top:4px;" onchange="getTodayFee()">
 								<option>请选择景区</option>
 								
 							</select>
+								
+
+							
+
 						</div>
 					</div>
-					<div style="width: 100%;height: 180px;padding: 10px 5px;">
+					<div style="width: 100%;height: 510px;padding: 10px 5px;overflow: hidden;">
 						<div style="width: 100%;height: 38px;">
 							<div style="width: 29%;float: left;">
 								<table style="width: 100%;">
 									<tr>
-										<td><img src="img/icon-rili.png" style="height: 30px;margin-left: 5px;"></td>
+										<td><img src="img/icon-rili.png" style="height: 25px;margin-left: 5px;"></td>
 										<td class="selector" style="font-size: 16px;">日期</td>
 									</tr>
 								</table>
 							</div>
-							<div id="fqrqradio" class="fqrdo">
+							<div id="fqrqradio" class="fqrdo" style="-webkit-font-smoothing：antialiased;text-shadow: none;">
 								<!--<input id="kpdat" data-role="none" type="radio" name="rdokp" class="rdolist" value=""/>-->
 								<input id="fqdat" data-role="none" type="radio" name="rdofq" class="rdolist" value="">
 								<label class="rdobox" style="margin-right: 10px;" onclick="showVisitTime(1)">
@@ -242,13 +251,13 @@
 							</div>
 						</div>
 						<div style="width: 100%;margin-top: 2px;">
-							<span style="font-size: 12px;margin-left: 30%;">提供三日内的预约</span>
+							<span style="font-size: 12px;margin-left: 36%;">提供三日内的预约</span>
 						</div>
 						<div style="width: 100%;height: 38px;">
 							<div style="width: 29%;float: left;margin-top: 10px;">
 								<table style="width: 100%;">
 									<tr>
-										<td><img src="img/biao.png" style="height: 30px;margin-left: 5px;"></td>
+										<td><img src="img/biao.png" style="height: 25px;margin-left: 5px;"></td>
 										<td class="selector" style="font-size: 16px;">时间</td>
 									</tr>
 								</table>
@@ -295,13 +304,13 @@
 								<p style="margin-top: 10px;font-size: 20px;"><span id="fqguidefee">0</span>元</p>
 							</div>
 						</div>
-						<div style="padding: 5px;margin-top: 20px;">
+						<div style="padding: 5px;margin-top: 40px;background-color: #F3F5FB;">
 							<div style="width: 100%;height: 26px;">
 								<div style="float: left;margin-left: 2px;">
-									<span style="font-size: 16px;color: gray;">参观人数</span>
+									<span style="font-size: 16px;color: gray;">参观人数　</span>
 								</div>
 								<div style="float: left;width: 50%;margin-top: -8px;margin-left: 10px;">
-									<input type="number" id="visitorCount" class="input__field  input__field--hoshi" style="font-size: 16px;width: 100%;background-color:white;" placeholder="请输入人数" onchange="checkkpnum()"/>
+									<input type="number" id="visitorCount" class="input__field  input__field--hoshi" style="font-size: 16px;width: 100%;background-color:#F3F5FB;" placeholder="请输入人数" onchange="checkkpnum()"/>
 								</div>
 								<div style="float: right;margin-right: 3px;">
 									<img src="img/icon-plus.png" style="height: 22px;" onclick="fqplus()" />
@@ -317,24 +326,24 @@
 
 								</div>
 								<div style="float: left;width: 50%;margin-top: -8px;margin-left: 10px;">
-									<input id="fqvisitname" class="input__field  input__field--hoshi" style="font-size: 16px;width: 100%;background-color:white ;" placeholder="请输入姓名" />
+									<input id="fqvisitname" class="input__field  input__field--hoshi" style="font-size: 16px;width: 100%;background-color:#F3F5FB ;" placeholder="请输入姓名" />
 								</div>
 							</div>
 							<div style="width: 100%;height: 1px;background-color: gray;margin-top: 8px;"></div>
 							<div style="width: 100%;height: 26px;margin-top: 8px;">
 								<div style="float: left;margin-left: 2px;">
-									<span style="font-size: 16px;color: gray;">联系电话</span>
+									<span style="font-size: 16px;color: gray;">联系电话　</span>
 
 								</div>
 								<div style="float: left;width: 50%;margin-top: -8px;margin-left: 10px;">
-									<input id="fqvisitphone" class="input__field  input__field--hoshi" style="font-size: 16px;width: 100%;background-color:white ;" placeholder="请输入电话" onchange="checkPhone()" />
+									<input id="fqvisitphone" class="input__field  input__field--hoshi" style="font-size: 16px;width: 100%;background-color:#F3F5FB ;" placeholder="请输入电话" onchange="checkPhone1()" />
 								</div>
 							</div>
 
 						</div>
 
 						<div style="width: 100%;height: 40px;background-image: url(img/bluejianbian.png);background-size: 100% 100%;margin-top: 30px;border-radius: 20px;text-align: center;" onclick="paySubmit()">
-							<span class="selector" style="font-size: 20px;color: white;line-height: 36px;">提交订单</span>
+							<span class="selector" style="font-size: 20px;color: white;line-height: 36px;-webkit-font-smoothing：antialiased;text-shadow: none;">提交订单</span>
 						</div>
 						<div style="width: 100%;height: 70px;"></div>
 
@@ -350,7 +359,7 @@
 						</div>
 						<div style="width: 100%;height: 20px;margin-top: 20px;">
 							<div style="float: left;margin-left: 2px;">
-								<span style="font-size: 15px;color: gray;">参观人数</span>
+								<span style="font-size: 15px;color: gray;">参观人数　</span>
 							</div>
 							<div style="float: left;width: 50%;margin-top: -8px;margin-left: 10px;">
 								<input type="number" id="pindanvisitnum" class="input__field  input__field--hoshi" style="font-size: 16px;width: 100%;" placeholder="请输入人数" onchange="getkptotalFee()"/>
@@ -375,7 +384,7 @@
 						<div style="width: 100%;height: 1px;background-color: gray;margin-top: 8px;"></div>
 						<div style="width: 100%;height: 20px;margin-top: 8px;">
 							<div style="float: left;margin-left: 2px;">
-								<span style="font-size: 15px;color: gray;">联系电话</span>
+								<span style="font-size: 15px;color: gray;">联系电话　</span>
 
 							</div>
 							<div style="float: left;width: 50%;margin-top: -8px;margin-left: 10px;">
@@ -383,7 +392,7 @@
 							</div>
 						</div>
 						<div style="width: 100%;height: 40px;background-color: #FFFFFF;margin-top: 8px;">
-							<div style="width: 80px;float: right;height: 40px;background: -webkit-gradient(linear, 0% 0%, 100% 0%, from(#2488fa), to(#31b6f8));text-align: center;color: white;line-height: 38px;" onclick="consistOrder()">
+							<div style="width: 90px;float: right;height: 50px;background: -webkit-gradient(linear, 0% 0%, 100% 0%, from(#2488fa), to(#31b6f8));text-align: center;color: white;line-height: 50px;font-size: 1.3em;-webkit-font-smoothing：antialiased;text-shadow: none;" onclick="consistOrder()">
 								去支付
 							</div>
 							<div style="float: right;height: 40px;width: calc(100% - 90px);">
@@ -407,6 +416,9 @@
 			}
 
 			function faqiyemian() {
+				
+//				isRegist();
+
 ////				根据vistPhone判断是否注册,
 ////				vistPhone全局变量， 通过openId获取得到
 //				if(vistPhone == undefined || vistPhone == "null" || vistPhone == openId) {
@@ -437,7 +449,6 @@
 
 			$(function() {
 				addNavigate(2);
-
 			});
 		</script>
 

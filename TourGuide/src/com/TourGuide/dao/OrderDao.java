@@ -1,5 +1,7 @@
 package com.TourGuide.dao;
 
+import static org.hamcrest.CoreMatchers.nullValue;
+
 import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -49,8 +51,20 @@ public class OrderDao {
 		boolean bool = false;
 		
 		String time = MyDateFormat.form(new Date());
-		
-		String payBook = "update t_bookorder set orderState='待游览',payTime='"+time+"',hadPay=1 where bookOrderID='"+orderID+"'";
+		String getBookOrderGuide = "SELECT t_bookorder.guidePhone from t_bookorder "
+				+ "WHERE t_bookorder.bookOrderID='"+orderID+"'";
+		String payBook;
+		List<Map<String, Object>> list = jdbcTemplate.queryForList(getBookOrderGuide);
+		if(list.size()>0 ){
+			if(list.get(0).get("guidePhone")!=null){
+				payBook = "update t_bookorder set orderState='待游览',payTime='"+time+"',hadPay=1 where bookOrderID='"+orderID+"'";
+			}else {
+				payBook = "update t_bookorder set orderState='待接单',payTime='"+time+"',hadPay=1 where bookOrderID='"+orderID+"'";
+			}
+			
+		}else {
+			payBook = "update t_bookorder set orderState='待接单',payTime='"+time+"',hadPay=1 where bookOrderID='"+orderID+"'";
+		}
 		String payConsist = "update t_consistorder set orderState='待游览',payTime='"+time+"',hadPay=1 where consistOrderID='"+orderID+"'";
 		
 		int i = jdbcTemplate.update(payBook);
@@ -92,7 +106,11 @@ public class OrderDao {
 				map.put("scenicName", rst.getString(5));
 				map.put("totalMoney", rst.getInt(6));
 				map.put("orderState", rst.getString(7));
-				map.put("type", "预约单");
+				if (rst.getString(8)!=null) {
+					map.put("type", "预约单");
+				} else {
+					map.put("type", "预约发布单");
+				}
 				listResult.add(map);
 			}
 			
@@ -183,6 +201,7 @@ public class OrderDao {
 			
 			while (rst.next()) {
 				Map<String , Object> map = new HashMap<String, Object>();
+				
 				map.put("produceTime", rst.getString(1));
 				map.put("payTime", rst.getString(2));
 				map.put("takeOrderTime", rst.getString(3));
@@ -200,7 +219,9 @@ public class OrderDao {
 				map.put("longitude", rst.getString(15));
 				map.put("latitude", rst.getString(16));
 				map.put("cancleFee", rst.getInt(17));
-				
+				map.put("otherCommand", rst.getString(18));
+				map.put("totalMoney", rst.getString(19));
+				map.put("orderId", rst.getString(20));
 				listResult.add(map);
 			}							
 			conn.close();
@@ -234,9 +255,73 @@ public class OrderDao {
 		return listResult;
 	}
 	
+	/*
+	 * 根据游客手机号查询待游览的订单
+	 * */
+	public Map<String, Object> getdaiyoulanorder(String phone){
+		List<Map<String, Object>> listResult = new ArrayList<>();
+		String sqlString = null;
+		
+		sqlString = " (SELECT t_bookorder.bookOrderID AS orderID,t_scenicspotinfo.scenicName AS nsme,"
+				+ " t_bookorder.visitNum AS vnum,t_bookorder.guideFee AS gfee,t_bookorder.visitTime AS vtime,t_guideinfo.`name` AS gname,"
+				+ " t_guideinfo.sex AS gsex,t_guideinfo.age AS gage,t_guideinfo.`language` AS glanguage,t_guideinfo.phone AS gphone,"
+				+ " t_scenicspotinfo.jing AS jingdu,t_scenicspotinfo.wei AS weidu,'预约单' type,t_bookorder.longitude AS gjingdu,"
+				+ " t_bookorder.latitude AS gweidu FROM t_bookorder"
+				+ " INNER JOIN t_scenicspotinfo ON t_bookorder.scenicID = t_scenicspotinfo.scenicNo "
+				+ " LEFT JOIN t_guideinfo ON t_bookorder.guidePhone = t_guideinfo.phone WHERE t_bookorder.visitorPhone = '"+phone+"' "
+				+ " AND t_bookorder.orderState = '待游览' AND t_bookorder.visitTime > NOW())"
+				+ " UNION ( SELECT t_consistorder.consistOrderID AS orderID,t_scenicspotinfo.scenicName AS nsme,t_consistorder.visitNum AS vnum,"
+				+ " t_consistorder.guideFee AS gfee,t_consistorder.visitTime AS vtime,t_guideinfo.`name` AS gname,t_guideinfo.sex AS gsex,"
+				+ " t_guideinfo.age AS gage,t_guideinfo.`language` AS glanguage,t_guideinfo.phone AS gphone,t_scenicspotinfo.jing AS jingdu,"
+				+ " t_scenicspotinfo.wei AS weidu,'拼团单' type,t_consistorder.longitude AS gjingdu,t_consistorder.latitude AS gweidu"
+				+ " FROM t_consistorder INNER JOIN t_scenicspotinfo ON t_consistorder.scenicID = t_scenicspotinfo.scenicNo "
+				+ " LEFT JOIN t_guideinfo ON t_consistorder.guidePhone = t_guideinfo.phone WHERE"
+				+ " t_consistorder.visitorPhone = '"+phone+"' AND t_consistorder.orderState = '待游览' "
+				+ " AND t_consistorder.visitTime > NOW() )"
+				+ " ORDER BY vtime ASC";
+		
+		listResult = jdbcTemplate.queryForList(sqlString);
+		
+		if(listResult.size()==0){
+			return null;
+		}
+		else {
+			return listResult.get(0);
+		}
+		
+	}
+	
+	/*
+	 * 根据导游手机号 获取待游览订单
+	 * */
+	public Map<String,Object> getdaiyoulanOrderbyGuidePhone(String guidePhone){
+		List<Map<String, Object>> listResult = new ArrayList<>();
+		String sqlString = null;
+		
+		sqlString = "(SELECT t_consistresult.orderID AS orderId,t_scenicspotinfo.scenicName AS sname,t_consistresult.visitTime AS vtime,"
+				+ " t_consistresult.visitNum AS vnum,t_consistresult.visitNum * t_consistresult.guideFee AS gfee,'拼团单' type"
+				+ " FROM t_consistresult,t_scenicspotinfo WHERE t_consistresult.guidePhone = '15029319152'"
+				+ " AND t_scenicspotinfo.scenicNo = t_consistresult.scenicID AND t_consistresult.state = '0' AND t_consistresult.visitTime > NOW())"
+				+ " UNION(SELECT t_bookorder.bookOrderID AS orderId,t_scenicspotinfo.scenicName AS sname,t_bookorder.visitTime AS vtime,"
+				+ " t_bookorder.visitNum AS vnum,t_bookorder.guideFee AS gfee,'预约单' type FROM t_bookorder,t_scenicspotinfo"
+				+ " WHERE t_bookorder.guidePhone = '"+guidePhone+"' AND t_scenicspotinfo.scenicNo = t_bookorder.scenicID AND t_bookorder.orderState = '待游览'"
+				+ " AND t_bookorder.visitTime > NOW())ORDER BY vtime ASC";
+				
+		
+		listResult = jdbcTemplate.queryForList(sqlString);
+		
+		if(listResult.size()==0){
+			return null;
+		}
+		else {
+			return listResult.get(0);
+		}
+	}
+	
+		
 
 	/**
-	 * 根据订单编号，讲解员查看自己的预约单的详情,包括游客的姓名、手机号
+	 * 根据订单编号，讲解员查看自己的预约单的详情,包括游客的姓名、手机号 
 	 * @param orderID
 	 * @return
 	 */

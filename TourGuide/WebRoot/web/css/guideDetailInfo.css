@@ -9,47 +9,57 @@ html,body
 }
 .guideImg
 {
-	height: 150px;
+	height: 35%;
+}
+.guideInfo1
+{
+	width: 100%;
+	margin-right:5px ;
+}
+.headImgDiv
+{
+	height: 40px;
+	margin-top: -8%;
+}
+.guideHead
+{
+	width: 80px;
+	height: 80px;
+	margin-top: -45px;
+	margin-left: 40px;
+	border-radius:50% ;
+	
 }
 #GuideImg
 {
-	height: 100%;
+	height: 80%;
 	width: 100%;
 }
-.backIcon
-{
-	position: absolute;
-	top: 2%;
-	left: 5px;
-	width: 8%;
-}
-
 #GuideName1
 {
 	
-	margin-left: 120px;
-	/*width: 50px;*/
-	margin-top: -50px;
+	margin-left: 125px;
+	margin-top: -40px;
+	color: #666666;
 }
 #GuideSex1
 {
-	width:14px;
+	width:13px;
+	height: 20px;
 	margin-top: -22px;
 	margin-left: 180px;
-	color: red;
-	border: 1px solid red;
+	/*color: red;
+	border: 1px solid red;*/
 	padding-left: 8px;
-	padding-right: 8px;
-	font-size: 0.9em;
-	
-	
+	font-size: 0.9em;	
 }
 #GuideScenic1
 {
+	color: #666666;
 	float: right;
-	margin-top: -19px;
+	margin-top: -15px;
 	font-size: 0.8em;
-
+	margin-right:20px;
 }
 #name
 {
@@ -62,7 +72,7 @@ html,body
 }
 #guideIntro
 {
-	margin-top: 20%;
+	margin-top: 10px;
 	text-indent: 2em;
 	text-align: justify;
 	margin-left: 4%;
@@ -70,14 +80,15 @@ html,body
 }
 .bar1
 {
-	height: 4%;
+	height: 5px;
 	margin-right: 0px;
 	background: url(../img/各模块间隔条.png) no-repeat;
 	background-size:cover ;
+	margin-top: 20px;
 }
 .judge
 {
-	width: 12%;
+	width: 40px;
 	margin-left: 2%;
 }
 .judgeInfo
@@ -88,13 +99,13 @@ html,body
 .judgeSpan
 {
 	display: inline-block;
-	margin-top: 3%;
+	margin-top: 2.5%;
 	vertical-align: top;
 }
 .judgeNum
 {
 	display: inline-block;
-	margin-top: 3%;
+	margin-top: 2.5%;
 	vertical-align: top;
 }
 ul
@@ -136,7 +147,6 @@ li
 	margin-left: 4%;
 	margin-right: 2%;
 	font-size: 0.9em;
-	width: 100%;
 	height: 20%;
 }
 .enterScenic
@@ -157,6 +167,7 @@ li
 {
 	position: absolute;
 	bottom: 13%;
+	/*left: -20%;*/
 	width: 38%;
 	height: 40px;
 	margin-left: 55%;
@@ -185,4 +196,13 @@ li
 	float: right;
 	width: 35%;
 	margin-top: 15px;
+}
+.boy{
+	background-image: url('../img/boy.png');width: 20px;height: auto;
+}
+.girl{
+	background-image: url('../img/girl.jpg');color: white;
+}
+#sexxx{
+	display: none;
 }

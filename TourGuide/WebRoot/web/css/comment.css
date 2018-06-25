@@ -1,0 +1,48 @@
+html,body
+{
+	height: 100%;
+	width: 100%;
+	margin: 0;
+	padding: 0;
+}
+.head
+{	
+	height: 100px;
+	width: 100%;
+	text-align: center;
+	margin-top: 20%;
+}
+.headImg
+{
+	height: 100%;
+}
+.comment
+{
+	/*border: 1px solid red;*/
+	width: 100% - 2px;
+	height: calc(100% - 100px);
+	font-size: 0.7em;
+}
+#starLevel
+{
+	width: 60px;
+	height: 30px;
+	/*border: 1px solid blue;*/
+	margin-left: 36%;
+}
+.select
+{
+	margin-top: 20px;
+}
+.comment1
+{
+	border: 2px solid gainsboro;
+	width: 35%;
+	float: left;
+	margin-left: 10%;
+	text-align: center;
+}
+.otherComment
+{
+	
+}

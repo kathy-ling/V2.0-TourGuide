@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>发表评论</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link rel="stylesheet" href="css/jquery-ui-1.10.4.custom.css" />
+		<link rel="stylesheet" href="css/jquery.raty.css" />
+		<link rel="stylesheet" href="css/comment.css" />
+		<link rel="stylesheet" href="css/xi.css" />
+		<link href="css/bootstrap.min.css" rel="stylesheet">
+		<link rel="stylesheet" type="text/css" href="css/demo.css">	
+		<script type="text/javascript" src="js/CommonSession.js"></script>
+		<script type="text/javascript" src="js/jquery-1.10.2.js"></script>
+		 <script type="text/javascript" src="js/jquery-1.11.3.js"></script> 
+		<script type="text/javascript" src="js/jquery 1.10.4 ui.min.js"></script>
+		<script type="text/javascript" src="js/jquery.raty.min.js"></script>
+		<!--<script type="text/javascript" src="js/comment.js" ></script>-->
+		<script type="text/javascript" src="js/xi.js" ></script>
+	</head>
+
+	<body>
+		<div class="head">
+			<img class="headImg" src="img/1-2头像.png"/>
+		</div>
+		<div class="comment">
+			<p style="text-align: center; font-size: 1.6em;">评价</p>
+			
+			<!-- <div id="starLevel" data-score="2">	
+			</div> -->
+
+			<!-- 评价星星 -->
+			<div id="star">
+				<span></span>
+				<ul>
+					<li value='1' id='li1'><a href="javascript:;">1</a></li>
+					<li value='2'  id='li2'><a href="javascript:;">2</a></li>
+					<li value='3'  id='li3'><a href="javascript:;">3</a></li>
+					<li value='4'  id='li4'><a href="javascript:;">4</a></li>
+					<li value='5'  id='li5'><a href="javascript:;">5</a></li>
+				</ul>
+				<br>
+				<span id="cont"></span>
+				<p></p>
+			</div>
+			<!--star end-->
+
+		
+		<div class="d">
+	
+	
+			<ul class="demo" id='demo'>
+				<li id='c0' value="11" class="c" onclick="ckckc()">语言生动</li>
+				<li id='c1' value="12" class="c">表述清楚</li>
+				<li id='c2' value="13" class="c">服务态度改善</li>
+				<li id='c3' value="14" class="c">服务热情</li>
+				<li id='c4' value="15" class="c">讲解感染力不强</li>
+				<li id='c5' value="16" class="c">讲解词有层次</li>
+			</ul>
+			<p style="margin-top: 200px;position: absolute;margin-left: 10%;font-size: 14px;">其他:</p>
+			<textarea id="i" type="text" placeholder="请输入其他想对讲解员说的"></textarea>
+
+		</div>
+		<button class="poot" onclick="poot()">匿名提交</button>
+	</body>
+</html>
+<script src="js/jquery-1.11.0.min.js" type="text/javascript"></script>
+<script src="js/simsCheckbox.js" type="text/javascript"></script>
+
+<style>
+.d{
+	text-align: center;
+}
+.c{
+	width: 100px;
+	height: 40px;
+	border:1px solid #c6c6c6;
+	color: black;
+	text-align: center;
+	padding-top: 10px;
+	border-radius: 2.5px;
+}
+.cc{
+	background-color: blue;color:white;
+}
+#i{
+	width:300px; height:40px; border:1px solid #ccc;
+	margin-top: 10%;
+}
+</style>
+<script>
+var x=["语言生动","表述清楚","服务态度改善","服务热情","讲解感染力不强","讲解词有层次"];
+var y=[];
+function $(id){ return document.getElementById(id)};
+for(var i=0,m=x.length;i<m;i++){
+ $("c"+i).onclick=(function(i){
+  return function(){
+   var s=y.join(",").indexOf(x[i]);
+  if(s>=0){
+  for(var r in y){
+   if(y[r]==x[i]){y.splice(r,1)}
+   }
+   }
+  else{
+   y.push(x[i])
+   }
+   
+  $("i").value=y.join(" ");
+  }
+  })(i)
+ 
+ }
+</script>
+
+<script>
+function ckckc()
+{
+	var v = document.getElementsByClassName('c')[0];
+	 v.style.css="background-color: blue;color: #fff;";
+	// v.className="cc";
+}
+</script>

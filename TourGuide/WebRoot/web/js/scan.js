@@ -9,7 +9,7 @@ $(document).ready(function() {
 
 	var url = window.location.href;
 	var url11 = HOST + "/weixinScan.do";
-	alert(url11)
+	// alert(url11)
 	//ajax注入权限验证  
 	$.ajax({
 		url: url11,

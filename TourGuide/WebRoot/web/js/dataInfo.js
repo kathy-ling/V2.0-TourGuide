@@ -20,7 +20,6 @@ function getData(){
 		success: function(data) {
 			$("#GuideName").html(data.name);	
 			$("#GuideImg").attr("src", data.image);
-			
 			$("#Percent").html(data.range);
 			$("#Grade").html(data.guideLevel);
 			$("#OrderNum").html(data.historyTimes);

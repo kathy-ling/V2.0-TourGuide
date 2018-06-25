@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
 <head>
     <meta charset="UTF-8" />
@@ -7,14 +7,17 @@
     <link rel="stylesheet" type="text/css" href="css/jquery.mobile-1.4.5forRegister.css">  
  	<link rel="stylesheet" type="text/css" href="./css/waves.min.css?v=0.7.2">
 	<link rel="stylesheet" type="text/css" href="css/component.css" />
-    
+
+
     <link href="css/checkbox.css" rel="stylesheet">
+    <script type="text/javascript" src="js/jquery-1.7.2.min.js"></script>
 	<script type="text/javascript" src="js/jquery-2.2.3.min.js"></script>
     <script type="text/javascript" src="js/jquery.mobile-1.4.5.min.js"></script>
     <script type="text/javascript" src="js/Regist.js"></script>
-    <!--<script type="text/javascript" src="js/ajaxfileupload.js"></script>-->
+    <script type="text/javascript" src="js/ajaxfileupload.js"></script>
 	<script src="js/checkbox.min.js"></script>
   	<script src="js/icheck.js"></script>
+
 </head>
 <style>
 	.zuoyoumargin{
@@ -26,6 +29,13 @@
         border-radius: 25px;
         width: 80%;
         font-size: 18px;
+    }
+
+     #coloredd-button .btn {
+        border-radius: 25px;
+        width: 80%;
+        font-size: 18px;
+        border:1px solid #154DC0;
     }
 
     #colored-button a,
@@ -48,64 +58,70 @@
 	   color:    #FFFFFF;
 	}
 	
-	.ui-checkbox{
+/*	.ui-checkbox{
 		display:inline-block; float:left; border:1px solid #FFFFFF;width:14px;height:14px; text-align:center;
 
 		
-	}
-	
-	
-
+	}*/
 </style>
 
-<body >
+<body style="-webkit-font-smoothing：antialiased;text-shadow: none;">
 
 	<div data-role="page" id="registerPage" style="background-image: url(img/resignbg.png);background-size:100% 100% ;">
     	<div data-role="main" class="ui-content" >
     		<div id="zhuce1" >
+                <!-- 注册圆logo -->
     			<div style="text-align: center;">
-    				<img src="img/zhucetubiao.png" style="width: 50%;"/>
+    				<img src="img/zhucetubiao.png" style="width: 35%;"/>
     			</div>
 
+                <div style="width: 100%;height: 30px;text-align: center;margin-top: 20px;">
+                    <a href="javascript:;" style="color: white;font-weight:normal;text-decoration: none;" onclick="window.location.href='index.html'">返回</a>
+                </div>
+               
     			
     			<div style="height: 40px;margin-top: 20px;width: 100%;">
     				<div style="">
-    					<img src="img/phonenum.png" style="height: 30px;float: left; margin-left: 6px;"   />
+    					<img src="img/29.3 手机图标.png" style="height: 30px;float: left; margin-left: 6px;"   />
     				</div>
     				
     				<div style="margin-left: 10px;margin-top: -2px;float: left;height: 100%;width: 50%;">
-    					<input class="input__field  input__field--hoshi" style="font-size: 16px;width: 100%;float: left;color: #FFFFFF; text-align: center;" placeholder="请输入手机号" id="tel" onchange="checkPhone()"/>
+    					<input class="input__field  input__field--hoshi" style="font-size: 16px;width: 80%;float: left; -webkit-font-smoothing：antialiased;text-shadow: none;color: white;" placeholder="请输入手机号" id="tel" onchange="checkPhone()"/>
     				</div>
     				<div style="float: right;">
-    					<img src="img/getyanzhengma.png" style="height: 18px;margin-top: 8px;margin-right: 10px;" onclick="SendSMS()"/>
+    				<!-- 	<img src="img/getyanzhengma.png" style="height: 18px;margin-top: 8px;margin-right: 10px;" onclick="SendSMS()"/> -->
+                     
+                    
+                        <input id="jh" type="button" value="获取验证码" onClick="SendSMS()" style="" />
+                 
     				</div>
     				
     			</div>
     			<div style="height: 1px;background-color: rgb(54,115,207);margin-top: 5px;"></div>
     			<div style="height: 40px;margin-top: 5px;width: 100%;">
     				<div style="height: 100%;float: left;">
-    					<img src="img/yanzhengma.png" style="height: 18px;float: left;margin-top: 10px;"  />
+    					<img src="img/29.4 验证码图标.png" style="height: 18px;float: left;margin-top: 10px;"  />
     				</div>
     				<div style="margin-left: 4px;margin-right: 0px;height: 100%;width:80%;float: left;">
-    					<input class="input__field  input__field--hoshi" style="font-size: 16px;width: 100%;color: #FFFFFF;text-align: center;" placeholder="请输入验证码" id="yanzhengma1" />
+    					<input class="input__field  input__field--hoshi" style="font-size: 16px;width: 100%;color: #FFFFFF;-webkit-font-smoothing：antialiased;text-shadow: none;" placeholder="请输入验证码" id="yanzhengma1" />
     				</div>
     			</div>
     			<div style="height: 1px;background-color: rgb(54,115,207);margin-top: 5px;"></div>
     			<div style="height: 40px;margin-top: 5px;width: 100%;">
     				<div style="height: 100%;float: left;">
-    					<img src="img/mima.png" style="height: 18px;float: left;margin-top: 10px;margin-left: 8px;"  />
+    					<img src="img/29.5 密码图标.png" style="height: 18px;float: left;margin-top: 10px;margin-left: 8px;"  />
     				</div>
     				<div style="margin-left: 11px;margin-right: 0px;height: 100%;float: left;width:80%">
-    					<input class="input__field  input__field--hoshi" style="font-size: 16px;color: #FFFFFF;text-align: center;" placeholder="请输入密码" id="password" type="password"/>
+    					<input class="input__field  input__field--hoshi" style="font-size: 16px;color: #FFFFFF;-webkit-font-smoothing：antialiased;text-shadow: none;" placeholder="请输入密码" id="password" type="password"/>
     				</div>
     			</div>
     			<div style="height: 1px;background-color: rgb(54,115,207);margin-top: 5px;"></div>
     			<div style="height: 40px;margin-top: 5px;width: 100%;">
     				<div style="height: 100%;float: left;">
-    					<img src="img/mima.png" style="height: 18px;float: left;margin-top: 10px;margin-left: 8px;"  />
+    					<img src="img/29.5 密码图标.png" style="height: 18px;float: left;margin-top: 10px;margin-left: 8px;"  />
     				</div>
     				<div style="margin-left: 11px;margin-right: 0px;height: 100%;float: left;width:80%">
-    					<input class="input__field  input__field--hoshi" style="font-size: 16px;width:100% ;color: #FFFFFF;text-align: center;" placeholder="请再次输入密码" id="confirm_password" type="password"/>
+    					<input class="input__field  input__field--hoshi" style="font-size: 16px;width:100% ;color: #FFFFFF;-webkit-font-smoothing：antialiased;text-shadow: none;" placeholder="请再次输入密码" id="confirm_password" type="password"/>
     				</div>
     			</div>
     			<div style="height: 1px;background-color: rgb(54,115,207);margin-top: 5px;"></div>
@@ -114,14 +130,14 @@
     			
     			    <div id="checkbox" style="height: 50px;">
 
-       					<p style="float: left;margin-left: 15%;"><input id="agreeClause" type="checkbox"/></p>
-       					<span style="position:absolute;font-size: 16px;color: white;margin-left: 4px;margin-top: 15px;">我同意<a href="#" style="color: white;">《用户服务协议》</a></span>
+       					<p style="float: left;margin-left: 15%;margin-right: 10%;"><input id="agreeClause" type="checkbox"/></p>
+       					<span style="position:absolute;font-size: 16px;color: white;margin-left: 4px;margin-top: 15px;-webkit-font-smoothing：antialiased;text-shadow: none;">我同意<a href="#" style="color: white;font-weight: normal;-webkit-font-smoothing：antialiased;text-shadow: none;">《用户服务协议》</a></span>
  
   					</div>
   					
   				</div>
     			
-    			<!--<div style="width: 100%;margin-top: 50px;text-align: center;"> 
+    			<!--<div style="width: 100%;margin-top: 50px;"> 
     				<div style="width: 270px;height: 40px;margin-left:auto; margin-right:auto; ">
     					<label for="agreeClause" class="">我已阅读并同意<a href="#">相关服务条款</a></label>
 		        		<input type="checkbox" id="agreeClause" value="yes" name="" class="" />
@@ -131,28 +147,28 @@
 
 		       	<div>
 		       		<p id="colored-button"  style="text-align: center;">
-       					 <a class="btn float-buttons waves-effect waves-button waves-float" style="font-weight: normal;" onclick="nextstep()">下一步</a>
+       					 <a class="btn float-buttons waves-effect waves-button waves-float" style="font-weight: normal;-webkit-font-smoothing：antialiased;text-shadow: none;" onclick="nextstep()">下一步</a>
     				</p>
-		       	</div>
+                  		       	</div>
 		       	
 		       	
     		</div>
     		
     		<div id="zhuce2">
     			<div style="text-align: center;">
-    				<img src="img/zhucetubiao.png" style="width: 50%;"/>
+    				<img src="img/zhucetubiao.png" style="width: 35%;"/>
     			</div>
-    			<div style="color: rgb(140,98,106);text-align: center;margin-top: 10px;font-style: '黑体';color: #FFFFFF;font-size: 20px;">
+    			<div style="color: rgb(140,98,106);text-align: center;margin-top: 20px;font-style: '黑体';color: #FFFFFF;">
     				<span onclick="fanhui()">返回</span>
     			</div>
-    			<div style="height: 200px;width: 100%;margin-top: 20px;">
+    			<div style="height: 150px;width: 100%;margin-top: 50px;">
     				<div id="" style="width: 80px; float: left;margin-left: 20px;">
     					<img src="img/touxiang.png" style="float: left;height: 20px;"/>
     					<span class="selector" style="color: #FFFFFF;font-size: 18px;">&nbsp;头像</span>
     				</div>
     				<div style="float: left;">
 		            	<input type="file" id="btn_file" name="btn_file" style="display: none" onchange="selectImage(this)">
-		            	<img src="img/visitor.png" id="visitor_img" height="150" width="150">
+		            	<img src="img/visitor.png" id="visitor_img" height="130" width="130">
 		       		</div> 
 		       		<div style="margin-left: 10px;">
 		       			<input type="file" id="btn_file" name="btn_file" style="display: none" onchange="selectImage(this)">
@@ -163,9 +179,9 @@
     			<div style="height: 30px;background-color: ;">
     				<div id="" style="width: 80px; float: left;margin-left: 20px;">
     					<img src="img/sex.png" style="float: left;height: 20px;"/>
-    					<span class="selector" style="color: #FFFFFF;font-size: 18px;float: left;">&nbsp;性别</span>
+    					<span class="selectort" style="color: #FFFFFF;font-size: 18px;float: left;">&nbsp;性别</span>
 
-    				<table style="position: absolute;margin-top: -18px;margin-left: 100px;">
+    				<table style="position: absolute;margin-top: -18px;margin-left: 80px;">
 						<tr>
 						<td>
               				<input tabindex="3" type="radio" id="Male" name="guideSex" value="男" checked>
@@ -181,8 +197,11 @@
     			</div>
     			<div>
 		       		<p id="colored-button" class="text-center" style="text-align: center;">
-       					 <a class="btn float-buttons waves-effect waves-button waves-float" style="font-weight: normal;" onclick="changePerHeadImg()">立即注册</a>
+       					 <a class="btn float-buttons waves-effect waves-button waves-float" style="font-weight: normal;;-webkit-font-smoothing：antialiased;text-shadow: none;" onclick="changePerHeadImg()">立即注册</a>
     				</p>
+                    <p id="coloredd-button" class="text-center" style="text-align: center;">
+                         <a class="btn float-buttons waves-effect waves-button waves-float" style="font-weight: normal;color: #154DC0;;-webkit-font-smoothing：antialiased;text-shadow: none;box-shadow: none;" onclick="changePer()">跳过并注册</a>
+                    </p>
 		       	</div>
     		
     		</div>
@@ -191,7 +210,33 @@
 
     </div>
 
+<!-- 发送验证码倒计时 -->
 <script type="text/javascript">
+
+
+    var InterValObj; //timer变量，控制时间
+    var count = 60; //间隔函数，1秒执行
+    var curCount;//当前剩余秒数
+    function sendMessage() {
+        curCount = count;
+    //设置button效果，开始计时
+    $("#jh").attr("disabled", "true");
+    $("#jh").val( + curCount + "秒再获取");
+    InterValObj = window.setInterval(SetRemainTime, 1000); //启动计时器，1秒执行一次
+}
+//timer处理函数
+function SetRemainTime() {
+    if (curCount == 0) {                
+        window.clearInterval(InterValObj);//停止计时器
+        $("#jh").removeAttr("disabled");//启用按钮
+        $("#jh").val("重新发送验证码");
+      
+    }
+    else {
+        curCount--;
+        $("#jh").val( + curCount + "秒再获取");
+    }
+}
 
 
 	$("#checkbox").selectCheck();
@@ -201,6 +246,6 @@
 
 
 </script>
-    
+  
 </body>
 </html>

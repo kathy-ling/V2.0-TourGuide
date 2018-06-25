@@ -1,5 +1,5 @@
 //phone从前一个页面获取
-var phone = GetUrlem("guidePhone")
+var phone = GetUrlem("guidePhone");
 var scenicNo = "";
 
 $(function(){
@@ -29,10 +29,12 @@ function setGuideInfo(phone){
 		success:function(data)
 		{
 			$.each(data, function(i,item) {
-				$("#GuideImg").attr("src",HOST+item.scenicImagePath);
+				// 修改图片src路径
+				// $("#GuideImg").attr("src",HOST+item.scenicImagePath);
+				// alert(item.scenicImagePath);
 				$("#GuideHead").attr("src",HOST+item.image);
 				$("#GuideName1").html(item.name);
-				$("#GuideSex1").html(item.sex);
+				$("#sexxx").html(item.sex);
 				$("#GuideScenic1").html(item.scenicName);
 				$("#GuideFee").html(item.guideFee);
 				$("#GuideLevel").html(item.guideLevel);				
@@ -42,6 +44,14 @@ function setGuideInfo(phone){
 				$("#guideIntro").html(item.selfIntro);	
 				
 				scenicNo = item.scenicBelong;
+				
+				
+				if(item.sex == "男"){
+					// alert(item.sex);
+					$("#GuideSex1").attr("class","boy");
+				}else{
+					$("#GuideSex1").attr("class","girl");
+				}
 			});
 		}
 	});
@@ -101,4 +111,9 @@ var Url = HOST+"/getComments.do";
 
 function enterScenic(){
 	window.location = "scenicDetailInfo.html?scenicNo="+scenicNo+"";
+}
+
+function isOrder()
+{
+	window.location.href = "isOrder.html?guidePhone="+phone+"";
 }

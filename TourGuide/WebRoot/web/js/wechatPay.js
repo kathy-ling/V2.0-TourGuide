@@ -115,12 +115,11 @@ function onBridgeReady(orderID){
 		data:{orderID:orderID},
 		error:function()
 		{
-			alert('订单支付失败，请重新支付');
+			alert('订单已支付,出现未知问题');
 			 window.location.href=HOST+'/web/orderFormListUI.html';
 		},
 		success:function(data)
 		{
-			alert("支付信息更新结果="+data);
 			window.location.href=HOST+'/web/orderFormListUI.html';
 		}
 	});

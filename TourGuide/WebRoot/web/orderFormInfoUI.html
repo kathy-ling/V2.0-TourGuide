@@ -8,12 +8,13 @@
 		<link rel="stylesheet" type="text/css" href="css/jquery.mobile-1.4.5.css">
 		<link rel="stylesheet" type="text/css" href="css/nativedroid2.css">
 		<link rel="stylesheet" type="text/css" href="http://www.jq22.com/jquery/bootstrap-3.3.4.css">
+		<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
 		<link rel="stylesheet" href="css/navigate.css" />	
 		<script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
 		<script type="text/javascript" src="js/jquery.mobile-1.4.5.min.js"></script>
 		<script type="text/javascript" src="js/jquery.qrcode.min.js"></script>
 		<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=rmCoNtfD8AU4lX24etmcDbBlO52WAvy2"></script>						
-		<script type="text/javascript"src="js/navigationbar.js"></script>
+		<script type="text/javascript" src="js/navigationbar.js"></script>
 		<script type="text/javascript" src="js/orderFormInfoUI.js"></script>
 		<script type="text/javascript" src="js/myQRCode.js"></script>
 								
@@ -27,12 +28,43 @@
 			
 			.tgrayfont{
 			color: rgb(102,102,102);width: 30%;
-			
+			font-size: 16px;
 			}
 			
 			.ddxq-yyd tr{
 				border-bottom: 1px solid #CCCCCC;
 			}
+			.button{
+				background-color: #fb6a5a;
+				width:90%;
+				border-radius:20px;
+				color: white; 
+				height: 35px;
+				margin-top: 20px;
+				border:none;
+				margin-left: 5%;
+			}
+			.selector tbody tr td span{
+				font-size: 14px;
+			}
+			.fy{
+				color:#FF8072;
+			}
+			.qx{
+				color:#FF8072;
+			}
+		</style>
+		<style>
+			.shade .main {
+				width: 150px;
+				height: 150px;
+				background-color: #fff;
+				margin: 200px auto;
+			}
+			.modal-footer button{
+				float: left;
+			}
+
 		</style>
 	</head>
 
@@ -51,9 +83,9 @@
 								<img id="orderState" src="img/icon-dyl.png" style="height: 15px;margin-right: 5px;margin-top: 8px;"/>
 							</div>
 						</div>
-						<div style="width: 90%;height: 110px;margin: auto;">
-							<div class="selector" style="width: 90px;height: 90px; background-image: url(img/bluecircle.png);background-size: 100%;margin-top: 5px;text-align: center;float: left;">
-							    <p style="color: #000000;font-size: 12px;margin-top: 28px;"><span id="timeDiff" style="font-size: 40px;color: #000000;">3</span>&nbsp;小时</p>
+						<div style="width: 90%;height: 100px;margin: auto;">
+							<div class="selector" style="width: 80px;height: 80px; background-image: url(img/bluecircle.png);background-size: 100%;margin-top: 10px;text-align: center;float: left;">
+							    <p style="color: #000000;font-size: 12px;margin-top: 25px;"><span id="timeDiff" style="font-size: 30px;color: #000000;"></span>&nbsp;小时</p>
 							    <p style="color: #000000;font-size: 12px;margin-top: -8px;">剩余时间</p>
 							</div>
 							<div class="selector" style="width: calc(100% - 90px);height: 100%;float: left;">
@@ -64,9 +96,9 @@
 											<td>&nbsp;参观人数&nbsp;</td>
 											<td>&nbsp;支付费用&nbsp;</td>
 										</tr>
-										<tr style="font-size: 30px;">
-											<td><span id="visitNum">3</span></td>
-											<td><span id="money">150</span></td>
+										<tr style="font-size: 22px;">
+											<td><span id="visitNum" style="font-size: 18px;"></span></td>
+											<td><span id="money" style="font-size: 18px;"></span></td>
 										</tr>
 									</table>
 								</div>
@@ -74,7 +106,7 @@
 							</div>
 						</div>
 					</div>
-					<div id="" style="width: 100%;height: 10px;"></div>
+					<div id="" style="width: 100%;"></div>
 					
 					
 					<div style="width: 100%;background-color: #f8fafd;">
@@ -83,31 +115,31 @@
 							<table class="selector ddxq-yyd" style="font-size: 16px;width: 90%;margin: auto;">
 								<tr >
 									<td class="tgrayfont">付款时间</td>
-									<td><span id="payTime">2017-09-10 12:23:41</span></td>
+									<td><span id="payTime"></span></td>
 								</tr>
-								<tr >
+								<tr>
 									<td class="tgrayfont">讲解员</td>
-									<td><span id="guideName">王鑫涛</span></td>
+									<td><span id="guideName"></span></td>
 								</tr>
-								<tr >
+								<tr class="hide1">
 									<td class="tgrayfont">性别</td>
-									<td><span id="guideSex">女</span></td>
+									<td><span id="guideSex"></span></td>
 								</tr>
-								<tr >
+								<tr class="hide1">
 									<td class="tgrayfont">年龄</td>
-									<td><span id="guideAge">24</span></td>
+									<td><span id="guideAge"></span></td>
 								</tr>
-								<tr >
+								<tr class="hide1">
 									<td class="tgrayfont">星级</td>
-									<td><span id="guideLevel">1</span></td>
+									<td><span id="guideLevel"></span></td>
 								</tr>
-								<tr >
+								<tr class="hide1">
 									<td class="tgrayfont">语种</td>
-									<td><span id="guideLanguage">英文</span></td>
+									<td><span id="guideLanguage"></span></td>
 								</tr>
-								<tr >
+								<tr class="hide1">
 									<td class="tgrayfont">联系电话</td>
-									<td><span id="guidePhone">13152654785</span></td>
+									<td><span id="guidePhone"></span></td>
 								</tr>
 							</table>
 
@@ -120,32 +152,79 @@
 				</div>
 				
 				
-				<div id="canavas" style="display: none;">
+				<div  id="canavas" style="display: none;">
 				</div>
+				<!-- 弹出二维码之前提示消息 -->
+					<div class="modal" id="mymodal">
+						 <div class="modal-dialog" style="margin-top:60%;">
+							 <div class="modal-content">
+								 <div class="modal-header" style="border:none;">
+							<!-- 	 <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true" onclick="no()">×</span><span class="sr-only">Close</span></button> -->
+								 <h4 class="modal-title"></h4>
+								 </div>
+								 <div class="modal-body" style="text-align: center;">
+								 <p>请将二维码展示给讲解员或工作人员</p>
+								 </div>
+								 <div class="modal-footer" style="margin-left: 20px;border:none;">
+								  <button type="button" class="btn btn-primary" onclick="produceQRCode()" style="width: 100px;background-color: #268EFA;color: white;padding:10px;">确定</button>
+								 </div>
+								 <button type="button" class="btn btn-default" data-dismiss="modal" onclick="no()" style="width: 100px;margin-left:200px;margin-top: -85px;background-color: #268EFA;color: white;padding:10px;">取消</button>
+								
+							 </div><!-- /.modal-content -->
+						 </div><!-- /.modal-dialog -->
+					</div><!-- /.modal -->
 
-				<!--弹出二维码-->
+				<!-- 弹出二维码 -->
 				<div data-role="popup" id="popupDialog" data-dismissible="false">  
        				<a href="#" data-rel="back" data-role="button" data-theme="e" data-icon="delete" data-iconpos="notext" class="ui-btn-right">Close</a>  
 				    <div class="ui-corner-top" id="qrcode">  				        
 				    </div> 				           		
    				</div>
 				
+				<div id="to">
+					
+				</div>
 				
-				<div style="width: 100%;background-color: white;height: 160px;padding: 5px;">
 
+				<!-- 取消订单弹框 -->
+					<div class="modal" id="mymodaldd">
+						 <div class="modal-dialog" style="margin-top:60%;">
+							 <div class="modal-content">
+								 <div class="modal-header" style="border:none;">
+							<!-- 	 <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true" onclick="no()">×</span><span class="sr-only">Close</span></button> -->
+								 <h4 class="modal-title"></h4>
+								 </div>
+								 <div class="modal-body" style="text-align: center;">
+								 <p style="margin-top: 20px;">取消订单将会扣除最高<span style="color: #FF7262;font-weight: bold;"> 5% </span>的费用作为手续费<br><span style="color: #FF7262;font-weight: bold;">您确定要取消么?</span></p>
+								 </div>
+								 <div class="modal-footer" style="margin-left: 20px;border:none;">
+								  <button type="button" class="btn btn-primary" onclick="cancleOrder()" style="width: 100px;background-color: #268EFA;color: white;padding:10px;">确定</button>
+								 </div>
+								 <button type="button" class="btn btn-default" data-dismiss="modal" onclick="nodd()" style="width: 100px;margin-left:200px;margin-top: -85px;background-color: #268EFA;color: white;padding:10px;">取消</button>
+								
+							 </div><!-- /.modal-content -->
+						 </div><!-- /.modal-dialog -->
+					</div><!-- /.modal -->
+				<!-- 取消订单弹框  end -->
+
+				<div id="bottomInfo" style="width: 100%;background-color: white;height: 160px;padding: 5px;">
+	
 						<div style="height: 150px;width: 100%;">
 							<div style="width: 120px;height: 100%;float: right;background-color: white; ">
+								<!-- 取消订单 -->
 								<div  style="width: 110px;margin: auto;">
 									<img onclick="cancleOrder()" src="img/bt-qxdd.png" width="100%" style="margin-top: 5px;"/>
 								</div>
+								<!-- 生成二维码 -->
 								<div style="width: 110px;margin: auto;">
 									<img onclick="produceQRCode()" src="img/bt-ewm.png" width="100%" style="margin-top: 5px;"/>
 								</div>
+								<!-- 获取位置 -->
 								<div style="width: 110px;margin: auto;">
-									<img onclick="" src="img/bt-hqwz.png" width="100%" style="margin-top: 5px;"/>
+									<img id="locationA" onclick="getLocation()" src="img/bt-hqwz.png" width="100%" style="margin-top: 5px;"/>
 								</div>
 							</div>
-							<div style="height: 100%;width: calc(100% - 120px);background-color: pink;">
+							<div id="map" style="height: 100%;width: calc(100% - 120px);background-color: pink;">
 								
 							</div>
 						</div>
@@ -156,6 +235,7 @@
 		<div id="mapGet" style="height: 0;">
 						
 		</div>
+		
 	</body>
 <script>
 	$(function(){

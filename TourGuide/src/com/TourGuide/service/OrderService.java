@@ -37,7 +37,22 @@ public class OrderService {
 		return orderDao.getAllOrders(phone);
 	}
 	
+	/*
+	 * 根据游客手机号查询待游览订单
+	 * */
 	
+	public Map<String , Object> getdaiyoulanorder(String phone){
+		return orderDao.getdaiyoulanorder(phone);
+		
+	}
+	/*
+	 * 根据导游手机号查询待游览订单
+	 * */
+	public Map<String, Object> getdaiyoulanOrderbyGuidePhone(String guidePhone){
+		return orderDao.getdaiyoulanOrderbyGuidePhone(guidePhone);
+	}
+	
+
 	/**
 	 * 游客删除自己的订单
 	 * @param orderId

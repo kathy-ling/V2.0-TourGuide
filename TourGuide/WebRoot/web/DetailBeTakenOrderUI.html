@@ -12,7 +12,10 @@
 		<!--<link rel="stylesheet" type="text/css" href="css/nativedroid2.css">-->
     	
 		<link rel="stylesheet" type="text/css" href="http://www.jq22.com/jquery/bootstrap-3.3.4.css">
-    	
+    	<!--导航栏-->
+		<script type="text/javascript" src="js/navigationbar.js"></script>
+		<link rel="stylesheet" href="css/navigate.css" />
+
 	</head>
 	<style>
 		.tgrayfont{
@@ -37,13 +40,13 @@
 								<span class="selector" style="font-size: 16px;line-height: 45px;">秦始皇兵马俑</span>
 							</div>
 							<div style="float: right;margin-right: 0px;margin-top: 15px;">
-								<p style="font-size: 12px;float: right;line-height: 10px;">参观时间：<span>07.12&nbsp;&nbsp;&nbsp;08:00</span></p>
+								<p style="font-size: 12px;float: right;line-height: 15px;">参观时间：<span>07.12&nbsp;&nbsp;&nbsp;08:00</span></p>
 								
 							</div>
 						</div>
-						<div style="width: 90%;height: 110px;margin: auto;">
-							<div class="selector" style="width: 83px;height: 83px; margin-top: 10px;text-align: center;float: left;border-radius: 50%;border:3px solid #268efa;">
-							    <p style="color: #000000;font-size: 12px;margin-top: 24px;"><span style="font-size: 40px;color: #000000;">3</span>&nbsp;小时</p>
+						<div style="width: 90%;height: 100px;margin: auto;">
+							<div class="selector" style="width: 80px;height: 80px; margin-top: 10px;text-align: center;float: left;border-radius: 50%;border:3px solid #268efa;">
+							    <p style="color: #000000;font-size: 12px;margin-top: 20px;"><span style="font-size: 32px;color: #000000;">3</span>&nbsp;小时</p>
 							    <p style="color: #000000;font-size: 12px;margin-top: -8px;">剩余时间</p>
 							</div>
 							<div class="selector" style="width: calc(100% - 90px);height: 100%;float: left;">
@@ -54,7 +57,7 @@
 											<td>&nbsp;参观人数&nbsp;</td>
 											<td>&nbsp;支付费用&nbsp;</td>
 										</tr>
-										<tr style="font-size: 30px;">
+										<tr style="font-size: 26px;">
 											<td><span>3</span></td>
 											<td><span>150</span></td>
 										</tr>
@@ -64,7 +67,7 @@
 							</div>
 						</div>
 					</div>
-					<div id="" style="width: 100%;height: 10px;"></div>
+					<div id="" style="width: 100%;"></div>
 					
 					
 					<div style="width: 100%;background-color: #f8fafd;border-top: 3px solid #268efa;">
@@ -130,3 +133,8 @@
 	
 	</body>
 </html>
+<script>
+	$(function($) {
+		addNavigate(4);
+	});
+</script>

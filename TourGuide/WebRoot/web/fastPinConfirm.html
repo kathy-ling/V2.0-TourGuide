@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
 	<head>
 		<meta charset="UTF-8">
@@ -25,9 +25,16 @@
 	</head>
 	<body>
 		<div class="guideImg">	
-			<select class="selectScenic" id="chooseScenicName" name="scenicName" onchange="getFee()">
-				<option value="" selected="selected">请选择景区</option>
-			</select>		
+				<div style="position: relative;">
+					<img src="img/放大镜.png" alt="" style="width: 20px;height: auto;margin-left: 14%;margin-top: 25px;position: absolute;left: 0;">
+				</div>
+				
+
+				<select class="selectScenic" id="chooseScenicName" name="scenicName" onchange="getFee()" style="background-color: rgba(255,255,255,0.5);color: white;font-size: 16px;">
+
+					<option value="" selected="selected">请选择景区</option>
+				</select>
+		
 		</div>
 		
 		<div class="fee">
@@ -36,28 +43,27 @@
 		</div>
 		<div class="todayFee">
 			<p>当日讲解费</p>
-			<span id="TodayFee">_</span>
-			<span>/人</span>
+			<span id="TodayFee" style="font-weight: 600;">_</span>
+			<span style="font-weight: 600;">/人</span>
 		</div>
 		<p class="num">参观人数</p>
 		<div class="visitorNum">
 						
-			<input id="VisitNum" value="0"></input>
-			<button id="Minus" onclick="setMinusVisitNum()"></button>
-			<button id="Plus" onclick="setPlusVisitNum()"></button>			
+			<input id="VisitNum" value="0" style="font-weight: 600;"></input>
+			<button id="Minus" onclick="setMinusVisitNum()" style="border:none;"></button>
+			<button id="Plus" onclick="setPlusVisitNum()" style="border:none;"></button>			
 		</div>
 		<p class="hintInfo1">付款后请向讲解员展示订单二维码</p>
 		<p class="hintInfo2">订单二维码可以在【个人中心】中找到</p>
-		<div class="bar2">			
+		<div class="bar2" style="margin-top: 30px;">			
 		</div>
 		<div class="toPay">
 			<button onclick="payOnclick()">去结算</button>
-			<span id="totalFee" style="color:#007FFF;">&yen; 0</span>
-			<span>讲解费：</span>
+			<span id="totalFee" style="color:#007FFF;margin-top: 15px;font-size: 1.5em;">&yen; 0</span>
+			<span style="margin-left: -40px;margin-top: 20px;">讲解费：</span>
+
 		</div>
-		<div style=" height: 60px;">
-			
-		</div>
+		<div style="height: 100px;"></div>
 		<script>
 		$(function($){
 			addNavigate(2);

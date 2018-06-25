@@ -18,13 +18,26 @@ function changeTab1()
 }
 function changeTab2()
 {
-	window.location.href = "releaseOrder.html";
+	if(vistPhone == "undefined" || vistPhone == openId)
+	{
+		alert("您还未注册，请注册！");
+		window.location.href = "register.html";
+	}else{
+		window.location.href = "releaseOrder.html";
+	}	
 }
 
 //点击立即预约
 function orderGuide(phone)
 {
-	window.location.href = "isOrder.html?guidePhone="+phone;
+	if(vistPhone == "undefined" || vistPhone == openId)
+	{
+		alert("您还未注册，请注册！");
+		window.location.href = "register.html";
+	}else{
+		window.location.href = "isOrder.html?guidePhone="+phone;	
+	}
+
 }
 //点击筛选按钮
 function screenButton()
@@ -88,26 +101,34 @@ function addlist(data) {
 		
 		var list = document.getElementById("guideList");
 		
-		var listItem = document.createElement("div");
+		var listItem = document.createElement("li");
 		listItem.className = "listItem";
 		
-		var str1 = '<div class="head">'+'<img onclick="guideDetailInfo('+n.phone+')" src='+HOST+n.image+' onerror="changeImage(this)"></div><div class="detailInfo">'+
+		var str1 = '<span class="head">'+'<img onclick="guideDetailInfo('+n.phone+')" src='+HOST+n.image+' onerror="changeImage(this)"></span><div class="detailInfo">'+
 		'<div class="name"><span>'+n.name+'</span>';
 		
 		var str2;
 		
-		var str3='</div><div class="guideFee"><img class="leftIcon" src="img/4-6导游费图标.png"/>'+
-		'<span class="spanText" >导游费：</span><span class="spanInfo1" >'+n.guideFee+'<span>'+
-		'</div><div class="guideLevel"><img class="leftIcon" src="img/4-7导游级别图标.png"/>'+
-		'<span class="spanText">导游级别:</span><span class="spanInfo">'+n.guideLevel+'</span></div>'+
-		'<div class="guideNum"><img class="leftIcon" src="img/4-8接待人次图标.png"/>'+
-		'<span class="spanText">接待人次:</span><span class="spanInfo">'+n.historyTimes+'</span>'+
+		var str3='</div><div class="guideFee">'+
+		'<span class="spanText" >讲解费：</span><span class="spanInfo1" >'+n.guideFee+'<span>'+
+		'</div><div class="guideLevel">'+
+		'<span class="spanText">讲解员级别：</span><span class="spanInfo">'+n.guideLevel+'</span></div>'+
+		'<div class="guideNum">'+
+		'<span class="spanText">接待人次：</span><span class="spanInfo">'+n.historyTimes+'</span>'+
 		'</div></div><div class="isOrder"><button class="order" onclick="orderGuide('+n.phone+')">立即<br/>预约</button></div>';
 		
+		// var str3;
+
+		// if(n.sex == "女"){		
+		// 	str2 = '<span class="GuideSexFemale">'+n.sex+'</span>';
+		// }else{
+		// 	str2 = '<span class="GuideSexMale">'+n.sex+'</span>';
+		// }
+		// 
 		if(n.sex == "女"){		
-			str2 = '<span class="GuideSexFemale">'+n.sex+'</span>';
+			str2 = '<img src="img/girl.jpg" alt="" />';
 		}else{
-			str2 = '<span class="GuideSexMale">'+n.sex+'</span>';
+			str2 = '<img src="img/boy.png" alt="" />';
 		}
 		var str = str1+str2+str3;
 		listItem.innerHTML = str;

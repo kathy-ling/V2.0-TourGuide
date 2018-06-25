@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
 	<head>
 		<meta charset="UTF-8">
@@ -6,18 +6,21 @@
 		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no"  />
 		<link rel="stylesheet" href="css/orderGuides.css" />
 		<link rel="stylesheet" href="css/swiper-3.4.2.min.css" />
+		<link rel="stylesheet" type="text/css" href="css/navigate.css" />
 		<script type="text/javascript" src="js/jquery-1.11.3.min.js" ></script>
         <script src="js/CommonSession.js"></script>
         <script type="text/javascript" src="js/swiper-3.4.2.jquery.min.js" ></script>
         <script type="text/javascript" src="js/orderGuides.js" ></script>
+        <script type="text/javascript" src="js/city.js"></script>
+        <script type="text/javascript" src="js/navigationbar.js"></script>
 		<style type="text/css">
-			select
+		/*	select
 			{
 				-moz-appearance: none;
 			    -webkit-appearance:none;
 			    appearance:none;
 			}
-
+*/
 		</style>
 	</head>
 	<body>
@@ -28,89 +31,89 @@
 		</div>
 		<div class="orderContent">
 			<div class="selectScenic">
-				<select id="chooseScenicName">
-					<option value="" class="background">请选择景区</option>
-					<!--<option class="background">秦始皇兵马俑</option>
-					<option class="background">华山</option>
-					<option class="background">大雁塔</option>
-					<option class="background">小雁塔</option>-->
-				</select>
-				<div class="confirmDiv">
-					<button class="confirm" onclick="confirmButton()">确定</button>
-				</div>
+				
+					<select id="chooseScenicName" style="padding-left: 22%;">
+						<option value="" class="background" >请选择景区</option>
+							
+					</select>
+
+				
+			</select>
+						
 				<div class="screenDiv">
 					<button class="screen" onclick="sceen()">筛选</button>
+					<!-- screen -->
 				</div>				
 			</div>
-			<div class="guidesDiv">
-				<div class="swiper-container" id="guideList" style="height: 100%; width: 100%;">
-					<div class="swiper-wrapper" style="height: 100%;">
-						<div id="head1" class="swiper-slide swiper-slide-active" style="height: 100%;">
+			<div class="guidesDiv" style="width: 100%;overflow: hidden;">
+				<div class="swiper-container" id="guideList">
+					<div class="swiper-wrapper" >
+						<div class="swiper-slide">
 							<div class="guide">
-								<div class="guideImg1" style="height: 35%;">		
-									<img src="img/5-7导游图.png" style="height: 100%; width: 98.4%; margin-left: 0.8%;"/>
+								<div class="guideImg1" style="height:auto;">		
+									<img src="img/5-7导游图.png" style="height: 100%; width: 98.4%; "/>
 								</div>
 								<div class="guideInfo">
-									<span>王鑫涛</span>
+									<span style="font-size: 0.9em;">王鑫涛</span>
 									<img src="img/5-10女.png"/><br />
 									<div class="guideFee">
-										<p>讲解费</p>
+										<p class="detailInfo">讲解费</p>
 										<p id="GuideFee">150</p>
 									</div>
 									<div class="guideGrade">
-										<p>讲解员星级</p>
+										<p class="detailInfo">讲解员星级</p>
 										<p id="GuideGrade">3</p>
 									</div>
 									<div class="guideNum">
-										<p>接待人次</p>
+										<p class="detailInfo">接待人次</p>
 										<p id="GuideNum">32</p>
 									</div>
 									<button class="order" onclick="orderGuide()">立即<br/>预约</button>
 								</div>
 							</div>
 						</div>
-						<div id="head2" class="swiper-slide swiper-slide-next" style="height: 100%;">
+						<div class="swiper-slide">
 							<div class="guide">
-								<div class="guideImg2" style="height: 35%;">	
+								<div class="guideImg2" style="height:auto">	
 									<img src="img/5-8导游图.png" style="height: 100%; width: 98.4%; margin-left: 0.8%;"/>
 								</div>
 								<div class="guideInfo">
-									<span>韩月茹</span>
+									<span class="detailInfo" style="font-size: 0.9em;">韩月茹</span>
 									<img src="img/5-10女.png"/><br />
 									<div class="guideFee">
-										<p>讲解费</p>
+										<p class="detailInfo">讲解费</p>
 										<p id="GuideFee">150</p>
 									</div>
 									<div class="guideGrade">
-										<p>讲解员星级</p>
+										<p class="detailInfo">讲解员星级</p>
 										<p id="GuideGrade">3</p>
 									</div>
 									<div class="guideNum">
-										<p>接待人次</p>
+										<p class="detailInfo">接待人次</p>
 										<p id="GuideNum">32</p>
 									</div>
 									<button class="order" onclick="orderGuide()">立即<br/>预约</button>
 								</div>
 							</div>
 						</div>
-						<div id="head3" class="swiper-slide" style="height: 100%;">
+						<div class="swiper-slide" style="height: 100%;">
 							<div class="guide">
-								<div class="guideImg3" style="height: 35%;">	
+								<div class="guideImg3" style="height:auto">	
 									<img src="img/5-9导游图.png" style="height: 100%; width: 98.4%; margin-left: 0.8%;"/>
 								</div>
 								<div class="guideInfo">
-									<span>韩月茹</span>
+									<span class="detailInfo" style="font-size: 0.9em;">韩月茹</span>
 									<img src="img/5-10女.png"/><br />
 									<div class="guideFee">
-										<p>讲解费</p>
+										<p class="detailInfo">讲解费</p>
 										<p id="GuideFee">150</p>
 									</div>
 									<div class="guideGrade">
-										<p>讲解员星级</p>
+										<p class="detailInfo">讲解员星级</p>
 										<p id="GuideGrade">3</p>
 									</div>
 									<div class="guideNum">
-										<p>接待人次</p>
+										<p class="detailInfo">接待人次</p>
 										<p id="GuideNum">32</p>
 									</div>
 									<button class="order" onclick="orderGuide()">立即<br/>预约</button>
@@ -118,10 +121,15 @@
 							</div>
 						</div>
 					</div>
-					<!-- 如果需要分页器 -->
-   					<div class="swiper-pagination"></div> 
+					<!-- 如果需要分页器 --> 
+   					<!-- <div class="swiper-pagination"></div>  -->
 				</div>
 			</div>
 		</div>
+		<script>
+			$(function($) {
+				addNavigate(3);
+			});
+		</script>
 	</body>
 </html>

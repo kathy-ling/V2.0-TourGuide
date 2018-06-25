@@ -11,19 +11,21 @@ import java.util.Map;
 
 import javax.sql.DataSource;
 
-import org.omg.PortableServer.ID_ASSIGNMENT_POLICY_ID;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.jdbc.core.RowCallbackHandler;
 import org.springframework.stereotype.Repository;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.TourGuide.model.GuideOtherInfo;
+import com.TourGuide.model.ScenicsSpotInfo;
+
 
 @Repository
 public class AffiliationDao {
 
 	@Autowired
 	private JdbcTemplate jdbcTemplate;
+	
 	
 	
 	/**
@@ -92,6 +94,8 @@ public class AffiliationDao {
 	}
 	
 	
+	
+	
 	/**
 	 * 取消导游所挂靠的景区
 	 * @param guidePhone  导游手机号
@@ -138,13 +142,13 @@ public class AffiliationDao {
 					+ "where phone='"+guidePhone+"'";
 			int i = jdbcTemplate.update(sqlUpdate);	
 			
-			String delete = "delete from guide where gtel='"+guidePhone+"'";
-			int k = jdbcTemplate.update(delete);	
+			/*String delete = "delete from guide where gtel='"+guidePhone+"'";
+			int k = jdbcTemplate.update(delete);	*/
 			
 			conn.commit();//提交JDBC事务 
 			conn.setAutoCommit(true);// 恢复JDBC事务的默认提交方式
 			conn.close();
-			if (i != 0 && j != 0 && k!= 0){
+			if (i != 0 && j != 0 && j!= 0){
 				bool = true;
 			}
 		} catch (SQLException e) {
@@ -177,12 +181,18 @@ public class AffiliationDao {
 				map.put("scenicID", rst.getString(1));
 				map.put("scenicName", rst.getString(2));
 				map.put("applyDate", rst.getString(3));
-				map.put("passDate", rst.getString(4));
+				if(rst.getString(4)!=null){
+					map.put("passDate", rst.getString(4));
+				}else {
+					map.put("passDate", '1');
+				}
+				
 				map.put("historyTimes", rst.getInt(5));
 				map.put("historyNum", rst.getInt(6));
 				map.put("singleMax", rst.getInt(7));
 				map.put("guideFee", rst.getInt(8));
 				map.put("guideLevel", rst.getString(9));
+				map.put("singleMax", rst.getInt(7));
 			}							
 			conn.close();
 		} catch (SQLException e) {

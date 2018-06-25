@@ -21,25 +21,31 @@ function addNavigate(n){
 
 function per()
 {
+	if(vistPhone == "undefined" || vistPhone == openId)
+	{
+		alert("您还未注册，请注册！");
+		window.location.href = "register.html?date="+Math.random();
+	}else{
+		window.location.href="personalHome.html?date="+Math.random();
+	}
 	
-	window.location.href="personalHome.html";
 }
 
 function index()
 {
 	
-	window.location.href="index.html";
+	window.location.href="index.html?date="+Math.random();
 }
 
 function pin()
 {
 	
-	window.location.href="pinIndex.html";
+	window.location.href="pinIndex.html?date="+Math.random();
 }
 
 function yuyue()
 {
-	window.location.href='orderGuide.html';
+	window.location.href='orderGuides.html?date='+Math.random();
 }
 		
 			

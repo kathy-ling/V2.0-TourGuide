@@ -71,8 +71,8 @@ public class VisitorService {
 	 * @param imgPath 头像路径
 	 * @return
 	 */
-	public boolean changeImg(String openId, String imgPath){
-		return visitorDao.changeImg(openId, imgPath);
+	public boolean changeImg(String openId,String name){
+		return visitorDao.changeImg(openId,name);
 	}
 	
 	/**
@@ -83,8 +83,8 @@ public class VisitorService {
 	 * @param sex  性别
 	 * @return
 	 */
-	public boolean changeInfo(String openId, String name, String nickName, String sex){
-		return visitorDao.changeInfo(openId, name, nickName, sex);
+	public boolean changeInfo(String openId,String imgPath,String name){
+		return visitorDao.changeInfo(openId,imgPath ,name);
 	}
 	
 	/**
@@ -111,8 +111,7 @@ public class VisitorService {
 	/**
 	 * 得到未禁用游客的数目
 	 * @return
-	 */
-	public  int  GetVisitorCount()
+	 */	public  int  GetVisitorCount()
 	{
 		return visitorDao.GetVisitorCount();
 	}

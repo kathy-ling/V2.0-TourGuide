@@ -63,7 +63,7 @@ public class FastOrderController {
 		
 		String consistOrderID = UUID.randomUUID().toString().replace("-", "");
 		
-		List<Map<String, Object>> scenicSpotInfo = scenicSpotService.getScenicByName(scenicName);
+		List<Map<String, Object>> scenicSpotInfo = scenicSpotService.getScenicByName("秦始皇兵马俑");
 		String scenicID = (String) scenicSpotInfo.get(0).get("scenicNo");
 		
 		boolean bool = fastOrderService.releaseFastOrder(consistOrderID, scenicID, 

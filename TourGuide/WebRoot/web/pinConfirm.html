@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>拼团单确认</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no"  />		
+		<link rel="stylesheet" href="css/fastPinConfirm.css" />
+		<script type="text/javascript" src="js/jquery-1.11.3.min.js" ></script>
+		<script type="text/javascript" src="js/navigationbar.js" ></script>
+		<link rel="stylesheet" type="text/css" href="css/mystyle.css"/>
+		<link rel="stylesheet" type="text/css" href="css/navigate.css"/>
+		<script src="js/CommonSession.js"></script>
+		<script src="http://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
+		<script src="js/wechatPay.js"></script>
+		<script type="text/javascript" src="js/pinConfirm.js" ></script>
+		<style type="text/css">
+			select
+			{
+				-moz-appearance: none;
+			    -webkit-appearance:none;
+			    appearance:none;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="guideImg">	
+			<span id="chooseScenicName" style="color: white; display: inline-block; margin-top: 20px;">景区名称</span>	
+		</div>
+		
+		<div class="fee">
+			<img class="feeIcon" src="img/10-2费用信息图标.png"/>
+			<span class="feeSpan">费用信息</span>
+		</div>
+		<div class="todayFee">
+			<p>当日讲解费</p>
+			<span id="TodayFee">_</span>
+			<span>/人</span>
+		</div>
+		<p class="num">参观人数</p>
+		<div class="visitorNum" >				
+			<span id="VisitNum" style="text-align: center; margin-left: 16%;">0</span>			
+		</div>
+		<p class="hintInfo1">付款后请向讲解员展示订单二维码</p>
+		<p class="hintInfo2">订单二维码可以在【个人中心】中找到</p>
+		
+		<div class="toPay" style="position: fixed;margin-top: 40px;bottom: 60px;width: 100%;">
+			<div class="bar2" style="height: 5px;margin-top: 0;width: 100%;">			
+		</div>
+			<button onclick="payOnclick()" style="width: 100px;">去结算</button>
+			<span id="totalFee" style="color:#007FFF;">&yen; 0</span>
+			<span>讲解费：</span>
+		</div>
+		<div style=" height: 60px;">
+			
+		</div>
+		<script>
+			$(function($){
+				addNavigate(2);
+			});
+		</script>
+	</body>
+</html>

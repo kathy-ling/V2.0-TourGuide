@@ -1,4 +1,4 @@
-html,body
+﻿html,body
 {
 	height: 100%;
 	width: 100%;
@@ -17,7 +17,7 @@ html,body
 {
 	display: inline-block;
 	width: 100px;
-	margin-left: 10%;
+/*	margin-left: 10%;*/
 	font-size: 20px;
 	color: white;
 	margin-top: 10px;
@@ -35,64 +35,66 @@ html,body
 {
 	
 	border-bottom: 3px solid white;
-	padding-bottom: 3px;
+	padding-bottom: 10px;
 }
 .selectScenic
 {
-	width: 80%;
+	width: 90%;
 	height: 80%;
 	margin-top: 2%;	
 	border-radius:30px;
 	background-color: #efece6;
-	padding-left: 30%;
-	padding-top: 10px;
-	padding-bottom: 10px;
+	padding-top: 3px;
+	padding-bottom: 3px;
+	padding-left: 35%;
 	font-size: 16px;
-	font-weight: 700;
-	/*-moz-appearance: none;
+	color: #666666;
+	-moz-appearance: none;
     -webkit-appearance:none;
-    appearance:none;*/
+    appearance:none;
+    border:none;
 }
 .mainContent
 {
-	background-color: #EEEEEE;
-	padding-top:3% ;
+	background-color: #F1F5FB;
+	padding-top:5% ;
 	margin-top: 2%;
 }
 .mainContent img
 {
-	width: 8%;
-	margin-left: 4%;
+	width: 23px;
+	margin-left: 2.5%;
 	margin-top: 1%;
 }
 .mainContent span
 {
 	display: inline-block;
 	vertical-align: top;
-	margin-top: 2%;
+	margin-top: 8px;
 }
 .mainContent p
 {
-	margin-left: 30%;
-	font-size: 0.7em;
+	margin-left: 25%;
+	font-size: 0.9em;
+	margin-top: 0;
 }
 .mainContent select
 {
-	background: url(../img/4-1请选择时间底图.png) no-repeat;
-	background-size:100% ;
+	background-color: #ffffff;
 	-moz-appearance: none;
     -webkit-appearance:none;
     appearance:none;
     border: none;
 	position: absolute;
 	margin-left: 6%;
-	height: 7%;
-	width: 55%;
-	padding-left: 16%;
-	border-radius: 6%;
-	margin-top: 1%;
-	padding-bottom: 6%;
-	padding-top: 1%;
+	height: 50px;
+	width: 230px;
+	padding-left: 80px;
+	border-radius: 14px;
+	margin-top: 5px;
+	padding-bottom: 0px;
+	text-align: center;
+	/*padding-top: 5px;*/
 }
 #radio
 {
@@ -100,31 +102,34 @@ html,body
 	/*position: absolute;*/
 	margin-left: 5%;
 	position: relative;
-	top: -8px;
+	top: -5px;
 }
 #radioLabel1,#radioLabel2,#radioLabel3
 {
-	padding: 10px;
+	padding: 9px;
+	width: 60px;
 }
-.sexDiv,.languageDiv
+.sexDiv
 {
-	margin-top: 5px;
+	/*margin-top: 18px;*/
+}
+.languageDiv{
+	margin-top: 8px;
 }
 #sex
 {
 	display: inline-block;
 	/*position: absolute;*/
 	margin-left: 7%;
-	margin-top: 1%;
 	position: relative;
-	top: -10px;
+	top: -6px;
 }
 #language
 {
 	display: inline-block;
 	/*position: absolute;*/
 	margin-left: 7%;
-	margin-top: 1%;
+	margin-top: 8px;
 	position: relative;
 	top: -10px;
 }
@@ -133,17 +138,21 @@ html,body
 	height:30px;
 	margin-top: 6px;
 	border-bottom: 2px solid gainsboro;
-	padding-bottom: 3px;
+	padding-bottom: 6px;
 	margin-left: 7%;
 }
 
 #Price
 {
-	width: 200px;
+	width: 100px;
 	margin-left: 12%;
 	margin-top: 2px;
+	margin-bottom: 4px;
 	height: 20px;
+	background-color: #F1F5FB;
+	padding-left: 0;
 }
+
 #VisitNum
 {
 	display: inline-block;
@@ -153,20 +162,20 @@ html,body
 	margin-top: 5px;
 	text-align: center;
 	border: none;
-	background-color: #EEEEEE;
+	background-color: #F1F5FB;
 	width: 10%;
 }
 #ContactName,#ContactPhone,#OtherCommand
 {
 	display: inline-block;
-	position: absolute;
-	height: 20px;
+	height: 30px;
 	margin-left: 8%;
-	margin-top: 5px;
-	text-align: center;
+	/*margin-top: 5px;*/
+	/*text-align: center;*/
 	border: none;
-	background-color: #EEEEEE;
+	background-color: #F1F5FB;
 	width: 60%;
+
 }
 #Minus
 {
@@ -187,14 +196,13 @@ html,body
 .confirmButton
 {
 	background-color: #2792fa;
-	background-size:100% ;
 	border: none;
 	margin-top: 4px;
 	height: 40px;
-	width: 80%;
+	width: 90%;
 	color: white;
-	font-size: 16px;
-	margin-left: 10%;
-	border-radius:16px;
+	font-size: 18px;
+	margin-left: 5%;
+	border-radius:20px;
 	margin-top: 10px;
 }

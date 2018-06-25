@@ -5,41 +5,20 @@ import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 import javax.sql.DataSource;
 
-import org.apache.tomcat.util.bcel.Const;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
 import com.TourGuide.common.DateConvert;
 import com.TourGuide.common.MyDateFormat;
-import com.TourGuide.model.ConsistOrder;
 import com.TourGuide.model.ConsistResult;
 
 @Repository
@@ -84,7 +63,8 @@ public class ConsistOrderDao {
 		try{
 			conn = dataSource.getConnection();
 			conn.setAutoCommit(false);
-			
+			String sqlLat="select t_scenicspotinfo.jing,t_scenicspotinfo.wei from t_scenicspotinfo WHERE scenicNo='"+scenicID+"'" ;
+			Map<String, Object> list1=jdbcTemplate.queryForMap(sqlLat);
 			String sqlString2 = "insert into t_consistresult (orderID,visitNum,maxNum,"
 					+ "visitTime,scenicID,finishScan,guideFee) values (?,?,?,?,?,?,?)";
 			int j = jdbcTemplate.update(sqlString2, new Object[]{orderID, visitNum, 
@@ -92,11 +72,11 @@ public class ConsistOrderDao {
 			
 			String sqlString = "insert into t_consistOrder (consistOrderID,orderID,scenicID,produceTime,"
 					+ "visitTime,visitNum,visitorPhone,contact,orderState,"
-					+ "isConsisted,maxNum,totalGuideFee,guideFee)"
-					+ "values (?,?,?,?,?,?,?,?,?,?,?,?,?)";
+					+ "isConsisted,maxNum,totalGuideFee,guideFee,longitude,latitude)"
+					+ "values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 			int i = jdbcTemplate.update(sqlString, new Object[]{consistOrderID, orderID, scenicID, 
 					produceTime, visitTime, visitNum, visitorPhone,contact,
-					orderState, isConsisted,maxNum, totalFee, fee});
+					orderState, isConsisted,maxNum, totalFee, fee,list1.get("wei"),list1.get("jing")});
 			
 			/**
 			 * 假设付款成功
@@ -494,6 +474,7 @@ public class ConsistOrderDao {
 				map.put("guideFee", rst.getInt(5));
 				map.put("scenicName", rst.getString(6));
 				map.put("cancleFee", rst.getInt(7));
+				map.put("type","拼团单");
 				
 				list.add(map);
 			}			
@@ -530,6 +511,7 @@ public class ConsistOrderDao {
 				map.put("visitNum", rst.getInt(4));
 				map.put("guideFee", rst.getInt(5));
 				map.put("scenicName", rst.getString(6));
+				map.put("type", "拼团单");
 				
 				list.add(map);
 			}			

@@ -1,7 +1,8 @@
 var vistPhone = getPhone();
+//var vistPhone = "15029319152";
+
 $(document).ready(function()
-{	
-	
+{		
 	getOrderList();
 });
 
@@ -15,19 +16,23 @@ $(function($) {
 	
 });
 
-$('.bgw').click(function() {
+/*$('.bgw').click(function() {
 	$('.bgw').removeClass('hdxz');
 	$(this).addClass('hdxz');
 
 	//		var id = $(this).attr('id');
 	//		alert(id);
-});
+});*/
 
 function qbon() {
 	$(".orderywc").show(300);
 	$(".orderdyl").show(300);
 	$(".orderdfk").show(300);
 	$(".orderdpj").show(300);
+	$(".orderdjd").show(300);
+	
+	$('.bgw').removeClass('hdxz');
+	$("#btqb").addClass("hdxz");
 }
 
 function ywcon() {
@@ -35,6 +40,10 @@ function ywcon() {
 	$(".orderdyl").hide(300);
 	$(".orderdfk").hide(300);
 	$(".orderdpj").hide(300);
+	$(".orderdjd").hide(300);
+	
+	$(".bgw").removeClass("hdxz");
+	$("#btywc").addClass("hdxz");
 }
 
 function dylon() {
@@ -42,6 +51,10 @@ function dylon() {
 	$(".orderdyl").show(300);
 	$(".orderdfk").hide(300);
 	$(".orderdpj").hide(300);
+	$(".orderdjd").hide(300);
+	
+	$(".bgw").removeClass("hdxz");
+	$("#btdyl").addClass("hdxz");
 }
 
 function yfkon() {
@@ -49,6 +62,10 @@ function yfkon() {
 	$(".orderdyl").hide(300);
 	$(".orderdfk").show(300);
 	$(".orderdpj").hide(300);
+	$(".orderdjd").hide(300);
+	
+	$(".bgw").removeClass("hdxz");
+	$("#btdfk").addClass("hdxz");
 }
 
 function dpjon() {
@@ -56,12 +73,15 @@ function dpjon() {
 	$(".orderdyl").hide(300);
 	$(".orderdfk").hide(300);
 	$(".orderdpj").show(300);
+	$(".orderdjd").hide(300);
+	
+	$(".bgw").removeClass("hdxz");
+	$("#btdpj").addClass("hdxz");
 }
 
 //获取用户的所有订单
 function getOrderList()
 {
-
     var url = HOST+"/getAllOrders.do";
 	$.ajax({
 		type:"post",
@@ -76,11 +96,9 @@ function getOrderList()
 		success:function(data)
 		{
 			var now = getNowFormatDate();
-
 			$.each(data, function(i,n) {			
 				
 				var str = n.visitTime;
-				
 				if(str != undefined){									
 					var tmp = str.split(':');
 					var tmp1 = tmp[0]+":"+tmp[1];
@@ -132,6 +150,13 @@ function getOrderList()
 						'<div class="orderinfoname"><span>'+n.scenicName+'</span></div>'+
 						'<div class="orderinfotime"><p>参观时间：<span>'+time+'</span></p>'+
 						'<img src="img/icon-dyl.png"/></div></div></div>'+div+'';
+					}
+					if(n.orderState=="待接单"){
+						div1.className = "orderinfo orderdjd";
+						div1.innerHTML = '<div class="orderinfotitle">'+
+						'<div class="orderinfoname"><span>'+n.scenicName+'</span></div>'+
+						'<div class="orderinfotime"><p>参观时间：<span>'+time+'</span></p>'+
+						'<span class="daijd">待接单</span></div></div></div>'+div+'';
 					}
 					
 					mainDiv.appendChild(div1);

@@ -34,7 +34,7 @@ public class VisitorController {
 	
 	
 	/**
-	 * 游客注册,没有自己选择头像，直接使用微信服务器的数据
+	 * 游客注册,没有自己选择头像，直接使用微信服务器的数据 
 	 * @param resp
 	 * @param nickName  昵称
 	 * @param sex  性别
@@ -137,12 +137,13 @@ public class VisitorController {
 	
 	
 	/**
-	 * 用户根据openId修改自己的头像
+	 * 用户根据openId修改自己的头像 
 	 * @param resp
 	 * @param openId
 	 * @param imgPath  头像路径
 	 * @throws IOException
 	 */
+	
 	@RequestMapping(value = "/changeImg.do")
 	public void changeImg(HttpServletResponse resp,
 			@RequestParam("openId") String openId
@@ -158,75 +159,58 @@ public class VisitorController {
 	}
 	
 	
+	
+	/*
+	 * 游客修改个人信息
+	 * */
 	@RequestMapping(value="/putImg.do")
 	public void UploadImage(HttpServletResponse resp,
 			HttpServletRequest request,
-			@RequestParam MultipartFile btn_file) throws IOException {
-		
+			@RequestParam MultipartFile btn_file,@RequestParam(value="openId")String openId,@RequestParam(value="name")String name) throws IOException {
+		System.out.println(name);
 		CommonResp.SetUtf(resp);
-		boolean ret = false;
 		
 		String realPath=request.getSession().getServletContext().getRealPath("image/visitor");
 		File pathFile = new File(realPath);
-		
+		VisitorInfo visitorInfo = visitorService.getInfobyOpenID(openId);
 		if (!pathFile.exists()) {
 			//文件夹不存 创建文件
 			System.out.println("目录不存在，创建目录");
 			pathFile.mkdirs();
 		}
 		
-		System.out.println("文件类型："+btn_file.getContentType());
-		System.out.println("文件名称："+btn_file.getOriginalFilename());
-		System.out.println("文件大小:"+btn_file.getSize());
-		System.out.println(".................................................");
-		
-		String imgString = btn_file.getOriginalFilename();
-		String[] tmp = imgString.split("\\.");
-		String fileName = tmp[0] + new Date().getTime() + "."+tmp[1];
-		imgPath = "/image/visitor/" + fileName;
-		
-		//将文件copy上传到服务器
-		try {
-			System.out.println(realPath + "/" + fileName);
-			File fileImageFile=new File(realPath + "/" + fileName);
-			btn_file.transferTo(fileImageFile);
-			System.out.println("图片上传成功");
-//			boolean bool = visitorService.changeImg(openId, fileName);
-			ret = true;
-		} catch (IllegalStateException | IOException e) {
+		if(btn_file.isEmpty())
+		{
+			visitorService.changeInfo(openId,visitorInfo.getImage(),name);
+			
+		}else{
+			String imgString = btn_file.getOriginalFilename();
+			String[] tmp = imgString.split("\\.");
+			String fileName = tmp[0] + new Date().getTime() + "."+tmp[1];
+			imgPath = "/image/visitor/" + fileName;
+			//System.out.println("openId="+openId+" username="+name);
+			//将文件copy上传到服务器
+			try {
 				
-			e.printStackTrace();
-		}	
+				File fileImageFile=new File(realPath + "/" + fileName);
+				btn_file.transferTo(fileImageFile);
+				System.out.println("图片上传成功");
+				visitorService.changeInfo(openId,imgPath,name);
+			} catch (IllegalStateException | IOException e) {
+					
+				e.printStackTrace();
+			}	
+		}
 		
-		PrintWriter writer = resp.getWriter();
-		writer.write(new Gson().toJson(ret));
-		writer.flush();
+		
+		
+		resp.sendRedirect("/TourGuide/web/personalHome.html?openId="+openId + "&vistPhone=" + visitorInfo.getPhone());
 	}  	
 	
 	
-	/**
-	 * 用户根据openId修改自己的信息
-	 * @param openId
-	 * @param name  姓名
-	 * @param nickName  昵称
-	 * @param sex  性别
-	 * @return
-	 */
-	@RequestMapping(value = "/changeInfo.do")
-	public void changeInfo(HttpServletResponse resp,
-			@RequestParam("openId") String openId,
-			@RequestParam("name") String name,
-			@RequestParam("nickName") String nickName,
-			@RequestParam("sex") String sex) throws IOException{
-		
-		CommonResp.SetUtf(resp);
-		
-		boolean bool = visitorService.changeInfo(openId, name, nickName, sex);
-		
-		PrintWriter writer = resp.getWriter();
-		writer.write(new Gson().toJson(bool));
-		writer.flush();
-	}
+	
+	
+	
 	
 	
 	/**

@@ -1,12 +1,12 @@
-<!DOCTYPE html>
-<html>
+﻿<!DOCTYPE html>
+<html style="height: 100%;">
 	<head>
 		<meta charset="UTF-8">
 		<title>确认订单</title>
 		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no"  />
 		<link rel="stylesheet" href="css/isOrder.css" />
 		<link rel="stylesheet" href="css/confirmOrder.css" />
-		
+		<link rel="stylesheet" href="css/bootstrap.min.css">
 		<link rel="stylesheet" type="text/css" href="css/navigate.css" />
 		<script type="text/javascript" src="js/navigationbar.js"></script>
 		<script type="text/javascript" src="js/jquery-1.11.3.min.js" ></script>
@@ -15,88 +15,105 @@
 		
 		<script src="http://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
 		<script src="js/wechatPay.js"></script>
+		<style>
+			.orderInfo span {
+				margin-top: 0;
+			}
+   
+		</style>
 	</head>
 	<body>
-		<div class="guideInfo">
-			<div class="headImg">
+		<div class="guideInfo ">
+	<!-- 个人资料信息 start-->
+			<div class="headImg container">
 				<img id="GuideHead1" src="img/导游头像.png" onerror="changeImage(this)"/>
-				<p id="GuideName1">何静媛</p>
-				<!--<img id="GuideSex1" src="img/5-10女.png"/>-->
-				<span id="GuideSex1" class="sexFemal">女</span>
-				<span id="GuideScenic1">秦始皇兵马俑</span>
-				<p id="GuidePhone">18829027144</p>
+				
+				<!-- 导游姓名 -->
+				<div style="padding-top:25px;font-weight: bold;"><span id="GuideName1"></span></div>
+				
+				<div style="margin-top: -45px;"><span id="GuideSex1" class="sexFemal"></span></div>
+				<!-- 景点名称 -->
+				<div id="GuideScenic1"><span></span></div>
+				<!-- 导游手机 -->
+				<div id="GuidePhone"><span></span></div>
+		
+				<!-- <p >33333</p> -->
 			</div>
-			<div class="detailInfo1">
-				<div class="guideFee">
+	<!-- 个人资料信息 end-->
+
+			<div class="detailInfo1" >
+				<div class="guideFee" style="margin-top: 30px;">
 					<p>讲解费(元)</p>
-					<p id="GuideFee">150</p>
+					<p id="GuideFee" style="font-weight: bold;"></p>
 				</div>
-				<div class="rightDiv">
-					<div class="guideLevel">
-						<p>导游级别</p>
-						<p id="GuideLevel">2</p>
+				<div class="rightDiv" style="margin-top: -20px;margin-left: 35%;width: 60%;">
+					<div class="guideLevel" style="margin-left: 20px;">
+						<p style="font-size: 14px;margin-top: 25px;">讲解员级别</p>
+						<p id="GuideLevel"></p>
 					</div>
-					<div class="guideAge">
-						<p>导游年龄</p>
-						<p id="GuideAge">26</p>
+					<div class="guideAge" style="margin-left: -10px;">
+						<p style="font-size: 14px;margin-top: 25px;">年龄</p>
+						<p id="GuideAge"></p>
 					</div>
-					<div class="guideLanguage">
-						<p>语种</p>
-						<p id="GuideLanguage">英语</p>
+					<div class="guideLanguage" style="margin-left: 20px;">
+						<p style="font-size: 14px;">语种</p>
+						<p id="GuideLanguage"></p>
 					</div>
-					<div class="guideNum">
-						<p>接待人次</p>
-						<p id="GuideNum">35</p>
+					<div class="guideNum" style="margin-left: -10px;">
+						<p style="font-size: 14px;">接待人次</p>
+						<p id="GuideNum"></p>
 					</div>
 				</div>
-				<div class="bar1">
-				</div>
+			
 			</div>	
-			<div class="bar3">
+			<div class="bar3" style="margin-top: 0px;height: 5px;margin-top: -5px;">
 			</div>
 		</div>
-		<div class="orderInfo">
-			<div class="orderInfoIcon">
-				<img src="img/8-1预约信息图标.png"/>
-				<span>预约信息</span>
+		<div class="orderInfo" style="margin-top: 0px;height: 100%;">
+			<div class="orderInfoIcon" style="height: 10%;">
+				<img src="img/8-1预约信息图标.png" style="margin-top: 0px;" />
+				<span style="margin-top: 9px;">预约信息</span>
 			</div>
-			<div class="orderInfo1">
+			<div class="orderInfo1" style="height: 30%;">
 				<div class="orderScenicName">
 					<span>参观景区</span>
-					<span id="ScenicName">华山</span>
+					<span id="ScenicName"></span>
 				</div>
 				<div class="orderTime">
 					<span>预约时间</span>
-					<span id="OrderTime">07-23 10:00</span>
+					<span id="OrderTime"></span>
 				</div>
 				<div class="orderNum">
 					<span>预约人数</span>
-					<span id="OrderNum">10</span>
+					<span id="OrderNum"></span>
 				</div>
 			</div>
-			<div class="orderInfo2">
+			<div class="orderInfo2" style="height: 30%;">
 				<div class="contactName">
-					<span>联系人</span>
-					<span id="ContactNameConfirm">王栋凯</span>
+					<span style="margin-top: 8px;">联系人</span>
+					<span id="ContactNameConfirm"></span>
 				</div>
 				<div class="contactPhone">
-					<span>联系电话</span>
-					<span id="ContactPhoneConfirm">18829027144</span>
+					<span style="margin-top: 8px;">联系电话</span>
+					<span id="ContactPhoneConfirm"></span>
 				</div>
 			</div>
-			<div class="orderInfo3">
-				<span style="font-size: 0.8em;">其它需求</span>
+			<div class="orderInfo3" style="height: 30%;">
+				<span style="font-size: 1em;margin-top: 140px;margin-left: -100%;">其它需求</span>
+				<br>
 				<span id="OtherCommandConfirm"></span>
 			</div>
 		</div>
-		<div class="bar2">			
+					
 		</div>
-		<div class="toPay">
-			<button onclick="wechatPay()" >去结算</button>
-			<span id="GuideFee1">&yen;0</span>
-			<span>讲解费：</span>
+		<!-- <div class="bar2" style="height: 5px;width:100%;position: fixed;bottom: 105px;"></div> -->
+		<div class="toPay" style="position: fixed;bottom:90px;right: 0;width: 100%;">
+			<div class="bar2" style="height: 5px;margin-top: 50px;">
+			<button onclick="wechatPay()" style="height: 45px;font-size:16px;width: 27%;text-align: center;">去结算</button>
+			<span id="GuideFee1" style="font-size: 1.5em;margin-top: 10px;">&yen;</span>
+			<span style="margin-top: 15px;">讲解费：</span>
 		</div>
-		<div style="height: 60px;"></div>
+		<div style="height: 300px;"></div>
 		<script>
 			$(function($) {
 				addNavigate(3);

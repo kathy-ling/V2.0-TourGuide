@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
 	<head>
 		<meta charset="UTF-8">
@@ -22,7 +22,7 @@
 
 	</style>	
 	</head>
-	<body> 
+	<body style="padding-bottom:30px;"> 
 		<div class="tabHead">
 			<!--<img class="backIcon" src="img/返回图标.png"/>-->
 			<span id="OrderTab" onclick="changeTab1()">预约讲解员</span>
@@ -46,7 +46,7 @@
 			<div>
 			<img src="img/6-2时间.png"/>
 			<span>时间</span>
-			<select id="SelectTime" style="height: 50px;">
+			<select id="SelectTime" style="height: 30px;">
 				<option value="">请选择时间</option>
 				<option>8:00</option>
 				<option>8:30</option>
@@ -67,11 +67,9 @@
 				<option>16:00</option>
 				<option>16:30</option>
 				<option>17:00</option>
-				<option>17:30</option>
-				<option>18:00</option>
 			</select>
 			</div>
-			<div class="sexDiv">
+			<div class="sexDiv" style="margin-top: 18px;">
 				<img src="img/4-3性别.png"/>
 				<span>性别</span>
 				<div id="sex">
@@ -88,8 +86,8 @@
 				</div>
 			</div>
 			<div class="bottomInfo">
-				<span>价格</span>
-				<select id="Price" style="height: 50px;">
+				<span>价格　　</span>
+				<select id="Price" style="height: 30px;">
 					<option value="" selected="selected">请选择价格</option>
 					<option>100</option>
 					<option>150</option>
@@ -109,21 +107,21 @@
 				<input id="ContactName" ></input>
 			</div>
 			<div class="bottomInfo">
-				<span>联系电话</span>
-				<input id="ContactPhone" ></input>
+				<span>联系电话　</span>
+				<input id="ContactPhone" onblur="checkPhone()"></input>
 			</div>
-			<div class="bottomInfo">
-				<span>其它需求</span>
+			<div class="bottomInfo" style="height: 40px;">
+				<span>其它需求　</span>
 				<textarea id="OtherCommand" value=""></textarea>
 			</div>
 			<div>
-				<button class="confirmButton" onclick="checkOrderForm()">确定</button>
+				<button class="confirmButton" onclick="checkOrderForm()">提交订单</button>
 			</div>
-			
+
+			<!-- 填充空白元素 -->
+			<div style="height: 50px;" ></div>
 		</div>
-		<div style="height: 70px;">
-			
-		</div>
+	
 		<script>
 			$(function($) {
 				addNavigate(3);

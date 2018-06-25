@@ -124,6 +124,85 @@ public class GuideDao {
 		return retValue;
 	}
 	
+	/*
+	 * 申请导游提交信息
+	 * */
+	
+	public int putInfo(String openId,String phone,String name ,String imgPath, String sex,String language,
+			String selfIntro, String age,String workAge) throws SQLException{
+		int retValue = 0;
+		String scenicId = null;
+		String dayNow = new SimpleDateFormat("yyyy-MM-dd").format(new Date());
+		final GuideInfo guideInfo = new GuideInfo();
+		
+		//查询该账号是否被注册了
+		String sqlSearch = "select phone from t_guideinfo where phone='"+phone+"'";	
+		jdbcTemplate.query(sqlSearch,  new RowCallbackHandler() {
+			
+			@Override
+			public void processRow(ResultSet res) throws SQLException {
+				guideInfo.setPhone(res.getString(1));
+			}
+		});
+		String phoneExist = guideInfo.getPhone();			
+		
+		DataSource dataSource = jdbcTemplate.getDataSource();
+		Connection  conn = null;
+		try{
+			conn = dataSource.getConnection();
+			conn.setAutoCommit(false);
+			
+			int i=0,j=0,k=0,p=0,m=0,n=0;
+			
+			//首次申请成为导游
+			if(phoneExist == null){	
+				//向t_guideinfo表中插入导游的基本信息
+				String sqlString = "insert into t_guideinfo (phone,name,sex,language,selfIntro,image,age) "
+						+ "values (?,?,?,?,?,?,?)";
+				i = jdbcTemplate.update(sqlString, new Object[]{phone, name, sex,
+						language, selfIntro, imgPath, age});		
+				
+				//向t_guideotherinfo插入其他的信息
+				String sqlString2 = "insert into t_guideotherinfo (phone,workAge,scenicBelong,authorized,disabled) "
+						+ "values (?,?,?,?,?)";
+				j = jdbcTemplate.update(sqlString2, new Object[]{phone, workAge, scenicId, 0, 0});
+				
+				//向t_guideworkday中插入信息
+				String sqlString3 = "insert into t_guideworkday (guidePhone) values (?)";
+				k = jdbcTemplate.update(sqlString3, new Object[]{phone});
+				
+				String sqlApply = "insert into t_affiliation (guidePhone,scenicID,applyDate,state) "
+						+ "values (?,?,?,?)";
+				p = jdbcTemplate.update(sqlApply, new Object[]{phone,scenicId,dayNow,1});
+				
+			}else{//取消景区挂靠后，再次申请
+				String sqlApply = "insert into t_affiliation (guidePhone,scenicID,applyDate,state) "
+						+ "values (?,?,?,?)";
+				m = jdbcTemplate.update(sqlApply, new Object[]{phone,scenicId,dayNow,1});
+				
+				String update = "update t_guideotherinfo set workAge='"+workAge+"',"
+						+ "scenicBelong='"+scenicId+"',authorized=0,disabled=0 where phone='"+phone+"'";
+				n = jdbcTemplate.update(update);
+			}
+			
+			
+			conn.commit();//提交JDBC事务 
+			conn.setAutoCommit(true);// 恢复JDBC事务的默认提交方式
+			conn.close();
+			
+			if ((i!=0 && j!=0 && k!=0 && p != 0) || (m!=0 && n!=0)) {
+				retValue = 1;
+			}
+			
+		} catch (SQLException e) {
+			conn.rollback();
+			e.printStackTrace();
+		}	
+	
+		return retValue;
+	}
+	
+	
 	
 	/**
 	 * 查询最受欢迎的讲解员,暂定显示10个
@@ -266,12 +345,14 @@ public class GuideDao {
 		}*/
 
 		for(int i=0; i<list.size(); i++){
+			String phone = (String)list.get(i).get("phone");
 			listResult.add(list.get(i));
 		}
 		
 		//去除时间冲突的讲解员信息
 		for(int i=0; i<list.size(); i++){
 			String phone = (String)list.get(i).get("phone");
+			
 			boolean bool = isTimeConflict(phone, visitTime);
 			if(bool == true){
 				listResult.remove(list.get(i));
@@ -675,7 +756,7 @@ public class GuideDao {
 	 * @return  
 	 * 姓名、性别、年龄、从业时间、联系电话、讲解语言、景区名称、自我介绍、个人照片、申请日期、通过日期
 	 */
-	public List<Map<String, Object>> getGuideApplyInfoByPhone(String phone){
+	public Map<String, Object> getGuideApplyInfoByPhone(String phone){
 		
 		List<Map<String , Object>> list = new ArrayList<>(); 		
  		DataSource dataSource =jdbcTemplate.getDataSource();
@@ -699,7 +780,12 @@ public class GuideDao {
 				map.put("authorized", rst.getInt(10));
 				map.put("scenicName", rst.getString(11));								
 				map.put("applyDate", rst.getString(12));
-				map.put("passDate", rst.getString(13));
+				if(rst.getString(13)==null){
+					map.put("passDate", "待审核");
+				}else {
+					map.put("passDate", rst.getString(13));
+				}
+				map.put("state", rst.getString(14));
 				list.add(map);
 			}							
 			conn.close();
@@ -707,7 +793,7 @@ public class GuideDao {
 			e.printStackTrace();
 		} 		
 		
-		return list;
+		return list.get(0);
 	}
 	
 	

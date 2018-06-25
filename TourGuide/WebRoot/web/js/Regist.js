@@ -44,6 +44,17 @@ function SendSMS()
 			}
 		}
 	});
+	 var i=60;
+        var si = setInterval(function(){
+        $('#jh').attr('disabled','true');
+        $('#jh').val('（'+i+'）秒后重新获取');
+        if(i<=0) {
+            clearInterval(si);
+            $('#jh').val('发送验证码');
+            $('#jh').attr('disabled',false);
+        }
+            i--;
+        },1000);
 }
 
 
@@ -131,6 +142,50 @@ function changePerHeadImg()
 	}		
 }
 
+// 跳过并注册
+function changePer()
+{
+	var patt1 = new RegExp("wx.qlogo.cn");
+	var yanzhengma1=$("#yanzhengma1").val();
+	if(yanzhengma==undefined)
+	{
+		alert("请获取验证码进行注册");
+		return false;
+	}
+	
+	if (yanzhengma!=yanzhengma1) {
+		alert("验证码不正确，请重新输入验证码");
+		return false;
+	} 	
+
+	if(check()) {
+		var postdata = {
+			"nickName": nickName,
+			"sex": $("input:radio[name='guideSex']:checked").val(),
+			"name": nickName,
+			"phone": $("#tel").val(),
+			"passwd": $("#password").val(),
+			"openID": openId
+		};
+
+		var url = HOST + "/visitorRegister.do";
+		$.ajax({
+			type: "post",
+			url: url,
+			async: true,
+			data: postdata,
+			datatype: "JSON",
+			error: function(data) {
+				alert("注册Request error!");
+			},
+			success: function(data) {
+				window.location = HOST + "/web/index.html?phone=" + postdata.phone;	
+				sessionStorage.setItem("vistPhone", postdata.phone); 
+			}
+		});
+	}
+
+}
 
 function Regist() {
 	

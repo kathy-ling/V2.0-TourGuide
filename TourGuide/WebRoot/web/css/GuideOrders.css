@@ -1,0 +1,82 @@
+.list
+{
+	background-color: white;
+	width: 100%;
+	box-shadow: 0 4px 2px -2px rgba(0,0,0,0.2);
+}
+.top
+{
+	width: 90%;
+	margin: auto;
+	border-bottom: 1px dashed #CCCCCC;
+	height: 40px;
+	background-color: white;
+}
+.sName
+{
+	float: left;
+	width: 35%;
+	overflow: hidden;
+	height: 100%;
+}
+#ScenicName
+{
+	font-size: 16px;
+	line-height: 45px;
+}
+.vTime
+{
+	float: right;
+	margin-right: 0px;
+	margin-top: 5px;
+}
+.visitTime
+{
+	font-size: 12px;
+	float: right;
+	line-height: 10px;
+}
+.orderInfo
+{
+	width: 90%;
+	height: 110px;
+	margin: auto;
+}
+.lTime
+{
+	font-size: 36px;
+	color: #000000;
+	font-weight: bold;
+}
+.ltime
+{
+	color: #000000;
+	font-size: 12px;
+	margin-top: -8px;
+}
+.detailInfoDiv
+{
+	height: 110px;
+	width: 60px;
+	float: right;
+}
+.detailInfoImg
+{
+	width: 60px;
+	margin-top: 30px;
+}
+.NumFee
+{
+	height: 100%;
+	float: right;
+	width: calc(100% - 60px);
+}
+.infoSpan
+{
+	font-size: 14px;
+}
+.info
+{
+	font-size: 26px;
+	font-weight: bold;
+}

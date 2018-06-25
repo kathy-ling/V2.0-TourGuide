@@ -7,14 +7,14 @@ $(function(){
 	var num = $("#VisitNum").val();
     $("#Minus").click(function(){
     	if(num > 0){
-    		$("#VisitNum").val(num--);
+    		$("#VisitNum").val(--num);
     	} 
     	else{
     		alert("选择不合法");
     	}
     })
     $("#Plus").click(function(){
-    	$("#VisitNum").val(num++);
+    	$("#VisitNum").val(++num);
     })
     
     addAllScenics();
@@ -90,15 +90,14 @@ function checkOrderForm() {
 	}
 //	if(!timeCompare(time, timeNow)){
 //		return false;	
-//	}	
-
+//	}
 	var data = {
 			scenicName : name,
 			otherCommand : otherRequest,
 			visitNum : num,
 			priceRange : fee,
 			guideSex : sex,		
-			visitorPhone : phone, //vistPhone全局变量，游客的手机号
+			visitorPhone : getPhone(), //vistPhone全局变量，游客的手机号
 			visitorName : visitorName,
 			language : language,
 			purchaseTicket : 2,
@@ -109,13 +108,7 @@ function checkOrderForm() {
 			contact : phone//contact,游客在发布订单界面填写的联系电话
 		};
 		//发布订单
-		releaseOrder(data);
-//	var Url = "confirmBookRelease.html?scenicName=" + 
-//	scenicName+"&visitTime="+time+"&visitNum="+num+
-//	"&priceRange="+fee+"&guideSex="+sex+"&visitorName="+visitorName+"&language="+
-//	language+"&contact="+phone+"&otherRequest="+otherRequest;
-//
-//	window.open(Url);	
+		releaseOrder(data);	
 }
 
 // 发布订单
@@ -131,16 +124,15 @@ function releaseOrder(formdata) {
 			alert("发布订单Request error!");
 		},
 		success : function(data) {
-			alert("成功");
-			if (data == true) {
-				alert("发布订单成功！");
+			if (data != null) {
 				window.location.href="releaseOrderConfirm.html?scenicName="+formdata.scenicName
 				+"&orderTime="+formdata.visitTime
 				+"&orderNum="+formdata.visitNum
 				+"&contactName="+formdata.visitorName
 				+"&contactPhone="+formdata.contact
 				+"&otherCommand="+formdata.otherCommand
-				+"&guideFee="+formdata.priceRange;
+				+"&guideFee="+formdata.priceRange
+				+"&orderID="+data;
 			} else {
 				alert("发布订单失败");
 			}
@@ -198,160 +190,22 @@ function addDate()
 //动态改变参观时间
 function showVisitTime()
 {
+	
 	var myDate = new Date();
 	var myDay = new Date(myDate.getFullYear(), myDate.getMonth(), myDate.getDate()+1);
 	var today0 = myDay.toISOString();
 	var today1 = today0.substring(0,10);
-//	var getDate = $("#chooseDate").val();
-//	var getDate = $(dateId).val();
-//	var getDate0 = getDate.substring(5,10);
-	var hour = myDate.getHours();
-	var minute = myDate.getMinutes();
-//	var mySelect = document.getElementById("orderDatetime123");
 	var mySelect = document.getElementById("SelectTime");
 	if(today1 == $("input[name='radioDate']:checked").val())
 	{
-		//alert("today");
-		if(hour >= 8 && hour < 9 && minute < 30)
-		{
+		var eight = new Date(today1+" 08:00:00");	
+		var count = (myDate - eight)/60000 / 60 /0.5;	
+		if(count>=19){count=19}
+		for(i=0;i<count;i++){
 			mySelect.options.remove(1);
 		}
-		if(hour >= 8 && hour < 9 && minute >= 30)
-		{
-			for(var i = 0; i < 2; i++)
-			{
-				mySelect.options.remove(1);
-			}
-		}
-		if(hour >= 9 && hour < 10 && minute < 30)
-		{
-			for(var i = 0; i < 3; i++)
-			{
-				mySelect.options.remove(1);
-			}
-		}
-		if(hour >= 9 && hour < 10 && minute >= 30)
-		{
-			for(var i = 0; i < 4; i++)
-			{
-				mySelect.options.remove(1);
-			}
-		}
-		if(hour >= 10 && hour < 11 && minute < 30)
-		{
-			for(var i = 0; i < 5; i++)
-			{
-				mySelect.options.remove(1);
-			}
-		}
-		if(hour >= 10 && hour < 11 && minute >= 30)
-		{
-			for(var i = 0; i < 6; i++)
-			{
-				mySelect.options.remove(1);
-			}
-		}
-		if(hour >= 11 && hour < 12 && minute < 30)
-		{
-			for(var i = 0; i < 7; i++)
-			{
-				mySelect.options.remove(1);
-			}
-		}
-		if(hour >= 11 && hour < 12 && minute >= 30)
-		{
-			for(var i = 0; i < 8; i++)
-			{
-				mySelect.options.remove(1);
-			}
-		}
-		if(hour >= 12 && hour < 13 && minute < 30)
-		{
-			for(var i = 0; i < 9; i++)
-			{
-				mySelect.options.remove(1);
-			}
-		}
-		if(hour >= 12 && hour < 13 && minute >= 30)
-		{
-			for(var i = 0; i < 10; i++)
-			{
-				mySelect.options.remove(1);
-			}
-		}
-		if(hour >= 13 && hour < 14 && minute < 30)
-		{
-			for(var i = 0; i < 11; i++)
-			{
-				mySelect.options.remove(1);
-			}
-		}
-		if(hour >= 13 && hour < 14 && minute >= 30)
-		{
-			for(var i = 0; i < 12; i++)
-			{
-				mySelect.options.remove(1);
-			}
-		}
-		if(hour >= 14 && hour < 15 && minute < 30)
-		{
-			for(var i = 0; i < 13; i++)
-			{
-				mySelect.options.remove(1);
-			}
-		}
-		if(hour >= 14 && hour < 15 && minute >= 30)
-		{	
-			for(var i = 0; i < 14; i++)
-			{
-				mySelect.options.remove(1);
-			}
-		}
-		if(hour >= 15 && hour < 16 && minute < 30)
-		{
-			for(var i = 0; i < 15; i++)
-			{
-				mySelect.options.remove(1);
-			}
-		}	
-		if(hour >= 15 && hour < 16 && minute >= 30)
-		{
-//			alert("15");
-			for(var i = 0; i < 16; i++)
-			{
-				mySelect.options.remove(1);
-			}
-		}	
-		if(hour >= 16 && hour <17 && minute < 30)
-		{
-			for(var i = 0; i < 17; i++)
-			{
-				mySelect.options.remove(1);
-			}
-		}	
-		if(hour >= 16 && hour <17 && minute >= 30)
-		{
-			for(var i = 0; i < 18; i++)
-			{
-				mySelect.options.remove(1);
-			}
-		}	
-		if(hour >= 17 && hour <18 && minute < 30)
-		{
-			for(var i = 0; i < 19; i++)
-			{
-				mySelect.options.remove(1);
-			}
-		}	
-		if(hour >= 17 && hour <18 && minute >= 30)
-		{
-			for(var i = 0; i < 20; i++)
-			{
-				mySelect.options.remove(1);
-			}
-		}	
 	}else{
-		for(var i = 0; i < 21; i++){
+		for(var i = 0; i < 20; i++){
 				mySelect.options.remove(1);
 			}
 		mySelect.options.add(new Option("8:00","8:00"),1);
@@ -372,4 +226,18 @@ function showVisitTime()
 		mySelect.options.add(new Option("15:30","15:30"),16);
 		mySelect.options.add(new Option("16:00","16:00"),17);
 	}	
+	
+}
+
+function checkPhone()
+{
+	//表示以1开头，第二位可能是3/4/5/7/8等的任意一个，在加上后面的\d表示数字[0-9]的9位，总共加起来11位结束。
+	var reg = /^1[3|4|5|7|8][0-9]{9}$/; 
+	var phone = $("#ContactPhone").val()
+	
+	if(!reg.test(phone)){
+		alert('请输入有效的手机号码！');
+		$("#ContactPhone").val("");
+    	return false;
+	}
 }

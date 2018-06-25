@@ -7,25 +7,34 @@
 		<link rel="stylesheet" href="css/personInfo.css" />
 		<script src="http://www.jq22.com/jquery/jquery-1.10.2.js"></script>   
 		<script type="text/javascript" src="js/CommonSession.js" ></script>
+		<script type="text/javascript" src="js/ajaxfileupload.js"></script>
 		<script type="text/javascript" src="js/PersonalInfo.js" ></script>
 	</head>
 	<body>
 		<div class="topHead">
 			
 		</div>
-		<div class="guideHeadImg">
-			<img src="img/4-9导游头像.png" id="GuideHeadImg"/>
-			<img src="img/增加按钮.png" class="guideHeadImgAdd"/>
-		</div>
-		<div class="personInfo">
-			<span>账号</span>
-			<input id="person_info_tel" value=""></input>
-		</div>
-		<div class="personInfo">
-			<span>姓名</span>
-			<input id="person_info_name" value=""></input>
-		</div>
-
-		<button class="confirmModi" onclick="setperinfo()">确认修改</button>
+		<form action="http://zhoudaoly.com/TourGuide/putImg.do" method="post" enctype="multipart/form-data" >
+			<div class="guideHeadImg">
+				<img src="img/4-9导游头像.png" id="GuideHeadImg" style="border-radius:50% ;"/>
+				<div style="display: none;">
+					<input type="file" id="btn_file" name="btn_file"  style="display: none;" onchange="selectImage(this)">
+				</div>
+				<img id="visithead" src="img/增加按钮.png" class="guideHeadImgAdd" style="margin-left:10px; margin-top:50px;width: 40px; border-radius: 50%;" onclick="selectPersonImg()"/>
+			</div>
+			<div class="personInfo">
+				<span>账号</span>
+				<input id="person_info_tel" value="" readonly="readonly"></input>
+			</div>
+			<div class="personInfo">
+				<span>姓名</span>
+				<input id="person_info_name" name="name"  value=""></input>
+			</div>
+			<div style="display: none;">
+				<input id="openId" name="openId" value="" readonly="readonly"/>
+			</div>
+			<input class="confirmModi" type="submit" onclick="" value="确认修改"/>
+			<!-- <input class="login_out" type="submit" onclick="" value="退出登录"/> -->
+		</form>
 	</body>
 </html>

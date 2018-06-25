@@ -194,6 +194,7 @@ public class VisitorDao {
 			
 			if(i != 0){
 				bool = true;
+				System.out.print("1\n");
 			}
 			
 			return bool;
@@ -201,23 +202,25 @@ public class VisitorDao {
 		
 		
 		/**
-		 * 用户根据openId修改自己的信息
+		 * 用户根据openId修改自己的信息  
 		 * @param openId
 		 * @param name  姓名
 		 * @param nickName  昵称
 		 * @param sex  性别
 		 * @return
 		 */
-		public boolean changeInfo(String openId, String name, String nickName, String sex){
+		public boolean changeInfo(String openId,String imgPath, String name){
 			
 			boolean bool = false;
 			
-			String sqlUpdate = "update t_visitor set name='"+name+"',"
-					+ "nickName='"+nickName+"',sex='"+sex+"' where openID='"+openId+"'";
+			String sqlUpdate = "update t_visitor set name='"+name+"',image='"+imgPath+"' where openID='"+openId+"'";
 			int i = jdbcTemplate.update(sqlUpdate);
+			
+			
 			
 			if(i != 0){
 				bool = true;
+				
 			}
 			
 			return bool;
